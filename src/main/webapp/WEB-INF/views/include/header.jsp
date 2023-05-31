@@ -38,7 +38,7 @@
 			<%		
 				} else{
 			%>
-			<td class ="headertext"><a href="modify">정보수정</a></td>
+			<td class ="headertext"><a href="modify">회원정보수정</a></td>
 			<%		
 				}
 			

@@ -13,5 +13,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="loginOkDao" resultType="int">
 		select count(*) from rMember where rid = #{param1} and rpw = #{param2}
 	</select>
+	<select id="showInfoDao" resultType="com.jjcompany.rentcarProject.dto.MemberDto">
+		select * from rMember where rid = #{param1}
+	</select>
+	<update id="modifyOkDao">
+		update rMember set rpw = #{param2}, rname = #{param3}, rmobile = #{param4}, remail = #{param5} where rid= #{param1}
+	</update>
 
 </mapper>

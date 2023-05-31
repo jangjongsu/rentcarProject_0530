@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jjcompany.rentcarProject.dao.IDao;
+import com.jjcompany.rentcarProject.dto.MemberDto;
 
 @Controller
 public class RentcarController {
@@ -86,5 +87,35 @@ public class RentcarController {
 	public String logout(HttpSession session) {
 		session.invalidate();//세션 삭제
 		return "redirect:login";
+	}
+	@RequestMapping(value = "/modify")
+	public String modify(HttpServletRequest request, Model model, HttpSession session) {
+		
+		String sessionId = (String)session.getAttribute("sessionId");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+
+		MemberDto dto = dao.showInfoDao(sessionId);
+		
+		model.addAttribute("dto", dto);
+		
+		return"modify";
+	}
+	@RequestMapping(value = "/modifyOk")
+	public String modifyOk(HttpServletRequest request, Model model) {
+		
+		String rid = request.getParameter("rid");
+		String rpw = request.getParameter("rpw");
+		String rname = request.getParameter("rname");
+		String rmobile = request.getParameter("rmobile");
+		String remail = request.getParameter("remail");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+
+		int modifyCheck = dao.modifyOkDao(rid, rpw, rname, rmobile, remail);
+		
+		model.addAttribute("modifyCheck", modifyCheck);
+		
+		return"modifyOk";
 	}
 }
