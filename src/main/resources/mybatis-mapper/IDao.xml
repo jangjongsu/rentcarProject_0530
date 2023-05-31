@@ -4,5 +4,14 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jjcompany.rentcarProject.dao.IDao">
+	<insert id="joinDao">
+		insert into rMember(rid, rpw, rname, rmobile, remail) values (#{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+	</insert>
+	<select id="checkIdDao" resultType="int">
+		select count(*) from rMember where rid = #{param1}
+	</select>
+	<select id="loginOkDao" resultType="int">
+		select count(*) from rMember where rid = #{param1} and rpw = #{param2}
+	</select>
 
 </mapper>

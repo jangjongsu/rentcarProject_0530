@@ -30,6 +30,20 @@
 			
 			%>
 			<td class="margin02">&nbsp;</td>
+			
+			<%
+				if(sessionId == null){
+			%>
+			<td class ="headertext"><a href="join">회원가입</a></td>
+			<%		
+				} else{
+			%>
+			<td class ="headertext"><a href="modify">정보수정</a></td>
+			<%		
+				}
+			
+			%>
+			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">실시간예약</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">이용안내</a></td>

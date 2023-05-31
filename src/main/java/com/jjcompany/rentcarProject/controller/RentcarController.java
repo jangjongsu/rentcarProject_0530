@@ -1,18 +1,90 @@
 package com.jjcompany.rentcarProject.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jjcompany.rentcarProject.dao.IDao;
 
 @Controller
 public class RentcarController {
 	
-	@RequestMapping(value = "/header")
-	public String test() {
-		return"header";
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@RequestMapping(value = "/")
+	public String home() {
+		return"index";
+	}
+	@RequestMapping(value = "/index")
+	public String index() {
+		return"index";
 	}
 	
-	@RequestMapping(value = "/footer")
-	public String test1() {
-		return"footer";
+	@RequestMapping(value = "/join")
+	public String join() {
+		return"join";
+	}
+	@RequestMapping(value = "/joinOk")
+	public String joinOk(HttpServletRequest request, Model model) {
+		String rid = request.getParameter("rid");
+		String rpw = request.getParameter("rpw");
+		String rname = request.getParameter("rname");
+		String rmobile = request.getParameter("rmobile");
+		String remail = request.getParameter("remail");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		int joinCheck = 0;
+		int checkId = dao.checkIdDao(rid);
+		
+		if(checkId==0) {
+			joinCheck = dao.joinDao(rid, rpw, rname, rmobile, remail);
+			model.addAttribute("checkId", checkId);
+		}else {
+			model.addAttribute("checkId", checkId);
+		}
+		
+		if(joinCheck ==  1) {
+			model.addAttribute("joinFlag", joinCheck);
+			model.addAttribute("rid", rid);
+			model.addAttribute("rname", rname);
+		}else {
+			model.addAttribute("joinFlag", joinCheck);
+		}
+		
+		
+		
+		return"joinOk";
+	}
+	@RequestMapping(value = "/login")
+	public String login() {
+		return"login";
+	}
+	@RequestMapping(value = "/loginOk")
+	public String loginOk(HttpServletRequest request, HttpSession session, Model model) {
+		String rid = request.getParameter("rid");
+		String rpw = request.getParameter("rpw");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int loginCheck  = dao.loginOkDao(rid, rpw);
+		
+		if(loginCheck == 1) {
+			session.setAttribute("sessionId", rid);
+			model.addAttribute("loginCheck", loginCheck);
+		}else {
+			model.addAttribute("loginCheck", loginCheck);
+		}
+		return"loginOk";
+	}
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();//세션 삭제
+		return "redirect:login";
 	}
 }

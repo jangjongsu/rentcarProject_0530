@@ -1,18 +1,17 @@
 @charset "UTF-8";
 
- body{
+div.fdiv{
 	margin: 0;
 	padding: 0;
 	background-color: #1d1d1d; 
+	height: 300px;
 }
-
  tr.headerline{
  	height: 100px;
- 	background-color: #1d1d1d; 
  }
  
  td.footertext{
- 	font-size: 20px;
+ 	font-size: 15px;
  	font-family: Arial;
  	text-align: center;
  	color: white;
@@ -37,7 +36,14 @@ a:visited{
 a:hover {
 	text-decoration: underline;
 }
-p{
+p.ptext1{
+	font-size: 20px;
+ 	font-family: Arial;
+ 	text-align: left;
+ 	color: white;
+ 	font-weight: bold;
+}
+p.ptext2{
 	font-size: 20px;
  	font-family: Arial;
  	text-align: center;

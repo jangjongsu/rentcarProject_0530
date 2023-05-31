@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+td.contentbox{
+	background-color: #F5EBEB;
+	height: 540px;
+}
+ td.contenttext{
+ 	font-size: 20px;
+ 	font-family: HMKMRHD;
+ 	font-weight: bold;
+ 	color: #867070;
+ 	text-align: right;
+ }
+ textarea.textareabox{
+ 	border: 1px solid #867070;
+ 	background-color: #ffffff;
+ 	width : 250px;
+ 	font-family: arial;
+ 	font-size: 20px;
+ 	color:#867070;
+ 	padding: 5px;
+ }
+ td.main_text{
+ 	text-align: left;
+ 	font-size: 20px;
+ 	font-family: HMKMRHD;
+ 	font-weight: bold;
+ }
+ input.inputbox01{
+ 	border: 1px solid #867070;
+ 	background-color: #ffffff;
+ 	width : 250px;
+ 	font-family: arial;
+ 	font-size: 20px;
+ 	color:#867070;
+ 	padding: 5px;
+ }
+input.contentbtn01{
+	border: 2px solid red;
+	background-color: red;
+	width : 180px;
+	height: 40px;
+	font-family: HMKMRHD;
+	font-size: 20px;
+	padding: 5px;
+	color: white;
+}
+input.contentbtn01:hover{
+	cursor: pointer;
+}
