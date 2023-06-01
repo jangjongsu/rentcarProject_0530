@@ -4,6 +4,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jjcompany.rentcarProject.dao.IDao">
+<!-- 회원관리 관련 SQL -->
 	<insert id="joinDao">
 		insert into rMember(rid, rpw, rname, rmobile, remail) values (#{param1}, #{param2}, #{param3}, #{param4}, #{param5})
 	</insert>
@@ -19,5 +20,60 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="modifyOkDao">
 		update rMember set rpw = #{param2}, rname = #{param3}, rmobile = #{param4}, remail = #{param5} where rid= #{param1}
 	</update>
+<!-- 게시판글 관련 SQL -->
+	<insert id="boardWriteDao">
+		insert into rUserboard (rbnum, rid, rbtitle, rbcontent, rbhit, rbreplycount) 
+			values
+				(rbnum_seq.nextval, #{param1}, #{param2}, #{param3}, 0, 0)
+	</insert>
+	<select id="userBoardListDao" resultType="com.jjcompany.rentcarProject.dto.UserBoardDto">
+		SELECT * FROM 
+ 			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
+ 				FROM 
+ 					(SELECT * FROM rUserboard ORDER BY rbnum DESC)A)
+ 						WHERE PAGE=#{param2}
+	</select>
+	<select id="userBoardViewDao" resultType="com.jjcompany.rentcarProject.dto.UserBoardDto">
+		select * from rUserboard where rbnum = #{param1}
+	</select>
+	<delete id="userBoardDelete">
+		delete rUserboard where rbnum = #{param1}
+	</delete>
+	<select id="totalListcount" resultType="int">
+		select count(*) from rUserboard
+	</select>
+	<select id="userListSearchTitleDao" resultType="com.jjcompany.rentcarProject.dto.UserBoardDto">
+		select * from rUserboard where rbtitle Like '%' || #{param1} || '%' ORDER BY rbnum DESC
+	</select>
+	<select id="userListSearchIdDao" resultType="com.jjcompany.rentcarProject.dto.UserBoardDto">
+		select * from rUserboard where rid Like '%' || #{param1} || '%' ORDER BY rbnum DESC
+	</select>
+	<select id="userListSearchContentDao" resultType="com.jjcompany.rentcarProject.dto.UserBoardDto">
+		select * from rUserboard where rbcontent Like '%' || #{param1} || '%' ORDER BY rbnum DESC
+	</select>
+	
+	
+<!-- 댓글 관련 SQL -->	
+	<insert id="replyWriteDao">
+		insert into rUserreply (rrnum, rbnum, rid, rrcontent) 
+			values
+				(rrbnum_seq.nextval, #{param1}, #{param2}, #{param3})
+	</insert>
+	<select id="userReplyListDao" resultType="com.jjcompany.rentcarProject.dto.UserreplyDto">
+		select * from rUserreply where rbnum = #{param1} ORDER BY rbnum
+	</select>
+	<update id="replyCountUpDao">
+		update rUserboard set rbreplycount=rbreplycount+1 where rbnum = #{param1}
+	</update>
+	<update id="replyCountDownDao">
+		update rUserboard set rbreplycount=rbreplycount-1 where rbnum = #{param1}
+	</update>
+	<delete id="replydeleterbnum">
+		delete rUserreply where rbnum = #{param1}
+	</delete>
+	<delete id="replydeleterrnum">
+		delete rUserreply where rrnum = #{param1}
+	</delete>
+	
 
 </mapper>

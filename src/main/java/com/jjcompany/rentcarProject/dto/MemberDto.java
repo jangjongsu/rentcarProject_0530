@@ -1,6 +1,7 @@
 package com.jjcompany.rentcarProject.dto;
 
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,4 +16,6 @@ public class MemberDto {
 	private String rmobile;
 	private String remail;
 	private String rdate;
+	
+	
 }

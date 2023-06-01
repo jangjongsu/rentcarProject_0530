@@ -27,6 +27,7 @@ public class RentcarController {
 		return"index";
 	}
 	
+	//회원 관리
 	@RequestMapping(value = "/join")
 	public String join() {
 		return"join";
@@ -57,9 +58,6 @@ public class RentcarController {
 		}else {
 			model.addAttribute("joinFlag", joinCheck);
 		}
-		
-		
-		
 		return"joinOk";
 	}
 	@RequestMapping(value = "/login")

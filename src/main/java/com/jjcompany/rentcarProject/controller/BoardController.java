@@ -1,0 +1,170 @@
+package com.jjcompany.rentcarProject.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jjcompany.rentcarProject.dao.IDao;
+import com.jjcompany.rentcarProject.dto.Criteria;
+import com.jjcompany.rentcarProject.dto.PageDto;
+import com.jjcompany.rentcarProject.dto.UserBoardDto;
+import com.jjcompany.rentcarProject.dto.UserreplyDto;
+
+@Controller
+public class BoardController {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	//게시판글
+	@RequestMapping(value = "/userBoardWrite")
+	public String userBoardWrite() {
+		return"userWriteForm";
+	}
+	
+	@RequestMapping(value = "/writeOk")
+	public String writeOK(HttpServletRequest request) {
+		String rid = request.getParameter("rid");
+		String rbtitle = request.getParameter("rbtitle");
+		String rbcontent = request.getParameter("rbcontent");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.boardWriteDao(rid, rbtitle, rbcontent);
+		
+		return"redirect:userBoardList";
+	}
+	@RequestMapping(value = "/userBoardList")
+	public String userBoardList(Model model,  Criteria criteria, HttpServletRequest request) {
+		
+		int pageNum=0;
+		if(request.getParameter("pageNum") == null) {
+			pageNum = 1;
+		}else {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+			criteria.setPageNum(pageNum);
+		}
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int totalCount = dao.totalListcount();
+		
+		PageDto pageDto = new PageDto(criteria, totalCount);
+		
+		List<UserBoardDto> dtos = dao.userBoardListDao(criteria.getAmount(), pageNum);
+		
+		
+		model.addAttribute("totalCount", totalCount);
+		
+		model.addAttribute("pageMaker", pageDto);
+		model.addAttribute("dtos", dtos);
+		model.addAttribute("currPage", pageNum);
+		
+		return"userBoardList";
+	}
+	@RequestMapping(value = "/userBoardView")
+	public String userBoardView(Model model, HttpServletRequest request) {
+		
+		String rbnum =  request.getParameter("rbnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		UserBoardDto dto =  dao.userBoardViewDao(rbnum);
+		model.addAttribute("dto", dto);
+		
+		List<UserreplyDto> replyListDto = dao.userReplyListDao(rbnum);
+		model.addAttribute("replyListDto", replyListDto);
+	
+		
+		return"userBoardView";
+	}
+	@RequestMapping(value = "/userBoardDelete")
+	public String userBoardDelete(HttpServletRequest request) {
+		
+		String rbnum = request.getParameter("rbnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int deleteOk = dao.userBoardDelete(rbnum);
+		
+		if(deleteOk == 1) {
+			dao.replydeleterbnum(rbnum);
+		}
+		
+		return"redirect:userBoardList";
+	}
+	@RequestMapping(value = "/searchList")
+	public String searchList(Model model, HttpServletRequest request) {
+		
+		String searchOption	 = request.getParameter("searchOption");
+		String keyWord = request.getParameter("keyWord");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		if(searchOption.equals("title")) {
+			model.addAttribute("dtos", dao.userListSearchTitleDao(keyWord));
+			model.addAttribute("totalCount", dao.userListSearchTitleDao(keyWord).size());
+		}else if(searchOption.equals("content")){
+			model.addAttribute("dtos", dao.userListSearchContentDao(keyWord));
+			model.addAttribute("totalCount", dao.userListSearchTitleDao(keyWord).size());
+		}else {
+			model.addAttribute("dtos", dao.userListSearchIdDao(keyWord));
+			model.addAttribute("totalCount", dao.userListSearchIdDao(keyWord).size());
+		}
+		
+		return"userBoardList";
+	}
+	
+	
+	//댓글
+	@RequestMapping(value = "/replyOk")
+	public String replyOk(HttpServletRequest request, HttpSession session, Model model) {
+		
+		String rbnum = request.getParameter("rbnum");
+		String rid = (String)session.getAttribute("sessionId");
+		String rrcontent = request.getParameter("rrcontent");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int replyOk = dao.replyWriteDao(rbnum, rid, rrcontent);
+		
+		if(replyOk == 1) {
+			dao.replyCountUpDao(rbnum);
+		}
+		
+		List<UserreplyDto> replyListDto = dao.userReplyListDao(rbnum);
+		model.addAttribute("replyListDto", replyListDto);
+		model.addAttribute("dto", dao.userBoardViewDao(rbnum));
+		
+		return"userBoardView";
+	}
+	@RequestMapping(value = "/replyDelete")
+	public String replyDelete(HttpServletRequest request, Model model) {
+		
+		String rrnum = request.getParameter("rrnum");
+		String rbnum = request.getParameter("rbnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int replyDeleteOk =  dao.replydeleterrnum(rrnum);
+		
+		if(replyDeleteOk== 1) {
+			dao.replyCountDownDao(rbnum);
+		}
+		
+		List<UserreplyDto> replyListDto = dao.userReplyListDao(rbnum);
+		model.addAttribute("replyListDto", replyListDto);
+		model.addAttribute("dto", dao.userBoardViewDao(rbnum));
+		return"userBoardView";
+	}
+	
+	
+	
+}

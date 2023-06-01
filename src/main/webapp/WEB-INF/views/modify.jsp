@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>회원정보수정</title>
 <link rel="stylesheet" href="/resources/css/content.css">
 <script type="text/javascript" src="/resources/js/modify.js"></script>
 </head>

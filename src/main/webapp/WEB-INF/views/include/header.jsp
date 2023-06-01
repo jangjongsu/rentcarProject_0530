@@ -54,7 +54,7 @@
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">FAQ</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">예약상담</a></td>
+			<td class ="headertext"><a href="userBoardList">문의하기</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td >&nbsp;</td>
 		</tr>
