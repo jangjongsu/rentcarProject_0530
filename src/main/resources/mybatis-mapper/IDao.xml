@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update rMember set rpw = #{param2}, rname = #{param3}, rmobile = #{param4}, remail = #{param5} where rid= #{param1}
 	</update>
 	
-<!-- 유저게시판 글 관련 SQL -->
+<!-- 문의게시판 글 관련 SQL -->
 	<insert id="boardWriteDao">
 		insert into rUserboard (rbnum, rid, rbtitle, rbcontent, rbhit, rbreplycount) 
 			values
@@ -81,7 +81,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	
-<!--유저게시판 댓글 관련 SQL -->	
+<!--문의게시판 댓글 관련 SQL -->	
 	<insert id="replyWriteDao">
 		insert into rUserreply (rrnum, rbnum, rid, rrcontent) 
 			values
@@ -109,5 +109,90 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from rUserreply where rrnum = #{param1}
 	</select>
 	
+	<!-- 자유게시판 글 관련 SQL -->
+	<insert id="freeBoardWriteDao">
+		insert into rfUserboard (rfbnum, rid, rfbtitle, rfbcontent, rfbhit, rfbreplycount) 
+			values
+				(rfbnum_seq.nextval, #{param1}, #{param2}, #{param3}, 0, 0)
+	</insert>
+	<select id="freeBoardListDao" resultType="com.jjcompany.rentcarProject.dto.FreeBoardDto">
+		SELECT * FROM 
+ 			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
+ 				FROM 
+ 					(SELECT * FROM rfUserboard ORDER BY rfbnum DESC)A)
+ 						WHERE PAGE=#{param2}
+	</select>
+	<select id="freeBoardViewDao" resultType="com.jjcompany.rentcarProject.dto.FreeBoardDto">
+		select * from rfUserboard where rfbnum = #{param1}
+	</select>
+	<delete id="freeBoardDelete">
+		delete rfUserboard where rfbnum = #{param1}
+	</delete>
+	<select id="freeTotalListcount" resultType="int">
+		select count(*) from rfUserboard
+	</select>
+	<select id="freeListSearchTitleDao" resultType="com.jjcompany.rentcarProject.dto.FreeBoardDto">
+		SELECT * FROM 
+ 			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
+ 				FROM 
+ 					(SELECT * FROM rfUserboard where rfbtitle Like '%' || #{param3} || '%' ORDER BY rfbnum DESC)A)
+ 						WHERE PAGE=#{param2}
+	</select>
+	<select id="freeListSearchIdDao" resultType="com.jjcompany.rentcarProject.dto.FreeBoardDto">
+		SELECT * FROM 
+ 			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
+ 				FROM 
+ 					(SELECT * FROM rfUserboard where rid Like '%' || #{param3} || '%' ORDER BY rfbnum DESC)A)
+ 						WHERE PAGE=#{param2}
+	</select>
+	<select id="freeListSearchContentDao" resultType="com.jjcompany.rentcarProject.dto.FreeBoardDto">
+		SELECT * FROM 
+ 			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
+ 				FROM 
+ 					(SELECT * FROM rfUserboard where rfbcontent Like '%' || #{param3} || '%' ORDER BY rfbnum DESC)A)
+ 						WHERE PAGE=#{param2}
+	</select>
+	<select id="freeListSearchTitleCountDao" resultType="int">
+		select count(*) from rfUserboard where rfbtitle Like '%' || #{param1} || '%'
+	</select>
+	<select id="freeListSearchIdCountDao" resultType="int">
+		select count(*) from rfUserboard where rid Like '%' || #{param1} || '%'
+	</select>
+	<select id="freeListSearchContentCountDao" resultType="int">
+		select count(*) from rfUserboard where rfbcontent Like '%' || #{param1} || '%'
+	</select>
+	<update id="freeBoardModifyDao">
+		update rfUserboard set rfbtitle = #{param2}, rfbcontent = #{param3} where rfbnum = #{param1}
+	</update>
+	<update id="freeBoardUpHit">
+		update rfUserboard set rfbhit = rfbhit+1 where rfbnum = #{param1}
+	</update>
+<!--문의게시판 댓글 관련 SQL -->	
+	<insert id="freeReplyWriteDao">
+		insert into rfUserreply (rfrnum, rfbnum, rid, rfrcontent) 
+			values
+				(rfrbnum_seq.nextval, #{param1}, #{param2}, #{param3})
+	</insert>
+	<select id="freeReplyListDao" resultType="com.jjcompany.rentcarProject.dto.FreereplyDto">
+		select * from rfUserreply where rfbnum = #{param1} ORDER BY rfbnum
+	</select>
+	<update id="freeReplyCountUpDao">
+		update rfUserboard set rfbreplycount=rfbreplycount+1 where rfbnum = #{param1}
+	</update>
+	<update id="freeReplyCountDownDao">
+		update rfUserboard set rfbreplycount=rfbreplycount-1 where rfbnum = #{param1}
+	</update>
+	<delete id="freeReplydeleterbnumDao">
+		delete rfUserreply where rfbnum = #{param1}
+	</delete>
+	<delete id="freeReplydeleterrnumDao">
+		delete rfUserreply where rfrnum = #{param1}
+	</delete>
+	<update id="freeReplyModifyDao">
+		update rfUserreply set rfrcontent = #{param2} where rfrnum = #{param1}
+	</update>
+	<select id="freeReplyViewDao" resultType="com.jjcompany.rentcarProject.dto.FreereplyDto">
+		select * from rfUserreply where rfrnum = #{param1}
+	</select>
 
 </mapper>

@@ -18,7 +18,7 @@ import com.jjcompany.rentcarProject.dto.UserBoardDto;
 import com.jjcompany.rentcarProject.dto.UserreplyDto;
 
 @Controller
-public class BoardController {
+public class boardController {
 	
 	@Autowired
 	private SqlSession sqlSession;

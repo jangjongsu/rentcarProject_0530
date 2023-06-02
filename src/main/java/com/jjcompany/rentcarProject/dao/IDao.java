@@ -2,6 +2,8 @@ package com.jjcompany.rentcarProject.dao;
 
 import java.util.List;
 
+import com.jjcompany.rentcarProject.dto.FreeBoardDto;
+import com.jjcompany.rentcarProject.dto.FreereplyDto;
 import com.jjcompany.rentcarProject.dto.MemberDto;
 import com.jjcompany.rentcarProject.dto.UserBoardDto;
 import com.jjcompany.rentcarProject.dto.UserreplyDto;
@@ -16,7 +18,7 @@ public interface IDao {
 	public int modifyOkDao(String rid, String rpw, String rname, String rmobile, String remail);
 
 	
-	//유저게시판관리
+	//문의게시판관리
 	//게시글
 	public int boardWriteDao(String rid, String rbtitle, String rbcontent);
 	public List<UserBoardDto> userBoardListDao(int amount, int pageNum);
@@ -41,4 +43,31 @@ public interface IDao {
 	public int replyCountDownDao(String rbnum);
 	public UserreplyDto replyViewDao(String rrnum);
 	public int replyModifyDao(String rrnum, String rrcontent);
+	
+	//자유게시판관리
+	//게시글
+	public int freeBoardWriteDao(String rid, String rfbtitle, String rfbcontent);
+	public List<FreeBoardDto> freeBoardListDao(int amount, int pageNum);
+	public FreeBoardDto freeBoardViewDao(String rfbnum);
+	public int freeBoardDelete(String rfbnum);
+	public int freeTotalListcount();
+	public List<FreeBoardDto> freeListSearchTitleDao(int amount, int pageNum, String rfbtitle);
+	public List<FreeBoardDto> freeListSearchIdDao(int amount, int pageNum, String rid);
+	public List<FreeBoardDto> freeListSearchContentDao(int amount, int pageNum, String rfbcontent);
+	public int freeListSearchTitleCountDao(String rfbtitle);
+	public int freeListSearchIdCountDao(String rid);
+	public int freeListSearchContentCountDao(String rfbcontent);
+	public int freeBoardModifyDao(String rfbnum, String rfbtitle, String rfbcontent);
+	public void freeBoardUpHit(String rfbnum);
+		
+	//댓글
+	public int freeReplyWriteDao(String rfbnum, String rid, String rfrcontent);
+	public List<FreereplyDto> freeReplyListDao(String rfbnum);
+	public int freeReplyCountUpDao(String rfbnum);
+	public int freeReplydeleterbnumDao(String rfbnum);
+	public int freeReplydeleterrnumDao(String rfrnum);
+	public int freeReplyCountDownDao(String rfbnum);
+	public FreereplyDto freeReplyViewDao(String rfrnum);
+	public int freeReplyModifyDao(String rfrnum, String rfrcontent);
+	
 }

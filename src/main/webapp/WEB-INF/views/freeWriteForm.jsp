@@ -7,7 +7,7 @@
 <title>회원가입</title>
 <link rel="stylesheet" href="/resources/css/content.css">
 <link rel="stylesheet" href="/resources/css/write.css">
-<script type="text/javascript" src="/resources/js/write.js"></script>
+<script type="text/javascript" src="/resources/js/freeWrite.js"></script>
 </head>
 <body>
 			<%
@@ -29,24 +29,24 @@
 					<center>
 					 	<table  border="0" cellspacing="0" cellpadding="10">
 					 	  <h2 id="board_title">자유게시판</h2>
-							<form action="writeOk" name="write_frm">
+							<form action="freeWriteOk" name="write_frm">
 								<tr id="name">
 									<td class="col1">아 이 디 :</td>
 									<td ><input class="col2" type="text" name="rid" readonly="readonly" value="${sessionId}"></td>
 								</tr>
 								<tr id="subject">
 									<td class="col1">글제목 : </td>
-									<td class="col2"><input type="text" name="rbtitle"></td>
+									<td class="col2"><input type="text" name="rfbtitle"></td>
 								</tr>
 								<tr id="content">
 									<td class="col1">글내용 :</td>
-									<td class="col2"><textarea name="rbcontent"></textarea></td>
+									<td class="col2"><textarea name="rfbcontent"></textarea></td>
 								</tr>
 								<tr>
 									<td colspan="2" align="center"><input class="contentbtn01"
 										type="button" value="글쓰기" onclick="writeCheck()">&nbsp;
 										<input class="contentbtn01" type="button" value="글목록으로"
-										onclick="script:window.location.href='userBoardList'"></td>
+										onclick="script:window.location.href='freeBoardList'"></td>
 								</tr>
 							</form>
 						</table>

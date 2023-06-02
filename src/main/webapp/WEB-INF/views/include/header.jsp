@@ -52,9 +52,9 @@
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">예약확인</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">FAQ</a></td>
+			<td class ="headertext"><a href="freeBoardList">자유게시판</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="userBoardList">문의하기</a></td>
+			<td class ="headertext"><a href="userBoardList">문의게시판</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td >&nbsp;</td>
 		</tr>
