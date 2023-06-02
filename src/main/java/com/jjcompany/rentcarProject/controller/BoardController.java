@@ -81,6 +81,7 @@ public class BoardController {
 		List<UserreplyDto> replyListDto = dao.userReplyListDao(rbnum);
 		model.addAttribute("replyListDto", replyListDto);
 	
+		dao.userBoardUpHit(rbnum);
 		
 		return"userBoardView";
 	}
@@ -94,7 +95,7 @@ public class BoardController {
 		int deleteOk = dao.userBoardDelete(rbnum);
 		
 		if(deleteOk == 1) {
-			dao.replydeleterbnum(rbnum);
+			dao.replydeleterbnumDao(rbnum);
 		}
 		
 		return"redirect:userBoardList";
@@ -138,6 +139,39 @@ public class BoardController {
 		return"userBoardList";
 	}
 	
+	@RequestMapping(value = "/userBoardModify")
+	public String userBoardModify(Model model, HttpServletRequest request) {
+		
+		String rbnum =  request.getParameter("rbnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		UserBoardDto dto =  dao.userBoardViewDao(rbnum);
+		model.addAttribute("dto", dto);
+		
+		return"userBoardModify";
+	}
+	@RequestMapping(value = "/userBoardModifyOk")
+	public String userBoardModifyOk(Model model, HttpServletRequest request) {
+		
+		String rbnum =  request.getParameter("rbnum");
+		String rbtitle = request.getParameter("rbtitle");
+		String rbcontent = request.getParameter("rbcontent");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.userBoardModifyDao(rbnum, rbtitle, rbcontent);
+		UserBoardDto dto =  dao.userBoardViewDao(rbnum);
+		model.addAttribute("dto", dto);
+		List<UserreplyDto> replyListDto = dao.userReplyListDao(rbnum);
+		model.addAttribute("replyListDto", replyListDto);
+		;
+	
+		
+		return"userBoardView";
+	}
+	
+	
 	
 	//댓글
 	@RequestMapping(value = "/replyOk")
@@ -169,7 +203,7 @@ public class BoardController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		int replyDeleteOk =  dao.replydeleterrnum(rrnum);
+		int replyDeleteOk =  dao.replydeleterrnumDao(rrnum);
 		
 		if(replyDeleteOk== 1) {
 			dao.replyCountDownDao(rbnum);
@@ -180,7 +214,40 @@ public class BoardController {
 		model.addAttribute("dto", dao.userBoardViewDao(rbnum));
 		return"userBoardView";
 	}
+	@RequestMapping(value = "/userReplyModify")
+	public String userReplyModify(Model model, HttpServletRequest request) {
+		String rrnum = request.getParameter("rrnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		UserreplyDto dto = dao.replyViewDao(rrnum);
+		
+		model.addAttribute("dto", dto);
+		
+		
+		return"userReplyModify";
+	}
+	@RequestMapping(value = "/userReplyModifyOk")
+	public String userReplyModifyOk(Model model, HttpServletRequest request) {
+		
+		String rrnum = request.getParameter("rrnum");
+		String rrcontent = request.getParameter("rrcontent");
+		String rbnum = request.getParameter("rbnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.replyModifyDao(rrnum, rrcontent);
+		
+		UserBoardDto dto =  dao.userBoardViewDao(rbnum);
+		model.addAttribute("dto", dto);
+		
+		List<UserreplyDto> replyListDto = dao.userReplyListDao(rbnum);
+		model.addAttribute("replyListDto", replyListDto);
 	
+	
+		
+		return"userBoardView";
+	}
 	
 	
 }

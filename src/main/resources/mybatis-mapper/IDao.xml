@@ -20,7 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="modifyOkDao">
 		update rMember set rpw = #{param2}, rname = #{param3}, rmobile = #{param4}, remail = #{param5} where rid= #{param1}
 	</update>
-<!-- 게시판글 관련 SQL -->
+	
+<!-- 유저게시판 글 관련 SQL -->
 	<insert id="boardWriteDao">
 		insert into rUserboard (rbnum, rid, rbtitle, rbcontent, rbhit, rbreplycount) 
 			values
@@ -72,9 +73,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="userListSearchContentCountDao" resultType="int">
 		select count(*) from rUserboard where rbcontent Like '%' || #{param1} || '%'
 	</select>
+	<update id="userBoardModifyDao">
+		update rUserboard set rbtitle = #{param2}, rbcontent = #{param3} where rbnum = #{param1}
+	</update>
+	<update id="userBoardUpHit">
+		update rUserboard set rbhit = rbhit+1 where rbnum = #{param1}
+	</update>
 	
 	
-<!-- 댓글 관련 SQL -->	
+<!--유저게시판 댓글 관련 SQL -->	
 	<insert id="replyWriteDao">
 		insert into rUserreply (rrnum, rbnum, rid, rrcontent) 
 			values
@@ -89,12 +96,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="replyCountDownDao">
 		update rUserboard set rbreplycount=rbreplycount-1 where rbnum = #{param1}
 	</update>
-	<delete id="replydeleterbnum">
+	<delete id="replydeleterbnumDao">
 		delete rUserreply where rbnum = #{param1}
 	</delete>
-	<delete id="replydeleterrnum">
+	<delete id="replydeleterrnumDao">
 		delete rUserreply where rrnum = #{param1}
 	</delete>
+	<update id="replyModifyDao">
+		update rUserreply set rrcontent = #{param2} where rrnum = #{param1}
+	</update>
+	<select id="replyViewDao" resultType="com.jjcompany.rentcarProject.dto.UserreplyDto">
+		select * from rUserreply where rrnum = #{param1}
+	</select>
 	
 
 </mapper>

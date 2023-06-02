@@ -39,20 +39,20 @@
 						
 						
 						<!-- 댓글 -->
-
+					<c:if test="${sessionId=='admin'}">
 						<table border="1" cellpadding="0" cellspacing="0" width="750">
 							<c:forEach items="${replyListDto}" var="replyDto">
 								<tr>
 									<td align="center">${replyDto.rid }</td>
 									<td width="70%">${replyDto.rrcontent }<br>
 									<br>${replyDto.rrdate}</td>
-									<td align="center"><input type="button" value="삭제 "
-										onclick="script:window.location.href='replyDelete?rrnum=${replyDto.rrnum }&rbnum=${replyDto.rbnum }'">
+							
+									<td align="center"><input type="button" value="수정" onclick="script:window.location.href='userReplyModify?rrnum=${replyDto.rrnum }'">
+									<td align="center"><input type="button" value="삭제 " onclick="script:window.location.href='replyDelete?rrnum=${replyDto.rrnum }&rbnum=${replyDto.rbnum }'">
 									</td>
 								</tr>
 							</c:forEach>
 						</table>
-
 						<form action="replyOk">
 							<input type="hidden" name="rbnum" value="${dto.rbnum }">
 							<div id="comment_box">
@@ -61,11 +61,18 @@
 								<input type="image" id="ok_ripple" src="/resources/img/ok_ripple.gif">
 							</div>
 						</form>
+				      </c:if>
+						<!-- 댓글끝 -->
 						<div id="buttons">
+					<c:if test="${sessionId==dto.rid || sessionId=='admin'}">
+							<a href="userBoardModify?rbnum=${dto.rbnum }">
+							<input type="image" src="/resources/img/modify.png"></a> 
 							<a href="userBoardDelete?rbnum=${dto.rbnum }">
 							<input type="image" src="/resources/img/delete.png"></a> 
+					</c:if>
 							<a href="userBoardList"><img src="/resources/img/list.png"></a>
 						</div>
+						
 					</center>
 				</td>
 			</tr>

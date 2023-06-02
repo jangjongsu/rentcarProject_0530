@@ -16,7 +16,7 @@ public interface IDao {
 	public int modifyOkDao(String rid, String rpw, String rname, String rmobile, String remail);
 
 	
-	//게시판관리
+	//유저게시판관리
 	//게시글
 	public int boardWriteDao(String rid, String rbtitle, String rbcontent);
 	public List<UserBoardDto> userBoardListDao(int amount, int pageNum);
@@ -29,13 +29,16 @@ public interface IDao {
 	public int userListSearchTitleCountDao(String rbtitle);
 	public int userListSearchIdCountDao(String rid);
 	public int userListSearchContentCountDao(String rbcontent);
+	public int userBoardModifyDao(String rbnum, String rbtitle, String rbcontent);
+	public void userBoardUpHit(String rbnum);
 	
 	//댓글
 	public int replyWriteDao(String rbnum, String rid, String rrcontent);
 	public List<UserreplyDto> userReplyListDao(String rbnum);
 	public int replyCountUpDao(String rbnum);
-	public int replydeleterbnum(String rbnum);
-	public int replydeleterrnum(String rrnum);
+	public int replydeleterbnumDao(String rbnum);
+	public int replydeleterrnumDao(String rrnum);
 	public int replyCountDownDao(String rbnum);
-
+	public UserreplyDto replyViewDao(String rrnum);
+	public int replyModifyDao(String rrnum, String rrcontent);
 }
