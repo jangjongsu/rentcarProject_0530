@@ -84,7 +84,7 @@
 						<tr>
 							<td colspan="5" align="center">
 								<c:if test="${pageMaker.prev }">
-									<a href="userBoardList?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
+									<a href="userBoardList?pageNum=${pageMaker.startPage-10 }">◀</a>&nbsp;&nbsp;&nbsp;
 								</c:if>
 								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
 									<c:choose>
@@ -97,7 +97,7 @@
 									</c:choose>
 								</c:forEach> 
 								<c:if test="${pageMaker.next }">
-									<a href="userBoardList?pageNum=${pageMaker.startPage+5 }">▶</a>
+									<a href="userBoardList?pageNum=${pageMaker.startPage+10 }">▶</a>
 								</c:if>
 							</td>
 						</tr>

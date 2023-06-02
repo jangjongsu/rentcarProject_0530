@@ -62,9 +62,8 @@ public class BoardController {
 		
 		
 		model.addAttribute("totalCount", totalCount);
-		
-		model.addAttribute("pageMaker", pageDto);
 		model.addAttribute("dtos", dtos);
+		model.addAttribute("pageMaker", pageDto);
 		model.addAttribute("currPage", pageNum);
 		
 		return"userBoardList";
@@ -101,23 +100,40 @@ public class BoardController {
 		return"redirect:userBoardList";
 	}
 	@RequestMapping(value = "/searchList")
-	public String searchList(Model model, HttpServletRequest request) {
+	public String searchList(Model model, HttpServletRequest request, Criteria criteria) {
+		
+		int pageNum=0;
+		if(request.getParameter("pageNum") == null) {
+			pageNum = 1;
+		}else {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+			criteria.setPageNum(pageNum);
+		}
+		
 		
 		String searchOption	 = request.getParameter("searchOption");
 		String keyWord = request.getParameter("keyWord");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		int totalCount = 0;
+		
 		
 		if(searchOption.equals("title")) {
-			model.addAttribute("dtos", dao.userListSearchTitleDao(keyWord));
-			model.addAttribute("totalCount", dao.userListSearchTitleDao(keyWord).size());
+			model.addAttribute("dtos", dao.userListSearchTitleDao(criteria.getAmount(), pageNum, keyWord));
+			totalCount = dao.userListSearchTitleCountDao(keyWord);
+			model.addAttribute("totalCount", totalCount);
 		}else if(searchOption.equals("content")){
-			model.addAttribute("dtos", dao.userListSearchContentDao(keyWord));
-			model.addAttribute("totalCount", dao.userListSearchTitleDao(keyWord).size());
+			model.addAttribute("dtos", dao.userListSearchContentDao(criteria.getAmount(), pageNum, keyWord));
+			totalCount = dao.userListSearchContentCountDao(keyWord);
+			model.addAttribute("totalCount", totalCount);
 		}else {
-			model.addAttribute("dtos", dao.userListSearchIdDao(keyWord));
-			model.addAttribute("totalCount", dao.userListSearchIdDao(keyWord).size());
+			model.addAttribute("dtos", dao.userListSearchIdDao(criteria.getAmount(), pageNum, keyWord));
+			totalCount = dao.userListSearchIdCountDao(keyWord);
+			model.addAttribute("totalCount", totalCount);
 		}
+		PageDto pageDto = new PageDto(criteria, totalCount);
+		model.addAttribute("pageMaker", pageDto);
+		model.addAttribute("currPage", pageNum);
 		
 		return"userBoardList";
 	}

@@ -23,9 +23,12 @@ public interface IDao {
 	public UserBoardDto userBoardViewDao(String rbnum);
 	public int userBoardDelete(String rbnum);
 	public int totalListcount();
-	public List<UserBoardDto> userListSearchTitleDao(String rbtitle);
-	public List<UserBoardDto> userListSearchIdDao(String rid);
-	public List<UserBoardDto> userListSearchContentDao(String rbcontent);
+	public List<UserBoardDto> userListSearchTitleDao(int amount, int pageNum, String rbtitle);
+	public List<UserBoardDto> userListSearchIdDao(int amount, int pageNum, String rid);
+	public List<UserBoardDto> userListSearchContentDao(int amount, int pageNum, String rbcontent);
+	public int userListSearchTitleCountDao(String rbtitle);
+	public int userListSearchIdCountDao(String rid);
+	public int userListSearchContentCountDao(String rbcontent);
 	
 	//댓글
 	public int replyWriteDao(String rbnum, String rid, String rrcontent);
