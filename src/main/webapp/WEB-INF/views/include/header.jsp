@@ -46,9 +46,9 @@
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">실시간예약</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">이용안내</a></td>
+			<td class ="headertext"><a href="information_form">이용안내</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">보험안내</a></td>
+			<td class ="headertext"><a href="insurance_form">보험안내</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">예약확인</a></td>
 			<td class="margin02">&nbsp;</td>

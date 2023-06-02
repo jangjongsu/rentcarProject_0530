@@ -20,4 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update rMember set rpw = #{param2}, rname = #{param3}, rmobile = #{param4}, remail = #{param5} where rid= #{param1}
 	</update>
 
+
+
+	<!-- 차량관리 -->
+	<select id="AllCarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
+			from cartbl c inner join pricetbl p
+				on c.pindex = p.pindex
+	</select>
+	
 </mapper>
