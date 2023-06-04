@@ -3,6 +3,8 @@ package com.jjcompany.rentcarProject.controller;
 import java.util.List;
 import java.util.Vector;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,12 +31,47 @@ public class InformationController {
 	}
 	
 	@RequestMapping(value = "/carList_form")
-	public String carList(Model model) {		
+	public String carList(Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		int count = dao.countCarListDao();
 		Vector<CarListDto> dtos = dao.AllCarListDao();
+		model.addAttribute("count", count);
 		model.addAttribute("carListDto", dtos);
 		
 		return "carList";
+	}
+	
+	@RequestMapping(value = "/carList_type")
+	public String carList_type(Model model, HttpServletRequest request) {
+		
+		String type = request.getParameter("cclass");
+		if(type.equals("수입")) {
+			IDao dao = sqlSession.getMapper(IDao.class);
+			int count = dao.countCarBrendListDao(type);
+			Vector<CarListDto> dtos = dao.CarBrendListDao(type);
+			model.addAttribute("count", count);
+			model.addAttribute("carListDto", dtos);
+			
+			return "carList";
+		} else {
+			IDao dao = sqlSession.getMapper(IDao.class);
+			int count = dao.countCarTypeListDao(type);
+			Vector<CarListDto> dtos = dao.CarListDao(type);
+			model.addAttribute("count", count);
+			model.addAttribute("carListDto", dtos);
+			
+			return "carList";
+		}		
+	}
+	
+	@RequestMapping(value = "/carDetail_form")
+	public String carDetail() {
+		return "carDetail";
+	}
+	
+	@RequestMapping(value = "/carAdd_form")
+	public String carAdd() {
+		return "carAdd";
 	}
 }

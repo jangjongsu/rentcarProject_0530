@@ -23,10 +23,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- 차량관리 -->
+	<select id="countCarListDao" resultType="int">
+		select count(*)	from cartbl
+	</select>
+	
 	<select id="AllCarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
 		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
 			from cartbl c inner join pricetbl p
 				on c.pindex = p.pindex
+	</select>
+	
+	<select id="countCarTypeListDao" resultType="int">
+		select count(*)	from cartbl where cclass = #{param1}
+	</select>
+	
+	<select id="CarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
+			from cartbl c inner join pricetbl p
+				on c.pindex = p.pindex
+					where c.cclass = #{param1}
+	</select>
+	
+	<select id="countCarBrendListDao" resultType="int">
+		select count(*)	from cartbl where cbrend = #{param1}
+	</select>
+	
+	<select id="CarBrendListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
+			from cartbl c inner join pricetbl p
+				on c.pindex = p.pindex
+					where c.cbrend = #{param1}
 	</select>
 	
 </mapper>

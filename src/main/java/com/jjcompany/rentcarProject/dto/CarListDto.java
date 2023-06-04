@@ -18,5 +18,60 @@ public class CarListDto {
 	private String ctype;
 	private int pindex;	
 	private int price;
+	public int getCindex() {
+		return cindex;
+	}
+	public void setCindex(int cindex) {
+		this.cindex = cindex;
+	}
+	public String getCbrend() {
+		return cbrend;
+	}
+	public void setCbrend(String cbrend) {
+		this.cbrend = cbrend;
+	}
+	public String getCclass() {
+		return cclass;
+	}
+	public void setCclass(String cclass) {
+		this.cclass = cclass;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public String getCcolor() {
+		return ccolor;
+	}
+	public void setCcolor(String ccolor) {
+		this.ccolor = ccolor;
+	}
+	public String getCoil() {
+		return coil;
+	}
+	public void setCoil(String coil) {
+		this.coil = coil;
+	}
+	public String getCtype() {
+		return ctype;
+	}
+	public void setCtype(String ctype) {
+		this.ctype = ctype;
+	}
+	public int getPindex() {
+		return pindex;
+	}
+	public void setPindex(int pindex) {
+		this.pindex = pindex;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
+	
 }

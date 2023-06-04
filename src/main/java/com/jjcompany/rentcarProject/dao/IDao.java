@@ -16,5 +16,10 @@ public interface IDao {
 	
 	
 	//차량관리
+	public int countCarListDao();
 	public Vector<CarListDto> AllCarListDao();
+	public int countCarTypeListDao(String cclass);
+	public Vector<CarListDto> CarListDao(String cclass);
+	public int countCarBrendListDao(String cbrend);
+	public Vector<CarListDto> CarBrendListDao(String cbrend);
 }
