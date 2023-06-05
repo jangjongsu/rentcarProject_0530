@@ -171,7 +171,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="freeReplyWriteDao">
 		insert into rfUserreply (rfrnum, rfbnum, rid, rfrcontent) 
 			values
-				(rfrbnum_seq.nextval, #{param1}, #{param2}, #{param3})
+				(rfbnum_seq.nextval, #{param1}, #{param2}, #{param3})
 	</insert>
 	<select id="freeReplyListDao" resultType="com.jjcompany.rentcarProject.dto.FreereplyDto">
 		select * from rfUserreply where rfbnum = #{param1} ORDER BY rfbnum

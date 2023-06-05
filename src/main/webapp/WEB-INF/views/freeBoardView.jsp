@@ -47,14 +47,14 @@
 									<td width="70%">${replyDto.rfrcontent }<br>
 									<br>${replyDto.rfrdate}</td>
 							
-									<td align="center"><input type="button" value="수정" onclick="script:window.location.href='freeReplyModify?rrnum=${replyDto.rfrnum }'">
-									<td align="center"><input type="button" value="삭제 " onclick="script:window.location.href='freeReplyDelete?rrnum=${replyDto.rfrnum }&rbnum=${replyDto.rfbnum }'">
+									<td align="center"><input type="button" value="수정" onclick="script:window.location.href='freeReplyModify?rfrnum=${replyDto.rfrnum }'">
+									<td align="center"><input type="button" value="삭제 " onclick="script:window.location.href='freeReplyDelete?rfrnum=${replyDto.rfrnum }&rfbnum=${replyDto.rfbnum }'">
 									</td>
 								</tr>
 							</c:forEach>
 						</table>
 						<form action="freeReplyOk">
-							<input type="hidden" name="rbnum" value="${dto.rfbnum }">
+							<input type="hidden" name="rfbnum" value="${dto.rfbnum }">
 							<div id="comment_box">
 								<img id="title_comment" src="/resources/img/title_comment.gif">
 								<textarea name="rfrcontent"></textarea>

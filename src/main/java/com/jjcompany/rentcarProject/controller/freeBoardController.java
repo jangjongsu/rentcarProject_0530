@@ -225,7 +225,7 @@ public class freeBoardController {
 		model.addAttribute("dto", dto);
 		
 		
-		return"userReplyModify";
+		return"freeReplyModify";
 	}
 	@RequestMapping(value = "/freeReplyModifyOk")
 	public String freeReplyModifyOk(Model model, HttpServletRequest request) {
