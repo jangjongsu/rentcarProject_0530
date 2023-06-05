@@ -199,5 +199,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="freeReplyViewDao" resultType="com.jjcompany.rentcarProject.dto.FreereplyDto">
 		select * from rfUserreply where rfrnum = #{param1}
 	</select>
-
+ 
 </mapper>
