@@ -39,7 +39,7 @@
 						
 						
 						<!-- 댓글 -->
-					<c:if test="${sessionId=='admin'}">
+					<c:if test="${sessionId==dto.rid || sessionId=='admin'}">
 						<table border="1" cellpadding="0" cellspacing="0" width="750">
 							<c:forEach items="${replyListDto}" var="replyDto">
 								<tr>

@@ -114,5 +114,7 @@ td a:hover {
     position:absolute;
     top:10px;
 }
-
+span{
+	font-weight: bold;
+}
 

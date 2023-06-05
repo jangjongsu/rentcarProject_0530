@@ -62,7 +62,15 @@
 				          <tr>
 				            <td class="col1">${dtos.rfbnum }</td>
 				            <td class="col2">
-				              <a href="freeBoardView?rfbnum=${dtos.rfbnum }">${dtos.rfbtitle}</a>&nbsp;&nbsp;&nbsp;
+				            <c:choose>
+				            	<c:when test="${dtos.rid == 'admin'}">
+				            	 <a href="freeBoardView?rfbnum=${dtos.rfbnum }"><span class="notice">${dtos.rfbtitle}</span></a>&nbsp;&nbsp;&nbsp;
+				            	</c:when>
+				            	<c:otherwise>
+				            		<a href="freeBoardView?rfbnum=${dtos.rfbnum }">${dtos.rfbtitle}</a>&nbsp;&nbsp;&nbsp;
+				            	</c:otherwise>
+				            </c:choose>
+				              
 				              <c:if test="${dtos.rfbreplycount != 0}">
 				             	<span style="color:#999999;font-size: 9px;">[${dtos.rfbreplycount}]</span>
 				              </c:if>

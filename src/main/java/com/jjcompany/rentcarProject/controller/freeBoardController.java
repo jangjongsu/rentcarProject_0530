@@ -39,7 +39,13 @@ public class freeBoardController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
+		
+		
 		dao.freeBoardWriteDao(rid, rfbtitle, rfbcontent);
+		
+		if(rid.equals("admin")) {
+			dao.noticeDao(rid);
+		}
 		
 		return"redirect:freeBoardList";
 	}

@@ -119,7 +119,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM 
  			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
  				FROM 
- 					(SELECT * FROM rfUserboard ORDER BY rfbnum DESC)A)
+ 					(SELECT * FROM rfUserboard ORDER BY rfbnotice DESC, rfbnum DESC)A)
  						WHERE PAGE=#{param2}
 	</select>
 	<select id="freeBoardViewDao" resultType="com.jjcompany.rentcarProject.dto.FreeBoardDto">
@@ -135,21 +135,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM 
  			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
  				FROM 
- 					(SELECT * FROM rfUserboard where rfbtitle Like '%' || #{param3} || '%' ORDER BY rfbnum DESC)A)
+ 					(SELECT * FROM rfUserboard where rfbtitle Like '%' || #{param3} || '%' ORDER BY rfbnotice DESC, rfbnum DESC)A)
  						WHERE PAGE=#{param2}
 	</select>
 	<select id="freeListSearchIdDao" resultType="com.jjcompany.rentcarProject.dto.FreeBoardDto">
 		SELECT * FROM 
  			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
  				FROM 
- 					(SELECT * FROM rfUserboard where rid Like '%' || #{param3} || '%' ORDER BY rfbnum DESC)A)
+ 					(SELECT * FROM rfUserboard where rid Like '%' || #{param3} || '%' ORDER BY rfbnotice DESC, rfbnum DESC)A)
  						WHERE PAGE=#{param2}
 	</select>
 	<select id="freeListSearchContentDao" resultType="com.jjcompany.rentcarProject.dto.FreeBoardDto">
 		SELECT * FROM 
  			(SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
  				FROM 
- 					(SELECT * FROM rfUserboard where rfbcontent Like '%' || #{param3} || '%' ORDER BY rfbnum DESC)A)
+ 					(SELECT * FROM rfUserboard where rfbcontent Like '%' || #{param3} || '%' ORDER BY rfbnotice DESC, rfbnum DESC)A)
  						WHERE PAGE=#{param2}
 	</select>
 	<select id="freeListSearchTitleCountDao" resultType="int">
@@ -167,6 +167,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="freeBoardUpHit">
 		update rfUserboard set rfbhit = rfbhit+1 where rfbnum = #{param1}
 	</update>
+	<update id="noticeDao">
+		update rfUserboard set rfbnotice = 1 where rid = #{param1}
+	</update>
+	
+	
 <!--문의게시판 댓글 관련 SQL -->	
 	<insert id="freeReplyWriteDao">
 		insert into rfUserreply (rfrnum, rfbnum, rid, rfrcontent) 

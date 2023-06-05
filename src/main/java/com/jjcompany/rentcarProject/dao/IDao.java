@@ -59,6 +59,7 @@ public interface IDao {
 	public int freeListSearchContentCountDao(String rfbcontent);
 	public int freeBoardModifyDao(String rfbnum, String rfbtitle, String rfbcontent);
 	public void freeBoardUpHit(String rfbnum);
+	public void noticeDao(String rid);
 		
 	//댓글
 	public int freeReplyWriteDao(String rfbnum, String rid, String rfrcontent);
