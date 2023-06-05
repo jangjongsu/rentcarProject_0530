@@ -25,7 +25,7 @@
 		</div>
 		<p>&nbsp;&nbsp;<span class="count">${count}개</span>의 등록차량이 검색되었습니다.</p>
 		<table class="carlist">
-			<tr class="carlistline">
+			<tr class="carlistheadline">
 				<th width="9%">차량식별번호</th>
 				<th width="13%">브랜드</th>
 				<th width="13%">등급</th>

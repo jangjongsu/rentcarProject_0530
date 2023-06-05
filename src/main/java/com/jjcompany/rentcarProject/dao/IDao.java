@@ -1,5 +1,6 @@
 package com.jjcompany.rentcarProject.dao;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import com.jjcompany.rentcarProject.dto.CarListDto;
@@ -22,4 +23,6 @@ public interface IDao {
 	public Vector<CarListDto> CarListDao(String cclass);
 	public int countCarBrendListDao(String cbrend);
 	public Vector<CarListDto> CarBrendListDao(String cbrend);
+	public Vector<CarListDto> BrendListDao();
+	public CarListDto IndexCarDao(int cindex);
 }

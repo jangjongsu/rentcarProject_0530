@@ -55,4 +55,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					where c.cbrend = #{param1}
 	</select>
 	
+	<select id="BrendListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select cbrend from cartbl group by cbrend
+	</select>
+	
+	<select id="IndexCarDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
+			from cartbl c inner join pricetbl p
+				on c.pindex = p.pindex
+					where c.cindex = #{param1}
+	</select>
+
 </mapper>

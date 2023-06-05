@@ -1,6 +1,5 @@
 package com.jjcompany.rentcarProject.controller;
 
-import java.util.List;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,7 +65,15 @@ public class InformationController {
 	}
 	
 	@RequestMapping(value = "/carDetail_form")
-	public String carDetail() {
+	public String carDetail(Model model, HttpServletRequest request) {
+		
+		int cindex = Integer.parseInt(request.getParameter("cindex"));
+		IDao dao = sqlSession.getMapper(IDao.class);
+		CarListDto cdto = dao.IndexCarDao(cindex);
+		Vector<CarListDto> dto = dao.BrendListDao();
+		model.addAttribute("cdto", cdto);
+		model.addAttribute("brendlist", dto);
+		
 		return "carDetail";
 	}
 	
