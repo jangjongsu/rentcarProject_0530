@@ -11,7 +11,7 @@
 <body>
 <div class="body-wapper">
 <%@ include file="include/adminheader.jsp" %>
-	<h1>등록된 모든 차량정보</h1>
+	<h1>등록된 차량정보</h1>
 	<div class="container">
 		<div class="listMenuTabs">
 			<input class="listtype" type="button" value="전체차량" onclick="script:window.location.href='carList_form'">
