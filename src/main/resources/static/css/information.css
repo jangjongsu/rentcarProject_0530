@@ -270,3 +270,7 @@ element.style {
     padding-left: 20px;
     border: 1px solid #dadada;
 }
+
+.equipment-content > p {
+	line-height: 30px;
+}

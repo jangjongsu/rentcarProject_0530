@@ -12,7 +12,7 @@ section {
 }
 
 section.vehicleSection > .vehicleTable {
-    display: table;
+    display: block;
     width: 100%;
 }
 
@@ -90,4 +90,60 @@ section.vehicleSection {
 
 h1.goodsSectionTitle > span {
     color: #ec2a1c;
+}
+
+.app {
+	margin-bottom: 60px;
+}
+
+select {
+	width: 170px;	
+}
+
+.buttonformbox {
+	display: block;	
+}
+
+.buttons {
+	background-color: #ec2a1c;
+	border-radius: 5px;
+	border-color: #ec2a1c;
+	margin-top: 30px;
+	float: right;
+	color: #ffffff;
+	font-size: 14px;
+	padding: 8px 22px;
+}
+
+#carprice {
+	position: relative;
+ 	top: -70px;
+}
+
+textarea {
+	margin-top: 15px;
+}
+
+.topimg img {
+	display: block;
+    width: 1200px;
+    margin: 0 auto;
+    height: 300px;
+}
+
+select {
+	height: 22px;
+}
+
+input[type=file]::file-selector-button {
+  width: 150px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid rgb(77,77,77);
+  border-radius: 10px;
+  cursor: pointer;
+}
+input[type=file]::file-selector-button:hover {
+    background: rgb(77,77,77);
+    color: #fff;  
 }

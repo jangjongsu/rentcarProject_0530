@@ -11,6 +11,9 @@
 <body>
 <div class="body-wapper">
 <%@ include file="include/adminheader.jsp" %>
+	<div class="topimg">
+		<img src="/resources/img/adminpage1.jpg">
+	</div>
 	<h1>등록된 차량정보</h1>
 	<div class="container">
 		<div class="listMenuTabs">

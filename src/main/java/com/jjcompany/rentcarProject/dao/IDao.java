@@ -25,4 +25,7 @@ public interface IDao {
 	public Vector<CarListDto> CarBrendListDao(String cbrend);
 	public Vector<CarListDto> BrendListDao();
 	public CarListDto IndexCarDao(int cindex);
+	public void CarListUpdateDao(int cindex, String cbrend, String cclass ,String cname,
+			String ccolor, String coil, String ctype, String cimg, String cnote);
+	public void CarListDeleteDao(int cindex);
 }

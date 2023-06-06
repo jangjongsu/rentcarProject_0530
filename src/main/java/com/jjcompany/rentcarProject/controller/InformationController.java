@@ -81,4 +81,32 @@ public class InformationController {
 	public String carAdd() {
 		return "carAdd";
 	}
+	
+	@RequestMapping(value = "/carListUpdate")
+	public String carListUpdate(HttpServletRequest request) {
+		
+		int cindex = Integer.parseInt(request.getParameter("cindex"));
+		String cbrend = request.getParameter("cbrend");
+		String cclass = request.getParameter("cclass");
+		String cname = request.getParameter("updatecname");
+		String ccolor = request.getParameter("updateccolor");
+		String coil = request.getParameter("coil");
+		String ctype = request.getParameter("ctype");
+		String cimg = request.getParameter("cimg");
+		String cnote = request.getParameter("cnote");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.CarListUpdateDao(cindex, cbrend, cclass, cname, ccolor, coil, ctype, cimg, cnote);
+
+		return "redirect:carList_form";
+	}
+	
+	@RequestMapping(value = "/carListDelete")
+	public String carListDelete(HttpServletRequest request) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.CarListDeleteDao(Integer.parseInt(request.getParameter("cindex")));
+		
+		return "redirect:carList_form";
+	}
 }

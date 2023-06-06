@@ -60,10 +60,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="IndexCarDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
-		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
+		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price, c.cimg, c.cnote
 			from cartbl c inner join pricetbl p
 				on c.pindex = p.pindex
 					where c.cindex = #{param1}
 	</select>
+	
+	<update id="CarListUpdateDao">	
+		update cartbl set cbrend = #{param2}, cclass = #{param3}, cname = #{param4},
+				ccolor = #{param5}, coil = #{param6}, ctype = #{param7}, cimg = #{param8}, cnote = #{param9}
+					where cindex = #{param1}
+	</update>
+	
+	<delete id="CarListDeleteDao">
+		delete from cartbl where cindex = #{param1}
+	</delete>
 
 </mapper>

@@ -111,8 +111,8 @@
 				<p class="stepSubject">시간안내 : <span>인수(공항셔틀 07:45~22:00), 반납 (06:50~20:00)</span> 그전 차량반납은 상담원 문의하시기 바랍니다.</p>
 			</div>
 			<h2 class="guideTitle">4. 환불/취소</h2>
-			<font style="color: #ff0000; padding-bottom: 10px; display: inline-block;">★아래 취소수수료는 제주 현대렌트카 홈페이지에서 예약 접수된 건에 한해서만 적용되며, 	예약 접수처에 따라서 취소 수수료가 상이할 수있으므로 <br>
- 				최초 에약 접수처(예약사이트)로문의 바랍니다.</font>
+			<font style="color: #ff0000; padding-bottom: 10px; display: inline-block; line-height: 25px;">★아래 취소수수료는 제주 현대렌트카 홈페이지에서 예약 접수된 건에 한해서만 적용되며, 	예약 접수처에 따라서 취소 수수료가 상이할 수있으므로 <br>
+ 				&nbsp;&nbsp;최초 에약 접수처(예약사이트)로문의 바랍니다.</font>
 			<div class="guideRefund">
 				<p class="subject">환불안내</p>
 				<div class="equipment-content">
@@ -138,7 +138,7 @@
 				</div>
 			</div>
 			<h2 class="guideTitle" id="step5">5. 현장출동 특약서비스</h2>
-			<img src="/resources/img/insur_hyundai.png">
+			<img src="/resources/img/insur_hyundai.png" style="margin-bottom: 80px;">
 		</div>
 	</div>
 <%@ include file="include/footer.jsp" %>

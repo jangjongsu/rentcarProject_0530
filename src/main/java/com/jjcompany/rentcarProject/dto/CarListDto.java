@@ -18,6 +18,9 @@ public class CarListDto {
 	private String ctype;
 	private int pindex;	
 	private int price;
+	private String cimg;
+	private String cnote;
+	
 	public int getCindex() {
 		return cindex;
 	}
@@ -72,6 +75,16 @@ public class CarListDto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
-	
+	public String getCimg() {
+		return cimg;
+	}
+	public void setCimg(String cimg) {
+		this.cimg = cimg;
+	}
+	public String getCnote() {
+		return cnote;
+	}
+	public void setCnote(String cnote) {
+		this.cnote = cnote;
+	}	
 }

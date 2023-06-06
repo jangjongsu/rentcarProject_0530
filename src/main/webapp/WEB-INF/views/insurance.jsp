@@ -57,14 +57,14 @@
 							<td class="l_td" style="border:1px solid rgb(225,225,225);padding:1em;line-height:1.8em;background-color:rgb(245,245,245);width: 1000px;">
 								<ul>
 									<li class="liststyle"><b><span>신호 및 지시 위반</span></b></li>
-									<li class="liststyle">중앙선침범, 불법유턴</span></b></li>
-									<li class="liststyle">제한속도보다 20KM이상 과속</span></b></li>
-									<li class="liststyle">앞지르기 방법 위반</span></b></li>
+									<li class="liststyle"><b><span>중앙선침범, 불법유턴</span></b></li>
+									<li class="liststyle"><b><span>제한속도보다 20KM이상 과속</span></b></li>
+									<li class="liststyle"><b><span>앞지르기 방법 위반</span></b></li>
 									<li class="liststyle"><b><span>철길건널목 통과방법위반</span></b></li>
 									<li class="liststyle"><b><span>횡단보도사고</span></b></li>
 									<li class="liststyle"><b><span>무면허운전</span></b></li>
 									<li class="liststyle"><b><span>음주운전</span></b></li>
-									<li class="liststyle">보도 침범 및 보도 횡단방법 위반</span></b></li>
+									<li class="liststyle"><b><span>보도 침범 및 보도 횡단방법 위반</span></b></li>
 									<li class="liststyle"><b><span>승객추락방지 의무 위반</span></b></li>
 									<li class="liststyle"><b><span>어린이보호구역 안전운전 의무 위반</span></b></li>
 									<li class="liststyle"><b><span>자동차 화물이 떨어지지 않도록 필요한 조치를 하지 않고 운전<br></span></b></li>
