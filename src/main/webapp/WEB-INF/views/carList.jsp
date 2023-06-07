@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지</title>
+<title>차리스트</title>
 <link rel="stylesheet" href="/resources/css/content.css">
 <script type="text/javascript" src="/resources/js/index.js"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/index.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/carList.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -89,8 +88,8 @@ $(function() {
 										<option value="rvcar">RV</option>
 										<option value="bencar">승합</option>
 									</select>
-								</div>		
-									<input type="image" src="/resources/img/search.png">
+								</div>
+								<input type="image" src="/resources/img/search.png">
 							</div>
 						</div>
 					</form>
@@ -100,66 +99,21 @@ $(function() {
 			<section class="carSection" id="centerimg">
 				<h2 class="carTitle"><span class="point">제주현대렌트카</span> 인기차종</h2>
 				<ul class="carList">
-					<li class="carLabel">
-						<a href="#">
-							<div class="car1" id="carbox"></div>
-							<div class="" id="cartext">
-								<p class="listTitle">모닝 · 스파크</p>
-								<p class="listLabel">경차</p>
-								<p class="listLink">예약하기</p>
-							</div>
-						</a>
-					</li> 
-					<li>
-						<a href="#">
-							<div class="car2" id="carbox"></div>
-							<div class="" id="cartext">
-								<p class="listTitle">쏘울 · 엑센트 · 아반떼</p>
-								<p class="listLabel">소형/준중형</p>
-								<p class="listLink">예약하기</p>
-							</div>
-						</a>
-					</li> 
-					<li>
-						<a href="#">
-							<div class="car3" id="carbox"></div>
-							<div class="" id="cartext">
-								<p class="listTitle">K5 · 쏘나타 · SM6</p>
-								<p class="listLabel">중형</p>
-								<p class="listLink">예약하기</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="car4" id="carbox"></div>
-							<div class="" id="cartext">
-								<p class="listTitle">K7 · 그랜져 · 제네시스</p>
-								<p class="listLabel">고급</p>
-								<p class="listLink">예약하기</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="car5" id="carbox"></div>
-							<div class="" id="cartext">
-								<p class="listTitle">니로 · 싼타페 · 펠리세이드</p>
-								<p class="listLabel">RV</p>
-								<p class="listLink">예약하기</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="car6" id="carbox"></div>
-							<div class="" id="cartext">
-								<p class="listTitle">카니발 · 그랜드스타렉스</p>
-								<p class="listLabel">승합</p>
-								<p class="listLink">예약하기</p>
-							</div>
-						</a>
-					</li>
+					<c:forEach items="${dtos }" var="dtos">
+						<li class="carLabel">
+							<a href="#">
+								<div>
+									<img alt="차량사진" src="${dtos.cimg }" id="carbox">
+								</div>
+								<div class="" id="cartext">
+									<p class="listTitle">&nbsp;&nbsp;&nbsp;${dtos.cname }</p>
+									<p class="listContent"> ${dtos.cclass } | ${dtos.ccolor } |  ${dtos.coil } </p>
+									<p class="listPrice">${dtos.price }원&nbsp;&nbsp;&nbsp;</p>
+									<p class="listLink">예약하기</p>
+								</div>
+							</a>
+						</li> 
+					</c:forEach>
 				</ul>
 			</section>			
 		</div>

@@ -2,6 +2,7 @@ package com.jjcompany.rentcarProject.dao;
 
 import java.util.List;
 
+import com.jjcompany.rentcarProject.dto.CarDto;
 import com.jjcompany.rentcarProject.dto.FreeBoardDto;
 import com.jjcompany.rentcarProject.dto.FreereplyDto;
 import com.jjcompany.rentcarProject.dto.MemberDto;
@@ -70,5 +71,8 @@ public interface IDao {
 	public int freeReplyCountDownDao(String rfbnum);
 	public FreereplyDto freeReplyViewDao(String rfrnum);
 	public int freeReplyModifyDao(String rfrnum, String rfrcontent);
+	
+	//예약관리
+	public List<CarDto> carListTotalDao();
 	
 }

@@ -172,7 +172,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	
-<!--문의게시판 댓글 관련 SQL -->	
+<!--자유게시판 댓글 관련 SQL -->	
 	<insert id="freeReplyWriteDao">
 		insert into rfUserreply (rfrnum, rfbnum, rid, rfrcontent) 
 			values
@@ -198,6 +198,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<select id="freeReplyViewDao" resultType="com.jjcompany.rentcarProject.dto.FreereplyDto">
 		select * from rfUserreply where rfrnum = #{param1}
+	</select>
+	
+<!--예약관련 SQL -->	
+	<select id="carListTotalDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
+		select * from cartbl
+	
 	</select>
  
 </mapper>
