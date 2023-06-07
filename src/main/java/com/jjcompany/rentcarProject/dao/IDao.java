@@ -73,7 +73,9 @@ public interface IDao {
 	public int freeReplyModifyDao(String rfrnum, String rfrcontent);
 	
 	//예약관리
-	public List<CarDto> carListTotalDao();
+	public List<CarDto> carListTotalDao(String rdate, String returndate);
+	public List<CarDto> carListClassDao(String rdate, String returndate, String cclass);
 	public CarDto carinfoDao(String cindex);
+	public int carRentDao(String rid, String cindex, String rtdate, String returndate, String rpdate, int rtPrice);
 	
 }

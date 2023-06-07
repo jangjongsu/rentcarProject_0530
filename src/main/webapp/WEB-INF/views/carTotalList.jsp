@@ -64,32 +64,31 @@ $(function() {
 			<div class="mainvisual">
 				<section class="searchSection">
 				<center>
-					<form action="carListSearch">
+					<form action="searchCarLint">
 						<div class="search" id="l-search">
 							<div class="calenderLabel">
 								<label class="DateBind">
 									<div class="searchLabel current">
-										<img src="/resources/img/start.png" class="icon"> <input
-											type="text" id="datepicker" name="rtdate">
+										<img src="/resources/img/start.png" class="icon"> 
+										<input type="text" id="datepicker" name="rtdate">
 									</div>
 									<div class="searchLabel searchPartition">
-										<img src="/resources/img/end.png" class="icon"> <input
-											type="text" id="datepicker2" name="returndate">
+										<img src="/resources/img/end.png" class="icon"> 
+										<input type="text" id="datepicker2" name="returndate">
 									</div>
-
 								</label>
 								<div class="searchLabel searchPartition searchCategory">
-									<select name="searchOption">
+									<select>
 										<option value="allcar">전체</option>
-										<option value="경차">경차</option>
-										<option value="준중형">준중형</option>
-										<option value="중형">중형</option>
-										<option value="고급">고급</option>
-										<option value="RV">RV</option>
-										<option value="승합">승합</option>
+										<option value="lightcar">경차</option>
+										<option value="smallcar">소형/준중형</option>
+										<option value="mediumcar">중형</option>
+										<option value="Advancedcar">고급</option>
+										<option value="rvcar">RV</option>
+										<option value="bencar">승합</option>
 									</select>
-								</div>		
-									<input type="image" src="/resources/img/search.png">
+								</div>
+								<input type="image" src="/resources/img/search.png">
 							</div>
 						</div>
 					</form>
@@ -120,7 +119,7 @@ $(function() {
 			<ul class="carList">
 					<c:forEach items="${dtos }" var="dtos">
 						<li class="carLabel">
-							<a href="carReservation?cindex=${dtos.cindex }&rtdate=${rtdate } &returndate=${returndate }">
+							<a href="carReservation?cindex=${dtos.cindex }&rtdate= &returndate=">
 								<div>
 									<img alt="차량사진" src="${dtos.cimg }" id="carbox">
 								</div>

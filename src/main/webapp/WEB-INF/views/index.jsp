@@ -61,11 +61,11 @@ $(function() {
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
+	<form action="carListSearch" name="search">
 		<div class="wrapper">		
 			<div class="mainvisual">
 				<section class="searchSection">
 				<center>
-					<form action="searchCarLint">
 						<div class="search" id="l-search">
 							<div class="calenderLabel">
 								<label class="DateBind">
@@ -77,23 +77,22 @@ $(function() {
 										<img src="/resources/img/end.png" class="icon"> <input
 											type="text" id="datepicker2" name="returndate">
 									</div>
-
 								</label>
 								<div class="searchLabel searchPartition searchCategory">
-									<select>
+									<select name="searchOption">
 										<option value="allcar">전체</option>
-										<option value="lightcar">경차</option>
-										<option value="smallcar">소형/준중형</option>
-										<option value="mediumcar">중형</option>
-										<option value="Advancedcar">고급</option>
-										<option value="rvcar">RV</option>
-										<option value="bencar">승합</option>
+										<option value="경차">경차</option>
+										<option value="준중형">준중형</option>
+										<option value="중형">중형</option>
+										<option value="고급">고급</option>
+										<option value="RV">RV</option>
+										<option value="승합">승합</option>
 									</select>
 								</div>		
 									<input type="image" src="/resources/img/search.png">
 							</div>
 						</div>
-					</form>
+					
 					</center>
 				</section>
 			</div>
@@ -101,27 +100,27 @@ $(function() {
 				<h2 class="carTitle"><span class="point">제주현대렌트카</span> 인기차종</h2>
 				<ul class="carList">
 					<li class="carLabel">
-						<a href="#">
+						<div onclick='search()'>
 							<div class="car1" id="carbox"></div>
-							<div class="" id="cartext">
+							<div class="" id="cartext" >
 								<p class="listTitle">모닝 · 스파크</p>
 								<p class="listLabel">경차</p>
 								<p class="listLink">예약하기</p>
 							</div>
-						</a>
+						</div>
 					</li> 
 					<li>
-						<a href="#">
+						<a href="carList?cclass=준중형">
 							<div class="car2" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">쏘울 · 엑센트 · 아반떼</p>
-								<p class="listLabel">소형/준중형</p>
+								<p class="listLabel">준중형</p>
 								<p class="listLink">예약하기</p>
 							</div>
 						</a>
 					</li> 
 					<li>
-						<a href="#">
+						<a href="carList?cclass=중형">
 							<div class="car3" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">K5 · 쏘나타 · SM6</p>
@@ -131,7 +130,7 @@ $(function() {
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="carList?cclass=고급">
 							<div class="car4" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">K7 · 그랜져 · 제네시스</p>
@@ -141,7 +140,7 @@ $(function() {
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="carList?cclass=RV">
 							<div class="car5" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">니로 · 싼타페 · 펠리세이드</p>
@@ -151,7 +150,7 @@ $(function() {
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="carList?cclass=승합">
 							<div class="car6" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">카니발 · 그랜드스타렉스</p>
@@ -164,6 +163,7 @@ $(function() {
 			</section>			
 		</div>
 	</div>
+	</form>
 <%@ include file="include/footer.jsp" %>
 </body>
 </html>

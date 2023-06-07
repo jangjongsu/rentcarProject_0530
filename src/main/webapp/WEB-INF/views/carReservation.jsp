@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>차리스트</title>
 <link rel="stylesheet" href="/resources/css/content.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/carDetail.css">
 <script type="text/javascript" src="/resources/js/index.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/carList.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -59,84 +60,82 @@ $(function() {
 </script>
 </head>
 <body>
+			<%
+				String sessionId1 = (String) session.getAttribute("sessionId");
+				if(sessionId1 == null){
+			%>
+			<script type="text/javascript">
+			alert("로그인 이후에 이용해주세요");
+			history.go(-1);
+			</script>
+			<% 
+			}
+			%>
 <%@ include file="include/header.jsp" %>
-		<div class="wrapper">		
-			<div class="mainvisual">
-				<section class="searchSection">
-				<center>
-					<form action="carListSearch">
-						<div class="search" id="l-search">
-							<div class="calenderLabel">
-								<label class="DateBind">
-									<div class="searchLabel current">
-										<img src="/resources/img/start.png" class="icon"> <input
-											type="text" id="datepicker" name="rtdate">
-									</div>
-									<div class="searchLabel searchPartition">
-										<img src="/resources/img/end.png" class="icon"> <input
-											type="text" id="datepicker2" name="returndate">
-									</div>
-
-								</label>
-								<div class="searchLabel searchPartition searchCategory">
-									<select name="searchOption">
-										<option value="allcar">전체</option>
-										<option value="경차">경차</option>
-										<option value="준중형">준중형</option>
-										<option value="중형">중형</option>
-										<option value="고급">고급</option>
-										<option value="RV">RV</option>
-										<option value="승합">승합</option>
-									</select>
-								</div>		
-									<input type="image" src="/resources/img/search.png">
-							</div>
-						</div>
-					</form>
-					</center>
-				</section>
-			</div>
-			
-			<section class="carSection" id="centerimg">
-			<table border="0" cellspacing="0" cellpadding="0" width="100%">
-				<tr class="headerline">
-					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carTotalList">전체차량</a></td>
-					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=경차">경차</a></td>
-					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=준중형">준중형</a></td>
-					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=중형">중형</a></td>
-					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=고급">고급</a></td>
-					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=RV">RV</a></td>
-					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=승합">승합</a></td>
-					<td class="margin02">&nbsp;</td>
-				</tr>
-			</table>
-			<ul class="carList">
-					<c:forEach items="${dtos }" var="dtos">
-						<li class="carLabel">
-							<a href="carReservation?cindex=${dtos.cindex }&rtdate=${rtdate } &returndate=${returndate }">
-								<div>
-									<img alt="차량사진" src="${dtos.cimg }" id="carbox">
-								</div>
-								<div class="" id="cartext">
-									<p class="listTitle">&nbsp;&nbsp;&nbsp;${dtos.cname }</p>
-									<p class="listContent"> ${dtos.cclass } | ${dtos.ccolor } |  ${dtos.coil } </p>
-									<p class="listPrice">${dtos.price }원&nbsp;&nbsp;&nbsp;</p>
-									<p class="listLink">예약하기</p>
-								</div>
-							</a>
-						</li> 
-					</c:forEach>
-				</ul>
-			</section>			
+<form action="carReservationOk">
+				<input type="hidden" name="rid" value="${sessionId}">
+				<input type="hidden" name="rtdate" value="${rtdate}">
+				<input type="hidden" name="returndate" value="${returndate}">
+				<input type="hidden" name="cindex" value="${dto.cindex}">
+				<input type="hidden" name="rtPrice" value="${dto.price}">
+	<div class="topimg">
+		<img src="/resources/img/adminpage1.jpg">
+	</div>
+	<div class="l-ct">
+		<div id="app">
+			<h1 class="goodsSectionTitle l-ct">차량정보</h1>
+			<section class="vehicleSection l-ct">
+				<div class="vehicleTable">
+					<div class="vehicleThum vehicleCell">
+						<img class="carimg" src="${dto.cimg}">
+					</div>
+					<div class="vehicleInfo vehicleCell">
+						<ul class="vehicleContent">
+							<li>
+								<span class="vehicleSubject">고유번호</span>
+								<span class="vehicleSubjectContent">${dto.cindex}</span>
+							</li>
+							<li>
+								<span class="vehicleSubject">브랜드</span>
+								<span class="vehicleSubjectContent">${dto.cbrend}</span>
+							</li>
+							<li>
+								<span class="vehicleSubject">차량명칭</span>
+								<span class="vehicleSubjectContent">${dto.cname}</span>
+							</li>
+							<li>
+								<span class="vehicleSubject">대여기간</span>
+								<span class="vehicleSubjectContent" style="color:red">${rtdate} ~ ${returndate} </span>
+							</li>
+							<li>
+								<span class="vehicleSubject">대여료/일</span>
+								<span class="vehicleSubjectContent" style="color:red">${dto.price}</span>
+							</li>
+							<li>
+								<span class="vehicleSubject">차량 정보</span>
+								<span class="vehicleSubjectContent">${dto.cclass}&nbsp;&nbsp;|&nbsp;&nbsp;${dto.coil}
+									&nbsp;&nbsp;|&nbsp;&nbsp;$dto.ctype}&nbsp;&nbsp;|&nbsp;&nbsp;${dto.ccolor}</span>
+							</li>
+							<li>
+								<span class="vehicleSubject">비고</span>
+								<span class="vehicleSubjectContent">${dto.cnote}<br>
+								<p style="color: red; font-weight: 600; font-size: 16px;">만26세이상 운전경력 1년</p></span>
+							</li>
+							<li>
+								<span class="vehicleSubject"></span>
+								<span class="vehicleSubjectContent">💥 차량색상은 이미지와 다를 수 있습니다</span>
+							</li>
+							<li>
+								<input type="submit" value="예약하기">
+							</li>
+						</ul>
+					</div>
+				</div>
+				</form>
+			</section>
 		</div>
 	</div>
+</form>
 <%@ include file="include/footer.jsp" %>
 </body>
 </html>
