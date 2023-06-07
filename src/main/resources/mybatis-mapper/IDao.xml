@@ -203,7 +203,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--예약관련 SQL -->	
 	<select id="carListTotalDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
 		select * from cartbl
-	
+	</select>
+	<select id="carinfoDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
+		select * from cartbl where cindex = #{param1}
 	</select>
  
 </mapper>

@@ -76,7 +76,6 @@ $(function() {
 										<img src="/resources/img/end.png" class="icon"> <input
 											type="text" id="datepicker2" name="returndate">
 									</div>
-
 								</label>
 								<div class="searchLabel searchPartition searchCategory">
 									<select>
@@ -101,7 +100,7 @@ $(function() {
 				<ul class="carList">
 					<c:forEach items="${dtos }" var="dtos">
 						<li class="carLabel">
-							<a href="#">
+							<a href="carReservation?cindex=${dtos.cindex }">
 								<div>
 									<img alt="차량사진" src="${dtos.cimg }" id="carbox">
 								</div>

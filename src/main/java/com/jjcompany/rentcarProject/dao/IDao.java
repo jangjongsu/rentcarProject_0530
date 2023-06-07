@@ -74,5 +74,6 @@ public interface IDao {
 	
 	//예약관리
 	public List<CarDto> carListTotalDao();
+	public CarDto carinfoDao(String cindex);
 	
 }
