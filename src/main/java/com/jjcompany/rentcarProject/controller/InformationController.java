@@ -41,6 +41,12 @@ public class InformationController {
 		return "carList";
 	}
 	
+	@RequestMapping(value = "/situation_form")
+	public String situation() {
+		
+		return "situation";
+	}
+	
 	@RequestMapping(value = "/carList_type")
 	public String carList_type(Model model, HttpServletRequest request) {
 		
@@ -92,11 +98,12 @@ public class InformationController {
 		String ccolor = request.getParameter("updateccolor");
 		String coil = request.getParameter("coil");
 		String ctype = request.getParameter("ctype");
-		String cimg = request.getParameter("cimg");
+		int price = Integer.parseInt(request.getParameter("pricename"));
+		String cimg = request.getParameter("updatecimg");
 		String cnote = request.getParameter("cnote");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
-		dao.CarListUpdateDao(cindex, cbrend, cclass, cname, ccolor, coil, ctype, cimg, cnote);
+		dao.CarListUpdateDao(cindex, cbrend, cclass, cname, ccolor, coil, ctype, price, cimg, cnote);
 
 		return "redirect:carList_form";
 	}
@@ -107,6 +114,25 @@ public class InformationController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.CarListDeleteDao(Integer.parseInt(request.getParameter("cindex")));
 		
+		return "redirect:carList_form";
+	}
+	
+	@RequestMapping(value = "/carADD")
+	public String carADD(HttpServletRequest request) {
+		
+		String cbrend = request.getParameter("cbrend");
+		String cclass = request.getParameter("cclass");
+		String cname = request.getParameter("addcname");
+		String ccolor = request.getParameter("addccolor");
+		String coil = request.getParameter("coil");
+		String ctype = request.getParameter("ctype");
+		int price = Integer.parseInt(request.getParameter("pricename"));
+		String cimg = request.getParameter("addcimg");
+		String cnote = request.getParameter("cnote");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.AddNewCarDao(cbrend, cclass, cname, ccolor, coil, ctype, price, cimg, cnote);
+
 		return "redirect:carList_form";
 	}
 }

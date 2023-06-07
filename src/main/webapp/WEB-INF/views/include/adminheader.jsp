@@ -30,15 +30,13 @@
 			
 			%>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">차량현황</a></td>
-			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="/carList_form">차량관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">예약관리</a></td>
+			<td class ="headertext"><a href="/situation_form">예약현황</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">공지관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">문의관리</a></td>
+			<td class ="headertext"><a href="#">문의답변</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td >&nbsp;</td>
 		</tr>

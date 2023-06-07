@@ -14,7 +14,7 @@
 	<div class="topimg">
 		<img src="/resources/img/adminpage1.jpg">
 	</div>
-	<h1>등록된 차량정보</h1>
+	<h1>현재 등록된 차량정보</h1>
 	<div class="container">
 		<div class="listMenuTabs">
 			<input class="listtype" type="button" value="전체차량" onclick="script:window.location.href='carList_form'">

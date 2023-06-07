@@ -153,3 +153,11 @@ label {
 .urltext {
 	margin-left: 110px;
 }
+
+.carimg {
+    width: 100%;
+    height: 330px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

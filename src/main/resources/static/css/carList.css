@@ -19,7 +19,7 @@ a:hover {
     color: #ffffff;
     font-size: 18px;
     line-height: 35px;
-    background-color: #f4605e;
+    background-color: red;
     position: relative;
     cursor: pointer;
     margin: 10px auto;
@@ -60,13 +60,13 @@ a:hover {
 }
 
 #caradd {
-	background-color: #ec2a1c;
+	background-color: red;
 	margin-left: 195px;
 }
 
 h1 {
 	text-align: center;
-	color: #ec2a1c;
+	color: red;
 }
 
 .body-wrapper {

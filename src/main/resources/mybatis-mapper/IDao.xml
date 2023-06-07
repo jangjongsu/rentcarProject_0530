@@ -28,9 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="AllCarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
-		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
-			from cartbl c inner join pricetbl p
-				on c.pindex = p.pindex
+		select * from cartbl order by price
 	</select>
 	
 	<select id="countCarTypeListDao" resultType="int">
@@ -38,10 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="CarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
-		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
-			from cartbl c inner join pricetbl p
-				on c.pindex = p.pindex
-					where c.cclass = #{param1}
+		select * from cartbl where cclass = #{param1} order by price
 	</select>
 	
 	<select id="countCarBrendListDao" resultType="int">
@@ -49,10 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="CarBrendListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
-		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price
-			from cartbl c inner join pricetbl p
-				on c.pindex = p.pindex
-					where c.cbrend = #{param1}
+		select * from cartbl where cbrend = #{param1}
 	</select>
 	
 	<select id="BrendListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
@@ -60,15 +52,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="IndexCarDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
-		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, p.price, c.cimg, c.cnote
-			from cartbl c inner join pricetbl p
-				on c.pindex = p.pindex
-					where c.cindex = #{param1}
+		select * from cartbl where cindex = #{param1}
 	</select>
 	
 	<update id="CarListUpdateDao">	
 		update cartbl set cbrend = #{param2}, cclass = #{param3}, cname = #{param4},
-				ccolor = #{param5}, coil = #{param6}, ctype = #{param7}, cimg = #{param8}, cnote = #{param9}
+				ccolor = #{param5}, coil = #{param6}, ctype = #{param7}, price = #{param8}, cimg = #{param9}, cnote = #{param10}
 					where cindex = #{param1}
 	</update>
 	
@@ -76,4 +65,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from cartbl where cindex = #{param1}
 	</delete>
 
+	<insert id="AddNewCarDao">
+		insert into cartbl (cindex, cbrend, cclass, cname, ccolor, coil, ctype, price, cimg, cnote)
+				values (cartbl_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}
+						, #{param7}, #{param8}, #{param9})
+	</insert>
+	
 </mapper>

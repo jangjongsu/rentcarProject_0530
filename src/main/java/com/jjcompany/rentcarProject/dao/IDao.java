@@ -1,6 +1,5 @@
 package com.jjcompany.rentcarProject.dao;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import com.jjcompany.rentcarProject.dto.CarListDto;
@@ -26,6 +25,8 @@ public interface IDao {
 	public Vector<CarListDto> BrendListDao();
 	public CarListDto IndexCarDao(int cindex);
 	public void CarListUpdateDao(int cindex, String cbrend, String cclass ,String cname,
-			String ccolor, String coil, String ctype, String cimg, String cnote);
+			String ccolor, String coil, String ctype, int price, String cimg, String cnote);
 	public void CarListDeleteDao(int cindex);
+	public void AddNewCarDao(String cbrend, String cclass, String cname, String ccolor,
+			String coil, String ctype, int price, String cimg, String cnote);
 }
