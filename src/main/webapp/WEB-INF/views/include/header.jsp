@@ -36,6 +36,10 @@
 			%>
 			<td class ="headertext"><a href="join">회원가입</a></td>
 			<%		
+				}else if(sessionId.equals("admin") ){
+			%>
+			<td class ="headertext"><a href="carList_form">관리자페이지</a></td>	
+			<%		
 				} else{
 			%>
 			<td class ="headertext"><a href="modify">회원정보수정</a></td>

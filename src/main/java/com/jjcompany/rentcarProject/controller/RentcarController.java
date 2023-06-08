@@ -76,7 +76,7 @@ public class RentcarController {
 		}else {
 			model.addAttribute("loginCheck", loginCheck);
 		}
-		return"loginOk";
+		return"/index";
 	}
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {

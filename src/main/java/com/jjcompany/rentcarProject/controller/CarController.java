@@ -94,6 +94,9 @@ public class CarController {
 		
 		dao.carRentDao(rid, cindex, rtdate, returndate, rpdate, totalPrice);
 		
+		List<ReservationDto> dtos =  dao.carRentViewDao(rid);
+		model.addAttribute("dtos", dtos);
+		
 		
 		return"carReservationCheck";
 	}

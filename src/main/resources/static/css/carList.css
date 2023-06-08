@@ -41,7 +41,7 @@ ul.carList {
     margin-top: 60px;
 }
 
-ul.carList > li:not(:nth-child(3n)) {
+ul.carList > li:not(:nth-child(4n)) {
     margin-right: 28px;
 }
 
