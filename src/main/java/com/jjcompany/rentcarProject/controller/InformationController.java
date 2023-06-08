@@ -29,7 +29,7 @@ public class InformationController {
 		return "insurance";
 	}
 	
-	@RequestMapping(value = "/carList_form")
+	@RequestMapping(value = "/carList2_form")
 	public String carList(Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
@@ -38,7 +38,7 @@ public class InformationController {
 		model.addAttribute("count", count);
 		model.addAttribute("carListDto", dtos);
 		
-		return "carList";
+		return "carList2";
 	}
 	
 	@RequestMapping(value = "/carList_type")
@@ -52,7 +52,7 @@ public class InformationController {
 			model.addAttribute("count", count);
 			model.addAttribute("carListDto", dtos);
 			
-			return "carList";
+			return "carList2";
 		} else {
 			IDao dao = sqlSession.getMapper(IDao.class);
 			int count = dao.countCarTypeListDao(type);
@@ -60,7 +60,7 @@ public class InformationController {
 			model.addAttribute("count", count);
 			model.addAttribute("carListDto", dtos);
 			
-			return "carList";
+			return "carList2";
 		}		
 	}
 	
@@ -130,17 +130,4 @@ public class InformationController {
 		return "redirect:carList_form";
 	}
 	
-	@RequestMapping(value = "/carListSearch")
-	public String carListSearch(HttpServletRequest request, Model model) {
-		
-		String rtdate = request.getParameter("rtdate");
-		String returndate = request.getParameter("returndate");
-		String param = request.getParameter("param");
-		
-		model.addAttribute("dto1", rtdate);
-		model.addAttribute("dto2", returndate);
-		model.addAttribute("dto3", param);
-		
-		return "test";
-	}	
 }

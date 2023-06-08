@@ -17,7 +17,7 @@
 	<h1>현재 등록된 차량정보</h1>
 	<div class="container">
 		<div class="listMenuTabs">
-			<input class="listtype" type="button" value="전체차량" onclick="script:window.location.href='carList_form'">
+			<input class="listtype" type="button" value="전체차량" onclick="script:window.location.href='carList2_form'">
 			<input class="listtype" type="button" value="경차" onclick="script:window.location.href='carList_type?cclass=경차'">
 			<input class="listtype" type="button" value="소형/준중형" onclick="script:window.location.href='carList_type?cclass=준중형'">
 			<input class="listtype" type="button" value="고급" onclick="script:window.location.href='carList_type?cclass=고급'">
