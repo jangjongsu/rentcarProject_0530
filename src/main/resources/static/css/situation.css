@@ -12,20 +12,6 @@ a:hover {
     text-decoration: none;
 }
 
-.listtype {
-    display: table-cell;
-    width: 120px;    
-    text-align: center;
-    color: #ffffff;
-    font-size: 18px;
-    line-height: 35px;
-    background-color: red;
-    position: relative;
-    cursor: pointer;
-    margin: 10px auto;
-    border-radius: 5px;
-}
-
 .carlist {
 	width: 1200px;
 	border-spacing: 0 8px;
@@ -50,11 +36,6 @@ a:hover {
 	line-height: 40px;
 }
 
-.carlistprice {
-	text-align: right;;
-	padding-right: 46px;
-}
-
 .count {
 	color: red;
 }
@@ -62,6 +43,7 @@ a:hover {
 h1 {
 	text-align: center;
 	color: red;
+	line-height: 80px;
 }
 
 .body-wrapper {

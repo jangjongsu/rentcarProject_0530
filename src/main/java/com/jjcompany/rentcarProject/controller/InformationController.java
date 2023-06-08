@@ -41,12 +41,6 @@ public class InformationController {
 		return "carList";
 	}
 	
-	@RequestMapping(value = "/situation_form")
-	public String situation() {
-		
-		return "situation";
-	}
-	
 	@RequestMapping(value = "/carList_type")
 	public String carList_type(Model model, HttpServletRequest request) {
 		
@@ -148,6 +142,5 @@ public class InformationController {
 		model.addAttribute("dto3", param);
 		
 		return "test";
-	}
-	
+	}	
 }

@@ -28,26 +28,26 @@
 		</div>
 		<p>&nbsp;&nbsp;<span class="count">${count}개</span>의 등록차량이 검색되었습니다.</p>
 		<table class="carlist">
-			<tr class="carlistheadline">
-				<th width="9%">차량식별번호</th>
-				<th width="13%">브랜드</th>
-				<th width="13%">등급</th>
-				<th width="13%">명칭</th>
-				<th width="13%">색상</th>
-				<th width="13%">유종</th>
-				<th width="13%">타입</th>
-				<th width="13%">대여료/일</th>
+			<tr class="carlistheadline">				
+				<th width="12.5%">브랜드</th>
+				<th width="12.5%">등급</th>
+				<th width="12.5%">명칭</th>
+				<th width="12.5%">색상</th>
+				<th width="12.5%">유종</th>
+				<th width="12.5%">타입</th>
+				<th width="12.5%">대여료/일</th>
+				<th width="12.5%">누적대여일</th>
 			</tr>
 			<c:forEach items="${carListDto}" var="dtos" >
 				<tr class="carlistline" onclick="script:window.location.href='carDetail_form?cindex=${dtos.cindex}'" style="cursor:pointer;" id="carlistline">					
-					<td>${dtos.cindex}</td>
 					<td>${dtos.cbrend}</td>
 					<td>${dtos.cclass}</td>
 					<td>${dtos.cname}</td>
 					<td>${dtos.ccolor}</td>
 					<td>${dtos.coil}</td>
 					<td>${dtos.ctype}</td>
-					<td class="carlistprice">${dtos.price}</td>					
+					<td class="carlistprice">${dtos.price}</td>
+					<td>${dtos.cindex}</td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -7,17 +7,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarListDto {
-
-	private int cindex;
+public class ReservationDto {
+	
+	private int rtnum;
 	private String cbrend;
+	private int cindex;
 	private String cclass;
 	private String cname;
-	private String ccolor;
-	private String coil;
-	private String ctype;
-	private int pindex;	
-	private int price;
-	private String cimg;
-	private String cnote;	
+	private String rvdate;
+	private String rtdate;
+	private String returndate;
+	private String rpdate;
 }

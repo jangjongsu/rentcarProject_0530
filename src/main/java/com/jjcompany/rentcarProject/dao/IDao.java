@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import com.jjcompany.rentcarProject.dto.CarListDto;
 import com.jjcompany.rentcarProject.dto.MemberDto;
+import com.jjcompany.rentcarProject.dto.ReservationDto;
 
 public interface IDao {
 	
@@ -29,4 +30,7 @@ public interface IDao {
 	public void CarListDeleteDao(int cindex);
 	public void AddNewCarDao(String cbrend, String cclass, String cname, String ccolor,
 			String coil, String ctype, int price, String cimg, String cnote);
+	
+	//차량예약관리(관리자)
+	public Vector<ReservationDto> AdminReservationListDao();
 }
