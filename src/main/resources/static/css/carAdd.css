@@ -90,7 +90,7 @@ section.vehicleSection {
 }
 
 h1.goodsSectionTitle > span {
-    color: #ec2a1c;
+    color: red;
 }
 
 .app {
@@ -98,7 +98,7 @@ h1.goodsSectionTitle > span {
 }
 
 select {
-	width: 170px;	
+	width: 177px;	
 }
 
 .buttonformbox {
@@ -106,9 +106,9 @@ select {
 }
 
 .buttons {
-	background-color: #ec2a1c;
+	background-color: red;
 	border-radius: 5px;
-	border-color: #ec2a1c;
+	border-color: red;
 	margin-top: 30px;
 	float: right;
 	color: #ffffff;
@@ -142,9 +142,9 @@ label {
 }
 
 .inputlabel {
-	background-color: #ec2a1c;
+	background-color: red;
 	border-radius: 5px;
-	border-color: #ec2a1c;
+	border-color: red;
 	color: #ffffff;
 	font-size: 12px;
 	padding: 4px 12px;
@@ -152,4 +152,12 @@ label {
 
 .urltext {
 	margin-left: 110px;
+}
+
+.carimg {
+    width: 100%;
+    height: 330px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }

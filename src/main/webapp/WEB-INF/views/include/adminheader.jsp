@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
-<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/adminheader.css">
 </head>
 <body>
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -30,31 +30,13 @@
 			
 			%>
 			<td class="margin02">&nbsp;</td>
-			
-			<%
-				if(sessionId == null){
-			%>
-			<td class ="headertext"><a href="join">회원가입</a></td>
-			<%		
-				} else{
-			%>
-			<td class ="headertext"><a href="modify">회원정보수정</a></td>
-			<%		
-				}
-			
-			%>
+			<td class ="headertext"><a href="/carList_form">차량관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">실시간예약</a></td>
+			<td class ="headertext"><a href="/situation_form">예약현황</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="information_form">이용안내</a></td>
+			<td class ="headertext"><a href="#">공지관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="insurance_form">보험안내</a></td>
-			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="carReservationCheck">예약확인</a></td>
-			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="freeBoardList">자유게시판</a></td>
-			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="userBoardList">문의게시판</a></td>
+			<td class ="headertext"><a href="#">문의답변</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td >&nbsp;</td>
 		</tr>

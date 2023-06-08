@@ -261,5 +261,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					on rReservation.CINDEX = CARTBL.cindex
 						where rid = #{param1}
 	</select>
+	
+	<!-- 차량관리 -->
+	<select id="countCarListDao" resultType="int">
+		select count(*)	from cartbl
+	</select>
+	<select id="AllCarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select * from cartbl order by price
+	</select>
+	<select id="countCarTypeListDao" resultType="int">
+		select count(*)	from cartbl where cclass = #{param1}
+	</select>
+	<select id="CarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select * from cartbl where cclass = #{param1} order by price
+	</select>	
+	<select id="countCarBrendListDao" resultType="int">
+		select count(*)	from cartbl where cbrend = #{param1}
+	</select>	
+	<select id="CarBrendListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select * from cartbl where cbrend = #{param1}
+	</select>	
+	<select id="BrendListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select cbrend from cartbl group by cbrend
+	</select>
+	<select id="IndexCarDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
+		select * from cartbl where cindex = #{param1}
+	</select>
+	<update id="CarListUpdateDao">	
+		update cartbl set cbrend = #{param2}, cclass = #{param3}, cname = #{param4},
+				ccolor = #{param5}, coil = #{param6}, ctype = #{param7}, price = #{param8}, cimg = #{param9}, cnote = #{param10}
+					where cindex = #{param1}
+	</update>	
+	<delete id="CarListDeleteDao">
+		delete from cartbl where cindex = #{param1}
+	</delete>
+	<insert id="AddNewCarDao">
+		insert into cartbl (cindex, cbrend, cclass, cname, ccolor, coil, ctype, price, cimg, cnote)
+				values (cartbl_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}
+						, #{param7}, #{param8}, #{param9})
+	</insert>
+	
+	
+	
+	<!-- 차량예약관리(관리자) -->
+	<select id="AdminReservationListDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto">
+		select r.rtnum, c.cbrend, c.cclass, c.cname, r.rvdate, r.rtdate, r.returndate, r.rtprice
+			from rreservation r inner join cartbl c on r.cindex = c.cindex
+	</select>
  
 </mapper>

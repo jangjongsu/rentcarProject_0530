@@ -9,6 +9,9 @@ import com.jjcompany.rentcarProject.dto.MemberDto;
 import com.jjcompany.rentcarProject.dto.ReservationDto;
 import com.jjcompany.rentcarProject.dto.UserBoardDto;
 import com.jjcompany.rentcarProject.dto.UserreplyDto;
+import java.util.Vector;
+import com.jjcompany.rentcarProject.dto.CarListDto;
+import com.jjcompany.rentcarProject.dto.ReservationDto;
 
 public interface IDao {
 	
@@ -80,4 +83,22 @@ public interface IDao {
 	public int carRentDao(String rid, String cindex, String rtdate, String returndate, String rpdate, int rtPrice);
 	public List<ReservationDto> carRentViewDao(String rid);
 	
+	//차량관리
+	public int countCarListDao();
+	public Vector<CarListDto> AllCarListDao();
+	public int countCarTypeListDao(String cclass);
+	public Vector<CarListDto> CarListDao(String cclass);
+	public int countCarBrendListDao(String cbrend);
+	public Vector<CarListDto> CarBrendListDao(String cbrend);
+	public Vector<CarListDto> BrendListDao();
+	public CarListDto IndexCarDao(int cindex);
+	public void CarListUpdateDao(int cindex, String cbrend, String cclass ,String cname,
+			String ccolor, String coil, String ctype, int price, String cimg, String cnote);
+	public void CarListDeleteDao(int cindex);
+	public void AddNewCarDao(String cbrend, String cclass, String cname, String ccolor,
+			String coil, String ctype, int price, String cimg, String cnote);
+	
+	//차량예약관리(관리자)
+	public Vector<ReservationDto> AdminReservationListDao();
+
 }

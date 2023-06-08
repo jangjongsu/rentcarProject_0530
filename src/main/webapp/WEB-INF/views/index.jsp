@@ -58,9 +58,26 @@ $(function() {
     
 });
 </script>
+<<<<<<< HEAD
+=======
+<script>
+  function submitForm() {
+	  
+	var paragraphText = document.getElementById("paragraph").textContent;
+	var paramInput = document.getElementById("paramInput");
+	paramInput.value = paragraphText;
+	    
+    var form = document.getElementById("carListSearch");
+    var submitButton = document.getElementById("submitButton");
+    submitButton.click(); // submit 버튼 클릭   
+  }
+    
+</script>
+>>>>>>> refs/heads/rlagus
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
+<<<<<<< HEAD
 	<form action="carListSearch" name="searchName" id="searchId">
 		<div class="wrapper">		
 			<div class="mainvisual">
@@ -92,6 +109,38 @@ $(function() {
 									<input type="image" src="/resources/img/search.png">
 									<input type="submit" id="submitButton" style="display: none;">
 									
+=======
+	<form action="carListSearch" name="search">
+		<div class="wrapper">		
+			<div class="mainvisual">
+				<section class="searchSection">
+				<center>
+						<div class="search" id="l-search">
+							<div class="calenderLabel">
+								<label class="DateBind">
+									<div class="searchLabel current">
+										<img src="/resources/img/start.png" class="icon"> <input
+											type="text" id="datepicker" name="rtdate">
+									</div>
+									<div class="searchLabel searchPartition">
+										<img src="/resources/img/end.png" class="icon"> <input
+											type="text" id="datepicker2" name="returndate">
+									</div>
+								</label>
+								<div class="searchLabel searchPartition searchCategory">
+									<select name="searchOption">
+										<option value="allcar">전체</option>
+										<option value="경차">경차</option>
+										<option value="준중형">준중형</option>
+										<option value="중형">중형</option>
+										<option value="고급">고급</option>
+										<option value="RV">RV</option>
+										<option value="승합">승합</option>
+									</select>
+								</div>		
+									<input type="image" src="/resources/img/search.png">
+									<input type="submit" id="submitButton" value="Submit" style="display: none;">
+>>>>>>> refs/heads/rlagus
 							</div>
 						</div>
 					
@@ -99,6 +148,7 @@ $(function() {
 				</section>
 			</div>
 			<section class="carSection" id="centerimg">
+<<<<<<< HEAD
 				<input type="hidden" name="param" id="pInput">
 				<h2 class="carTitle"><span class="point">제주현대렌트카</span> 인기차종</h2>
 				<ul class="carList">
@@ -158,6 +208,67 @@ $(function() {
 							<div class="" id="cartext">
 								<p class="listTitle">카니발 · 그랜드스타렉스</p>
 								<p class="listLabel" id="vanCar">승합</p>
+=======
+				<h2 class="carTitle"><span class="point">제주현대렌트카</span> 인기차종</h2>
+				<ul class="carList">
+					<li class="carLabel">
+						<a href="#" onclick="submitForm()">
+							<div class="car1" id="carbox"></div>
+							<div class="" id="cartext" >
+								<p class="listTitle">모닝 · 스파크</p>
+								<p class="listLabel" id="paragraph">경차</p>
+								<p class="listLink">예약하기</p>
+								<input type="hidden" name="param" id="paramInput">
+							</div>
+						</a>
+					</li> 
+					<li>
+						<a href="carList?cclass=준중형">
+							<div class="car2" id="carbox"></div>
+							<div class="" id="cartext">
+								<p class="listTitle">쏘울 · 엑센트 · 아반떼</p>
+								<p class="listLabel">준중형</p>
+								<p class="listLink">예약하기</p>
+							</div>
+						</a>
+					</li> 
+					<li>
+						<a href="carList?cclass=중형">
+							<div class="car3" id="carbox"></div>
+							<div class="" id="cartext">
+								<p class="listTitle">K5 · 쏘나타 · SM6</p>
+								<p class="listLabel">중형</p>
+								<p class="listLink">예약하기</p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="carList?cclass=고급">
+							<div class="car4" id="carbox"></div>
+							<div class="" id="cartext">
+								<p class="listTitle">K7 · 그랜져 · 제네시스</p>
+								<p class="listLabel">고급</p>
+								<p class="listLink">예약하기</p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="carList?cclass=RV">
+							<div class="car5" id="carbox"></div>
+							<div class="" id="cartext">
+								<p class="listTitle">니로 · 싼타페 · 펠리세이드</p>
+								<p class="listLabel">RV</p>
+								<p class="listLink">예약하기</p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="carList?cclass=승합">
+							<div class="car6" id="carbox"></div>
+							<div class="" id="cartext">
+								<p class="listTitle">카니발 · 그랜드스타렉스</p>
+								<p class="listLabel">승합</p>
+>>>>>>> refs/heads/rlagus
 								<p class="listLink">예약하기</p>
 							</div>
 						</a>

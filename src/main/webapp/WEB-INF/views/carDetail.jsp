@@ -20,16 +20,32 @@
 	
 	function updateConfirmation() {
 	
+		if (document.carupdate.cbrend.value == 0) {
+			alert("차량브랜드를 선택해주세요");
+			return false;
+		}
+		if (document.carupdate.cclass.value == 0) {
+			alert("차량등급을 선택해주세요");
+			return false;
+		}
 		if (document.carupdate.updatecname.value.length == 0){
 			alert("차량명칭을 입력해주세요");
 			return false;
-		}		 
+		}
 		if (document.carupdate.updateccolor.value.length == 0){
 			alert("차량색상을 입력해주세요");
 			return false;
 		}
-		if (document.carupdate.updateccolor.value.length == 0){
+		if (document.carupdate.coil.value == 0) {
+			alert("차량유종을 선택해주세요");
+			return false;
+		}
+		if (document.carupdate.pricename.value.length == 0){
 			alert("대여료를 입력해주세요");
+			return false;
+		}
+	  	if (document.carupdate.imageUrlInput.value.length == 0) {
+			alert("차량이미지를 등록해주세요");
 			return false;
 		}
 		 
@@ -44,8 +60,19 @@
 	function validateNumericInput(input) {
 		
 	    input.value = input.value.replace(/[^0-9]/g, "");
-	}	
-
+	}
+</script>
+<script>
+  function displayImage() {
+	  
+  	if (document.carupdate.imageUrlInput.value.length == 0) {
+		alert("이미지 URL를 입력해주세요");
+		return false;
+	}
+    var imageUrl = document.getElementById("imageUrlInput").value;
+    var imagePreview = document.getElementById("previewImage");
+    imagePreview.src = imageUrl;
+  }
 </script>
 <body>
 <%@ include file="include/adminheader.jsp" %>
@@ -106,11 +133,10 @@
 			<form action="carListUpdate" name="carupdate" id="myForm" method="post">
 				<section class="vehicleSection l-ct" style="margin-bottom: 80px;">
 					<div class="vehicleTable">
-						<div class="vehicleThum vehicleCell">							
-							<img class="carimg" id="previewImage" src="${cdto.cimg}" alt="Preview Image">
-							<input class="inputtext" type="file" id="imageInput" accept="image/*" style="display: none;">
-							<label class="inputlabel" for="imageInput" id="imageInputLabel">이미지 변경</label>														
-							<input type="text" id="imageURL" readonly name="updatecimg" value="${cdto.cimg}" style="border-color: white; border: 0;">							
+						<div class="vehicleThum vehicleCell" id="addcarimg">
+							<img class="carimg" id="previewImage" src="${cdto.cimg}"><br><br>
+							<input class="inputlabel" type="button" onclick="displayImage()" value="이미지 등록">
+							<input class="inputtext" type="text" id="imageUrlInput" name="updatecimg" value="${cdto.cimg}">
 						</div>
 						<div class="vehicleInfo vehicleCell">
 							<ul class="vehicleContent">
