@@ -58,10 +58,18 @@ $(function() {
     
 });
 </script>
+<script>
+function search() {
+	 var form = document.getElementById("searchId");
+	 var searchButton = document.getElementById("searchButton");
+	 
+	 searchButton.click();
+}
+</script>
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
-	<form action="carListSearch" name="search">
+	<form action="carListSearch" name="searchName" id="searchId">
 		<div class="wrapper">		
 			<div class="mainvisual">
 				<section class="searchSection">
@@ -90,6 +98,8 @@ $(function() {
 									</select>
 								</div>		
 									<input type="image" src="/resources/img/search.png">
+									<input type="submit" id="searchButton" style="display: none;">
+									
 							</div>
 						</div>
 					
@@ -120,7 +130,7 @@ $(function() {
 						</a>
 					</li> 
 					<li>
-						<a href="carList?cclass=중형">
+						<a href="#"  onclick="search()">
 							<div class="car3" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">K5 · 쏘나타 · SM6</p>

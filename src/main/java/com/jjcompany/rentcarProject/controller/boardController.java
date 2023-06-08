@@ -248,10 +248,7 @@ public class boardController {
 		
 		return"userBoardView";
 	}
-	@RequestMapping(value = "/test")
-	public String test() {
-		return"/test";
-	}
+
 	
 	
 }

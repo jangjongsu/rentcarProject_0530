@@ -212,14 +212,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           					 returndate NOT BETWEEN #{param1} AND #{param2}
 	</select>
 	<select id="carListClassDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
-		select * 
-    		from (select * from cartbl where cclass = #{param3})A
+		select * from
+			(select * from cartbl 
         		full outer join rReservation
-        			 on A.CINDEX = rreservation.cindex
-         				where rtdate is null or 
-               				 returndate is null or
-               				 rtdate NOT BETWEEN #{param1} AND #{param2} and 
-                 			returndate NOT BETWEEN #{param1} AND #{param2}
+         			on cartbl.CINDEX = rreservation.cindex
+        				 where rtdate is null or 
+        				 	returndate is null and
+          					 rtdate NOT BETWEEN #{param1} AND #{param2} and 
+          					 returndate NOT BETWEEN #{param1} AND #{param2}) where cclass = #{param3}
+               				 
 	</select>
 	<select id="carinfoDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
 		select * from cartbl where cindex = #{param1}

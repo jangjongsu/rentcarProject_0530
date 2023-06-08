@@ -18,10 +18,7 @@ public class RentcarController {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping(value = "/")
-	public String home() {
-		return"index";
-	}
+	
 	@RequestMapping(value = "/index")
 	public String index() {
 		return"index";
