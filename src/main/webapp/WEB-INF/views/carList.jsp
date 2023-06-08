@@ -101,19 +101,19 @@ $(function() {
 			<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				<tr class="headerline">
 					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carTotalList">전체차량</a></td>
+					<td class="headertext"><a href="carListSearch?rtdate=${rtdate } &returndate=${returndate }&searchOption=allcar">전체차량</a></td>
 					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=경차">경차</a></td>
+					<td class="headertext"><a href="carListSearch?rtdate=${rtdate } &returndate=${returndate }&searchOption=경차">경차</a></td>
 					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=준중형">준중형</a></td>
+					<td class="headertext"><a href="carListSearch?rtdate=${rtdate } &returndate=${returndate }&searchOption=준중형">준중형</a></td>
 					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=중형">중형</a></td>
+					<td class="headertext"><a href="carListSearch?rtdate=${rtdate } &returndate=${returndate }&searchOption=중형">중형</a></td>
 					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=고급">고급</a></td>
+					<td class="headertext"><a href="carListSearch?rtdate=${rtdate } &returndate=${returndate }&searchOption=고급">고급</a></td>
 					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=RV">RV</a></td>
+					<td class="headertext"><a href="carListSearch?rtdate=${rtdate } &returndate=${returndate }&searchOption=RV">RV</a></td>
 					<td class="margin02">&nbsp;</td>
-					<td class="headertext"><a href="carList?cclass=승합">승합</a></td>
+					<td class="headertext"><a href="carListSearch?rtdate=${rtdate } &returndate=${returndate }&searchOption=승합">승합</a></td>
 					<td class="margin02">&nbsp;</td>
 				</tr>
 			</table>

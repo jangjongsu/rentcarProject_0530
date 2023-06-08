@@ -24,13 +24,22 @@ public class CarController {
 	
 	@RequestMapping(value = "/carListSearch")
 	public String catTotalList (Model model, HttpServletRequest request) {
-		
+		String searchOption	= "";
 		String rtdate = request.getParameter("rtdate");
 		String returndate = request.getParameter("returndate");
-		String searchOption	 = request.getParameter("searchOption");
+		String param = request.getParameter("param");
+		
+		if(param == null) {
+			param = "";
+		}
+		
+		if(param.equals("")) {
+			searchOption = request.getParameter("searchOption");
+		}else {
+			searchOption = param;
+		}
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
-		
 		
 		if(searchOption.equals("allcar")) {
 			List<CarDto> dtos = dao.carListTotalDao(rtdate, returndate);
@@ -38,6 +47,7 @@ public class CarController {
 		}else {
 			List<CarDto> dtos = dao.carListClassDao(rtdate, returndate, searchOption);
 			model.addAttribute("dtos", dtos);
+			System.out.println("차종"+searchOption);
 		}
 			model.addAttribute("returndate", returndate);
 			model.addAttribute("rtdate", rtdate);

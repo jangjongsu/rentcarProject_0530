@@ -58,14 +58,6 @@ $(function() {
     
 });
 </script>
-<script>
-function search() {
-	 var form = document.getElementById("searchId");
-	 var searchButton = document.getElementById("searchButton");
-	 
-	 searchButton.click();
-}
-</script>
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
@@ -98,7 +90,7 @@ function search() {
 									</select>
 								</div>		
 									<input type="image" src="/resources/img/search.png">
-									<input type="submit" id="searchButton" style="display: none;">
+									<input type="submit" id="submitButton" style="display: none;">
 									
 							</div>
 						</div>
@@ -107,64 +99,65 @@ function search() {
 				</section>
 			</div>
 			<section class="carSection" id="centerimg">
+				<input type="hidden" name="param" id="pInput">
 				<h2 class="carTitle"><span class="point">제주현대렌트카</span> 인기차종</h2>
 				<ul class="carList">
 					<li class="carLabel">
-						<div onclick='search()'>
+						<a href="#"  onclick="lightCarSubmitForm()">
 							<div class="car1" id="carbox"></div>
 							<div class="" id="cartext" >
 								<p class="listTitle">모닝 · 스파크</p>
-								<p class="listLabel">경차</p>
+								<p class="listLabel" id="lightCar">경차</p>
 								<p class="listLink">예약하기</p>
 							</div>
-						</div>
+						</a>
 					</li> 
 					<li>
-						<a href="carList?cclass=준중형">
+						<a href="#"  onclick="subcompactCarSubmitForm()">
 							<div class="car2" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">쏘울 · 엑센트 · 아반떼</p>
-								<p class="listLabel">준중형</p>
+								<p class="listLabel" id="subcompactCar">준중형</p>
 								<p class="listLink">예약하기</p>
 							</div>
 						</a>
 					</li> 
 					<li>
-						<a href="#"  onclick="search()">
+						<a href="#"  onclick="mediumsizedCarSubmitForm()">
 							<div class="car3" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">K5 · 쏘나타 · SM6</p>
-								<p class="listLabel">중형</p>
+								<p class="listLabel" id="mediumsizedCar">중형</p>
 								<p class="listLink">예약하기</p>
 							</div>
 						</a>
 					</li>
 					<li>
-						<a href="carList?cclass=고급">
+						<a href="#"  onclick="luxuryCarSubmitForm()">
 							<div class="car4" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">K7 · 그랜져 · 제네시스</p>
-								<p class="listLabel">고급</p>
+								<p class="listLabel" id="luxuryCar">고급</p>
 								<p class="listLink">예약하기</p>
 							</div>
 						</a>
 					</li>
 					<li>
-						<a href="carList?cclass=RV">
+						<a href="#"  onclick="RVCarSubmitForm()">
 							<div class="car5" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">니로 · 싼타페 · 펠리세이드</p>
-								<p class="listLabel">RV</p>
+								<p class="listLabel" id="RVCar">RV</p>
 								<p class="listLink">예약하기</p>
 							</div>
 						</a>
 					</li>
 					<li>
-						<a href="carList?cclass=승합">
+						<a href="#"  onclick="vanCarSubmitForm()">
 							<div class="car6" id="carbox"></div>
 							<div class="" id="cartext">
 								<p class="listTitle">카니발 · 그랜드스타렉스</p>
-								<p class="listLabel">승합</p>
+								<p class="listLabel" id="vanCar">승합</p>
 								<p class="listLink">예약하기</p>
 							</div>
 						</a>
