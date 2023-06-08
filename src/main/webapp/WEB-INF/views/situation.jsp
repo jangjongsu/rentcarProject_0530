@@ -26,8 +26,8 @@
 		<table class="carlist">
 			<tr class="carlistheadline">
 				<th width="9%">예약번호</th>
+				<th width="13%">차량번호</th>
 				<th width="13%">차량명칭</th>
-				<th width="13%">예약일</th>
 				<th width="13%">대여일</th>
 				<th width="13%">반납일</th>
 				<th width="13%">대여기간</th>

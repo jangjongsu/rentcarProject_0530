@@ -135,4 +135,19 @@ public class InformationController {
 
 		return "redirect:carList_form";
 	}
+	
+	@RequestMapping(value = "/carListSearch")
+	public String carListSearch(HttpServletRequest request, Model model) {
+		
+		String rtdate = request.getParameter("rtdate");
+		String returndate = request.getParameter("returndate");
+		String param = request.getParameter("param");
+		
+		model.addAttribute("dto1", rtdate);
+		model.addAttribute("dto2", returndate);
+		model.addAttribute("dto3", param);
+		
+		return "test";
+	}
+	
 }
