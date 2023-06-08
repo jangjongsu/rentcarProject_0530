@@ -50,7 +50,7 @@
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">보험안내</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">예약확인</a></td>
+			<td class ="headertext"><a href="carReservationCheck">예약확인</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="freeBoardList">자유게시판</a></td>
 			<td class="margin02">&nbsp;</td>

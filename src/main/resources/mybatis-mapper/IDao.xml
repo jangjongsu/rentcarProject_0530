@@ -200,7 +200,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from rfUserreply where rfrnum = #{param1}
 	</select>
 	
-<!--예약관련 SQL -->	
+<!--예약관련 SQL -->
+		
 	<select id="carListTotalDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
 		select * 
    			 from cartbl 
@@ -230,5 +231,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    			rreservation (rtnum, rid, cindex, rtdate, returndate, rpdate, rtprice) 
     				values (RTNUM_SEQ.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6})
 	</insert>
+	<resultMap type="com.jjcompany.rentcarProject.dto.CarDto" id="carDto">
+		<result property="cindex" column="cindex"/>
+		<result property="cbrend" column="cbrend"/>
+		<result property="cclass" column="cclass"/>
+		<result property="cname" column="cname"/>
+		<result property="ccolor" column="ccolor"/>
+		<result property="coil" column="coil"/>
+		<result property="ctype" column="ctype"/>
+		<result property="price" column="price"/>
+		<result property="cimg" column="cimg"/>
+		<result property="cnote" column="cnote"/>
+	</resultMap>
+	<resultMap type="com.jjcompany.rentcarProject.dto.ReservationDto" id="reservationDto">
+		<result property="rtnum" column="rtnum"/>
+		<result property="rid" column="rid"/>
+		<result property="cindex" column="cindex"/>
+		<result property="rvdate" column="rvdate"/>
+		<result property="rtdate" column="rtdate"/>
+		<result property="retrurndate" column="retrurndate"/>
+		<result property="rpdate" column="rpdate"/>
+		<result property="rtprice" column="rtprice"/>
+		<collection property="carDto" resultMap="carDto"></collection>
+	</resultMap>
+	<select id="carRentViewDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto" resultMap="reservationDto">
+		select * 
+			from rReservation 
+				inner join CARTBL
+					on rReservation.CINDEX = CARTBL.cindex
+						where rid = #{param1}
+	</select>
  
 </mapper>

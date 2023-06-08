@@ -6,6 +6,7 @@ import com.jjcompany.rentcarProject.dto.CarDto;
 import com.jjcompany.rentcarProject.dto.FreeBoardDto;
 import com.jjcompany.rentcarProject.dto.FreereplyDto;
 import com.jjcompany.rentcarProject.dto.MemberDto;
+import com.jjcompany.rentcarProject.dto.ReservationDto;
 import com.jjcompany.rentcarProject.dto.UserBoardDto;
 import com.jjcompany.rentcarProject.dto.UserreplyDto;
 
@@ -77,5 +78,6 @@ public interface IDao {
 	public List<CarDto> carListClassDao(String rdate, String returndate, String cclass);
 	public CarDto carinfoDao(String cindex);
 	public int carRentDao(String rid, String cindex, String rtdate, String returndate, String rpdate, int rtPrice);
+	public List<ReservationDto> carRentViewDao(String rid);
 	
 }

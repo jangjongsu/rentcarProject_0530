@@ -16,7 +16,9 @@ public class ReservationDto {
 	private String rtdate;
 	private String retrurndate;
 	private String rpdate;
-	private int rtprice;
+	private long rtprice;
+	
+	private CarDto carDto;
 	
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jjcompany.rentcarProject.dao.IDao;
 import com.jjcompany.rentcarProject.dto.CarDto;
+import com.jjcompany.rentcarProject.dto.ReservationDto;
 
 @Controller
 public class CarController {
@@ -90,10 +92,22 @@ public class CarController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		dao.carRentDao(rid, cindex, rtdate, returndate, rpdate,  totalPrice);
+		dao.carRentDao(rid, cindex, rtdate, returndate, rpdate, totalPrice);
 		
 		
-		return"/";
+		return"carReservationCheck";
+	}
+	@RequestMapping(value = "/carReservationCheck")
+	public String carReservationCheck(HttpSession session, Model model) {
+		String rid = (String)session.getAttribute("sessionId");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		List<ReservationDto> dtos =  dao.carRentViewDao(rid);
+		
+		model.addAttribute("dtos", dtos);
+		
+		return "carReservationCheck";
 	}
 
 }

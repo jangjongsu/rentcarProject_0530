@@ -33,56 +33,56 @@
 	</div>
 	<div class="l-ct">
 		<div id="app">
-			<h1 class="goodsSectionTitle l-ct">차량정보</h1>
+			<h1 class="goodsSectionTitle l-ct">${sessionId}님의 예약 정보입니다.</h1>
+			<c:forEach items="${dtos }" var="dtos">
 			<section class="vehicleSection l-ct">
 				<div class="vehicleTable">
 					<div class="vehicleThum vehicleCell">
-						<img class="carimg" src="${dto.cimg}">
+						<img class="carimg" src="${dtos.carDto.cimg}">
 					</div>
 					<div class="vehicleInfo vehicleCell">
 						<ul class="vehicleContent">
 							<li>
 								<span class="vehicleSubject">고유번호</span>
-								<span class="vehicleSubjectContent">${dto.cindex}</span>
+								<span class="vehicleSubjectContent">${dtos.cindex}</span>
 							</li>
 							<li>
 								<span class="vehicleSubject">브랜드</span>
-								<span class="vehicleSubjectContent">${dto.cbrend}</span>
+								<span class="vehicleSubjectContent">${dtos.carDto.cbrend}</span>
 							</li>
 							<li>
 								<span class="vehicleSubject">차량명칭</span>
-								<span class="vehicleSubjectContent">${dto.cname}</span>
+								<span class="vehicleSubjectContent">${dtos.carDto.cname}</span>
 							</li>
 							<li>
 								<span class="vehicleSubject">대여기간</span>
-								<span class="vehicleSubjectContent" style="color:red">${rtdate} ~ ${returndate} </span>
+								<span class="vehicleSubjectContent" style="color:red">${dtos.rpdate}</span>
 							</li>
 							<li>
-								<span class="vehicleSubject">대여료/일</span>
-								<span class="vehicleSubjectContent" style="color:red">${dto.price}</span>
+								<span class="vehicleSubject">총대여료</span>
+								<span class="vehicleSubjectContent" style="color:red">${dtos.rtprice}</span>
 							</li>
 							<li>
 								<span class="vehicleSubject">차량 정보</span>
-								<span class="vehicleSubjectContent">${dto.cclass}&nbsp;&nbsp;|&nbsp;&nbsp;${dto.coil}
-									&nbsp;&nbsp;|&nbsp;&nbsp;${dto.ctype}&nbsp;&nbsp;|&nbsp;&nbsp;${dto.ccolor}</span>
+								<span class="vehicleSubjectContent">${dtos.carDto.cclass}&nbsp;&nbsp;|&nbsp;&nbsp;${dtos.carDto.coil}
+									&nbsp;&nbsp;|&nbsp;&nbsp;${dtos.carDto.ctype}&nbsp;&nbsp;|&nbsp;&nbsp;${dtos.carDto.ccolor}</span>
 							</li>
 							<li>
 								<span class="vehicleSubject">비고</span>
-								<span class="vehicleSubjectContent">${dto.cnote}<br>
+								<span class="vehicleSubjectContent">${dtos.carDto.cnote}<br>
 								<p style="color: red; font-weight: 600; font-size: 16px;">만26세이상 운전경력 1년</p></span>
 							</li>
 							<li>
 								<span class="vehicleSubject"></span>
 								<span class="vehicleSubjectContent">💥 차량색상은 이미지와 다를 수 있습니다</span>
 							</li>
-							<li>
-								<input type="submit" value="예약하기">
-							</li>
 						</ul>
 					</div>
 				</div>
-				</form>
 			</section>
+			<br>
+			<br>
+			</c:forEach>
 		</div>
 	</div>
 <%@ include file="include/footer.jsp" %>
