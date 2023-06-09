@@ -16,6 +16,7 @@
 					<center>
 						<table border="0" cellspacing="0" cellpadding="10">
 							<form action="loginOk" method="post">
+								<input type="hidden" name="url" value="${prevPage}">
 								<tr>
 									<td class="contenttext">아 이 디 :</td>
 									<td><input class="inputbox01" type="text" name="rid"></td>

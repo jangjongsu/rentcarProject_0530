@@ -58,13 +58,17 @@ public class RentcarController {
 		return"joinOk";
 	}
 	@RequestMapping(value = "/login")
-	public String login() {
-		return"login";
+	public String login(HttpServletRequest request, Model model) {
+		String uri = request.getHeader("Referer");
+	    model.addAttribute("prevPage", uri);
+		
+		return"/login";
 	}
 	@RequestMapping(value = "/loginOk")
 	public String loginOk(HttpServletRequest request, HttpSession session, Model model) {
 		String rid = request.getParameter("rid");
 		String rpw = request.getParameter("rpw");
+		String url = request.getParameter("url");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
@@ -76,7 +80,9 @@ public class RentcarController {
 		}else {
 			model.addAttribute("loginCheck", loginCheck);
 		}
-		return"/index";
+		String[] surl = url.split("/");
+		
+		return "redirect:"+surl[3];
 	}
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
