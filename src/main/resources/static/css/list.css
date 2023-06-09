@@ -81,21 +81,6 @@ td.col5 {
     text-align:center;
 }
 
-td a:link {
-    text-decoration:none;
-    color:#444444;
-}
-
-td a:visited {
-    text-decoration:none;
-    color:#444444;
-}
-
-td a:hover {
-    text-decoration:underline;
-    color:#444444;
-}
-
 #buttons .col1 {
     float:left;
     margin-left:300px;

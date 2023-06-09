@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>문의하기</title>
-<link rel="stylesheet" href="/resources/css/content.css">
 <link rel="stylesheet" href="/resources/css/list.css">
 </head>
 <body>

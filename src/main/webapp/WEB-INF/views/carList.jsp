@@ -124,7 +124,7 @@ $(function() {
 								<div class="" id="cartext">
 									<p class="listTitle">&nbsp;&nbsp;&nbsp;${dtos.cname }</p>
 									<p class="listContent"> ${dtos.cclass } | ${dtos.ccolor } |  ${dtos.coil } </p>
-									<p class="listPrice">${dtos.price }원&nbsp;&nbsp;&nbsp;</p>
+									<p class="listPrice"><fmt:formatNumber value="${dtos.price}" pattern="#,###"/>원&nbsp;&nbsp;&nbsp;</p>
 									<p class="listLink">예약하기</p>
 								</div>
 							</a>

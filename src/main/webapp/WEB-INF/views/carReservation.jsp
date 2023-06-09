@@ -109,7 +109,7 @@ $(function() {
 							</li>
 							<li>
 								<span class="vehicleSubject">대여료/일</span>
-								<span class="vehicleSubjectContent" style="color:red">${dto.price}</span>
+								<span class="vehicleSubjectContent" style="color:red"><fmt:formatNumber value="${dto.price}" pattern="#,###"/>원</span>
 							</li>
 							<li>
 								<span class="vehicleSubject">차량 정보</span>

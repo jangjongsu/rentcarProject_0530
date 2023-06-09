@@ -28,12 +28,11 @@
 			}
 			%>
 <%@ include file="include/header.jsp" %>
-	<div class="topimg">
-		<img src="/resources/img/adminpage1.jpg">
-	</div>
+	
 	<div class="l-ct">
 		<div id="app">
-			<h1 class="goodsSectionTitle l-ct">${sessionId}님의 예약 정보입니다.</h1>
+			<h1 class="goodsSectionTitle l-ct" style="text-align: left;">${sessionId} &nbsp;님의 예약 정보입니다.</h1>
+			<br>
 			<c:forEach items="${dtos }" var="dtos">
 			<section class="vehicleSection l-ct">
 				<div class="vehicleTable">
@@ -60,7 +59,7 @@
 							</li>
 							<li>
 								<span class="vehicleSubject">총대여료</span>
-								<span class="vehicleSubjectContent" style="color:red">${dtos.rtprice}</span>
+								<span class="vehicleSubjectContent" style="color:red"><fmt:formatNumber value="${dtos.rtprice}" pattern="#,###,###"/>원</span>
 							</li>
 							<li>
 								<span class="vehicleSubject">차량 정보</span>
