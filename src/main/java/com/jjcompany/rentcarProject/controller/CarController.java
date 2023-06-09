@@ -31,6 +31,7 @@ public class CarController {
 		String returndate = request.getParameter("returndate");
 		String param = request.getParameter("param");
 		
+		
 		if(param == null) {
 			param = "";
 		}
@@ -53,6 +54,7 @@ public class CarController {
 		}
 			model.addAttribute("returndate", returndate);
 			model.addAttribute("rtdate", rtdate);
+			model.addAttribute("searchOption", searchOption);
 			
 		
 		return"carList";

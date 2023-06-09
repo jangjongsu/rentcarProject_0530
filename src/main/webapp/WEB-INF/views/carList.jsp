@@ -37,10 +37,7 @@ $(function() {
     $("#datepicker").datepicker();                    
     $("#datepicker2").datepicker();
     
-    //From의 초기값을 오늘 날짜로 설정
-    $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-    //To의 초기값을 내일로 설정
-    $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+  
     $('#datepicker').change(function() {
 	    var nextDayDate = $('#datepicker').datepicker('getDate', '+1d');
 	    nextDayDate.setDate(nextDayDate.getDate() + 1);
@@ -70,23 +67,23 @@ $(function() {
 								<label class="DateBind">
 									<div class="searchLabel current">
 										<img src="/resources/img/start.png" class="icon"> <input
-											type="text" id="datepicker" name="rtdate">
+											type="text" id="datepicker" name="rtdate" value="${rtdate }" >
 									</div>
 									<div class="searchLabel searchPartition">
 										<img src="/resources/img/end.png" class="icon"> <input
-											type="text" id="datepicker2" name="returndate">
+											type="text" id="datepicker2" name="returndate" value="${returndate }">
 									</div>
 
 								</label>
 								<div class="searchLabel searchPartition searchCategory">
-									<select name="searchOption">
-										<option value="allcar">전체</option>
-										<option value="경차">경차</option>
-										<option value="준중형">준중형</option>
-										<option value="중형">중형</option>
-										<option value="고급">고급</option>
-										<option value="RV">RV</option>
-										<option value="승합">승합</option>
+									<select name="searchOption" id="searchOption" >
+										<option value="allcar" ${searchOption == 'allcar' ? 'selected="selected"' : '' }>전체</option>
+										<option value="경차" ${searchOption == '경차' ? 'selected="selected"' : '' }>경차</option>
+										<option value="준중형" ${searchOption == '준중형' ? 'selected="selected"' : '' }>준중형</option>
+										<option value="중형" ${searchOption == '중형' ? 'selected="selected"' : '' }>중형</option>
+										<option value="고급" ${searchOption == '고급' ? 'selected="selected"' : '' }>고급</option>
+										<option value="RV" ${searchOption == 'RV' ? 'selected="selected"' : '' }>RV</option>
+										<option value="승합" ${searchOption == '승합' ? 'selected="selected"' : '' }>승합</option>
 									</select>
 								</div>		
 									<input type="image" src="/resources/img/search.png">

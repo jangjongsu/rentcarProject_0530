@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="java.util.Date" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +49,12 @@
 				}
 			
 			%>
+			<jsp:useBean id="javaDate" class="java.util.Date" />
+			<fmt:formatDate var="today" value="${javaDate}" pattern="yyyy-MM-dd"/>
+			<c:set var="oneDayAfter" value="<%=new Date(new Date().getTime() + 60*60*24*1000*1)%>"/>
+			<fmt:formatDate var="tomorrow" value="${oneDayAfter}" pattern="yyyy-MM-dd" />
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">실시간예약</a></td>
+			<td class ="headertext"><a href="carListSearch?rtdate=${today}&returndate=${tomorrow}&searchOption=allcar">실시간예약</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="information_form">이용안내</a></td>
 			<td class="margin02">&nbsp;</td>

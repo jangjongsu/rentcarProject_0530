@@ -14,7 +14,7 @@ public class ReservationDto {
 	private int cindex;
 	private String rvdate;
 	private String rtdate;
-	private String retrurndate;
+	private String returndate;
 	private String rpdate;
 	private long rtprice;
 	
