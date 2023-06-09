@@ -100,5 +100,7 @@ public interface IDao {
 	
 	//차량예약관리(관리자)
 	public Vector<ReservationDto> AdminReservationListDao();
-
+	public int AdminReservationCountDao();
+	public Vector<ReservationDto> AdminReservationIndexDao(int rtnum, int cindex);
+	public Vector<ReservationDto> AdminIndexCarListDao(int cindex);
 }

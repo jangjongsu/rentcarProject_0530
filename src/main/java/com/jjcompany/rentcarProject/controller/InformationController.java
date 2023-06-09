@@ -37,6 +37,7 @@ public class InformationController {
 		Vector<CarListDto> dtos = dao.AllCarListDao();
 		model.addAttribute("count", count);
 		model.addAttribute("carListDto", dtos);
+		model.addAttribute("type","전체");
 		
 		return "carList2";
 	}
@@ -51,6 +52,16 @@ public class InformationController {
 			Vector<CarListDto> dtos = dao.CarBrendListDao(type);
 			model.addAttribute("count", count);
 			model.addAttribute("carListDto", dtos);
+			model.addAttribute("type",type);
+			
+			return "carList2";
+		} else if(type.equals("준중형")){
+			IDao dao = sqlSession.getMapper(IDao.class);
+			int count = dao.countCarTypeListDao(type);
+			Vector<CarListDto> dtos = dao.CarListDao(type);
+			model.addAttribute("count", count);
+			model.addAttribute("carListDto", dtos);
+			model.addAttribute("type","소형/준중형");
 			
 			return "carList2";
 		} else {
@@ -59,9 +70,10 @@ public class InformationController {
 			Vector<CarListDto> dtos = dao.CarListDao(type);
 			model.addAttribute("count", count);
 			model.addAttribute("carListDto", dtos);
+			model.addAttribute("type",type);
 			
 			return "carList2";
-		}		
+		}
 	}
 	
 	@RequestMapping(value = "/carDetail_form")
