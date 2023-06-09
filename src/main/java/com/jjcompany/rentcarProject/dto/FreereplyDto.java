@@ -13,6 +13,6 @@ public class FreereplyDto {
 	private int rfbnum;
 	private String rid;
 	private String rfrcontent;
-	private String rfrdate;
+	private String rfrbdate;
 	
 }

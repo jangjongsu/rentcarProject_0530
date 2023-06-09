@@ -39,16 +39,16 @@
 						
 						
 						<!-- 댓글 -->
+						<hr>
 					<c:if test="${sessionId==dto.rid || sessionId=='admin'}">
-						<table border="1" cellpadding="0" cellspacing="0" width="750">
+						<table border="0" cellpadding="0" cellspacing="0" width="100%">
 							<c:forEach items="${replyListDto}" var="replyDto">
-								<tr>
-									<td align="center">${replyDto.rid }</td>
-									<td width="70%">${replyDto.rfrcontent }<br>
-									<br>${replyDto.rfrdate}</td>
-							
-									<td align="center"><input type="button" value="수정" onclick="script:window.location.href='freeReplyModify?rfrnum=${replyDto.rfrnum }'">
-									<td align="center"><input type="button" value="삭제 " onclick="script:window.location.href='freeReplyDelete?rfrnum=${replyDto.rfrnum }&rfbnum=${replyDto.rfbnum }'">
+								<tr height="60px">
+									<td width="10%" align="center">${replyDto.rid }</td>
+									<td width="60%">${replyDto.rfrcontent }</td>
+									<td width="10%">${replyDto.rfrbdate}</td>
+									<td width="5%"align="center"><input type="button" value="수정" onclick="script:window.location.href='freeReplyModify?rfrnum=${replyDto.rfrnum }'">
+									<input type="button" value="삭제 " onclick="script:window.location.href='freeReplyDelete?rfrnum=${replyDto.rfrnum }&rfbnum=${replyDto.rfbnum }'">
 									</td>
 								</tr>
 							</c:forEach>

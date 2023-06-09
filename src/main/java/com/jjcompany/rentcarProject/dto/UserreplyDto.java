@@ -13,6 +13,6 @@ public class UserreplyDto {
 	private int rbnum;
 	private String rid;
 	private String rrcontent;
-	private String rrdate;
+	private String rrbdate;
 	
 }

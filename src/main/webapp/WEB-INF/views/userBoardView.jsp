@@ -37,18 +37,17 @@
 						</div>
 						<p id="view_content">${dto.rbcontent }</p>
 						
-						
 						<!-- 댓글 -->
+						<hr>
 					<c:if test="${sessionId=='admin'}">
-						<table border="1" cellpadding="0" cellspacing="0" width="750">
+						<table border="0" cellpadding="0" cellspacing="0" width="100%">
 							<c:forEach items="${replyListDto}" var="replyDto">
-								<tr>
-									<td align="center">${replyDto.rid }</td>
-									<td width="70%">${replyDto.rrcontent }<br>
-									<br>${replyDto.rrdate}</td>
-							
-									<td align="center"><input type="button" value="수정" onclick="script:window.location.href='userReplyModify?rrnum=${replyDto.rrnum }'">
-									<td align="center"><input type="button" value="삭제 " onclick="script:window.location.href='replyDelete?rrnum=${replyDto.rrnum }&rbnum=${replyDto.rbnum }'">
+								<tr height="60px">
+									<td width="10%" align="center">${replyDto.rid }</td>
+									<td width="60%" >${replyDto.rrcontent }</td>
+									<td width="10%"> ${replyDto.rrbdate}</td>
+									<td width="5%" align="center"><input type="button" value="수정" onclick="script:window.location.href='userReplyModify?rrnum=${replyDto.rrnum }'">
+									<input type="button" value="삭제 " onclick="script:window.location.href='replyDelete?rrnum=${replyDto.rrnum }&rbnum=${replyDto.rbnum }'">
 									</td>
 								</tr>
 							</c:forEach>
@@ -57,7 +56,7 @@
 							<input type="hidden" name="rbnum" value="${dto.rbnum }">
 							<div id="comment_box">
 								<img id="title_comment" src="/resources/img/title_comment.gif">
-								<textarea name="rrcontent"></textarea>
+								<textarea name="rrcontent" ></textarea>
 								<input type="image" id="ok_ripple" src="/resources/img/ok_ripple.gif">
 							</div>
 						</form>
