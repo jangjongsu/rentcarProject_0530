@@ -21,9 +21,9 @@
 		</tr>
 	</table>
 	<hr>
-	<p class ="ptext1"> &nbsp;&nbsp;&nbsp;&nbsp;<span class="spantext1">제주현대렌트카</span> &nbsp;&nbsp;&nbsp; 주소&nbsp;&nbsp; <span class="spantext2">제주특별자치도 제주시 어영길 30 (용담삼동)</span> 대표자&nbsp;&nbsp;<span class="spantext2">오봉헌</span> 고객센터&nbsp;&nbsp;<span class="spantext2">064-742-0087</span> 사업자등록번호&nbsp;&nbsp;<span class="spantext2">616-81-56860</span></p>
+	<p class ="ptext1"> &nbsp;&nbsp;&nbsp;&nbsp;<span class="spantext1">제이에스렌트카</span> &nbsp;&nbsp;&nbsp; 주소&nbsp;&nbsp; <span class="spantext2">인천광역시 미추홀구 주안로 108 (주안동,경향프라자)13층 1302호</span> 대표자&nbsp;&nbsp;<span class="spantext2">장종수 / 김 현</span> 고객센터&nbsp;&nbsp;<span class="spantext2">032-256-1000</span> 사업자등록번호&nbsp;&nbsp;<span class="spantext2">616-81-56860</span></p>
 	<hr>
-	<p class ="ptext2"> &nbsp;&nbsp;&nbsp;&nbsp;2023 COPYRIGHTS 제주현대렌트카 ALL RIGHTS RESERVED.</p>
+	<p class ="ptext2"> &nbsp;&nbsp;&nbsp;&nbsp;2023 COPYRIGHTS 제이에스렌트카 ALL RIGHTS RESERVED.</p>
 	</div>
 </body>
 </html>

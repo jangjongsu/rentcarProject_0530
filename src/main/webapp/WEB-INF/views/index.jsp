@@ -102,7 +102,7 @@ $(function() {
 			</div>
 			<section class="carSection" id="centerimg">
 				<input type="hidden" name="param" id="pInput">
-				<h2 class="carTitle"><span class="point">제주현대렌트카</span> 인기차종</h2>
+				<h2 class="carTitle"><span class="point">제이에스렌트카</span> 인기차종</h2>
 				<ul class="carList">
 					<li class="carLabel">
 						<a href="#"  onclick="lightCarSubmitForm()">
