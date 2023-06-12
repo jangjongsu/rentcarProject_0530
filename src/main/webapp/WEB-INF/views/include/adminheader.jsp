@@ -34,9 +34,9 @@
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="/situation_form">예약관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">공지관리</a></td>
+			<td class ="headertext"><a href="freeBoardList">공지관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="#">문의답변</a></td>
+			<td class ="headertext"><a href="userBoardList">문의답변</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td >&nbsp;</td>
 		</tr>

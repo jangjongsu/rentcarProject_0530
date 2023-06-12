@@ -37,6 +37,9 @@ $(function() {
     $("#datepicker").datepicker();                    
     $("#datepicker2").datepicker();
     
+    var fDate =  $('#datepicker').datepicker('getDate');
+    $('#datepicker2').datepicker( "option", "minDate", fDate );
+    
   
     $('#datepicker').change(function() {
 	    var nextDayDate = $('#datepicker').datepicker('getDate', '+1d');

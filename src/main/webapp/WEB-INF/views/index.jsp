@@ -42,6 +42,8 @@ $(function() {
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     //To의 초기값을 내일로 설정
     $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+    var fDate =  $('#datepicker').datepicker('getDate');
+    $('#datepicker2').datepicker( "option", "minDate", fDate );
     $('#datepicker').change(function() {
 	    var nextDayDate = $('#datepicker').datepicker('getDate', '+1d');
 	    nextDayDate.setDate(nextDayDate.getDate() + 1);
@@ -55,8 +57,6 @@ $(function() {
     	$('#datepicker2').datepicker( "option", "minDate", selectedDate );
     	
     });
-    
-    
     
 });
 </script>
@@ -102,7 +102,7 @@ $(function() {
 			</div>
 			<section class="carSection" id="centerimg">
 				<input type="hidden" name="param" id="pInput">
-				<h2 class="carTitle"><span class="point">제이케이렌트카</span> 인기차종</h2>
+				<h2 class="carTitle"><span class="point">제주현대렌트카</span> 인기차종</h2>
 				<ul class="carList">
 					<li class="carLabel">
 						<a href="#"  onclick="lightCarSubmitForm()">
