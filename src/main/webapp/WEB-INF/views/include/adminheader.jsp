@@ -32,7 +32,7 @@
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="/carList2_form">차량관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="/situation_form">예약현황</a></td>
+			<td class ="headertext"><a href="/situation_form">예약관리</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="#">공지관리</a></td>
 			<td class="margin02">&nbsp;</td>

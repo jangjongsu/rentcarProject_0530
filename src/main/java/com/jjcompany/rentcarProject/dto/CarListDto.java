@@ -16,8 +16,8 @@ public class CarListDto {
 	private String ccolor;
 	private String coil;
 	private String ctype;
-	private int pindex;	
 	private int price;
 	private String cimg;
-	private String cnote;	
+	private String cnote;
+	private String pdate;
 }
