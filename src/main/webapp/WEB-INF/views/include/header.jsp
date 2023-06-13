@@ -12,9 +12,9 @@
 </head>
 <body>
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
-		<tr class ="headerline">
+		<tr id="headerline">
 			<td >&nbsp;</td>
-			<td class ="img"><a href="index"><img src="/resources/img/car.png" width="100"></a></td>
+			<td class ="img"><a href="index"><img src="/resources/img/car.jpg" width="300" height="80"></a></td>
 			<td class="margin02">&nbsp;</td>
 			<%
 			
@@ -40,11 +40,11 @@
 			<%		
 				}else if(sessionId.equals("admin") ){
 			%>
-			<td class ="headertext"><a href="carList_form">관리자페이지</a></td>	
+			<td class ="headertext"><a href="carList2_form">관리페이지</a></td>	
 			<%		
 				} else{
 			%>
-			<td class ="headertext"><a href="modify">회원정보수정</a></td>
+			<td class ="headertext"><a href="modify">프로필수정</a></td>
 			<%		
 				}
 			

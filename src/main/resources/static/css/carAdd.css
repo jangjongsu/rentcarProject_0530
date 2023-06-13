@@ -78,12 +78,6 @@ h1.goodsSectionTitle {
     margin-bottom: 15px;
 }
 
-.l-ct {
-    display: block;
-    width: 1200px;
-    margin: 0 auto;
-}
-
 section.vehicleSection {
     border: 1px solid #dee6ec;
     padding: 20px;
@@ -127,7 +121,7 @@ textarea {
 
 .topimg img {
 	display: block;
-    width: 1200px;
+    width: 100%;
     margin: 0 auto;
     height: 300px;
 }
@@ -152,12 +146,4 @@ label {
 
 .urltext {
 	margin-left: 110px;
-}
-
-.carimg {
-    width: 100%;
-    height: 330px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
 }

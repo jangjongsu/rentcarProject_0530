@@ -2,25 +2,27 @@
  body{
 	margin: 0;
 	padding: 0;
+	width: 100%;
 	background-color: white;
 }
 
  tr.headerline{
- 	height: 100px;
- 	background-color: #4a4a4a;
+ 	height: 80px;
+ 	background: linear-gradient(to right, #ffffff 20%, gray);
  }
  
  td.headertext{
  	font-size: 20px;
  	font-family: Arial;
  	text-align: center;
- 	color: white;
+ 	color: rgb(255, 255, 255);
  	width: 6%;
  	font-weight: bold;
+ 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
  }
  td.margin01{
  	width: 65%;
- 	  
+ 	
  
  }
  td.margin02{
@@ -34,20 +36,15 @@
  	font-family: Arial;
  	color: #867070;
  }
- a:link{
-	text-decoration: none;
-	color: inherit;
-}
-a:visited{
-	text-decoration: none;
-	color: inherit;
-}
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 	
 }
 td.img{
  	align-content: left;
  }
  
+ .topimg img {
+ 	width: 100%
+ }

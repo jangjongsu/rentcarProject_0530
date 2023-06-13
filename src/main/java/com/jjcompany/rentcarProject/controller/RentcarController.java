@@ -58,9 +58,7 @@ public class RentcarController {
 		return"joinOk";
 	}
 	@RequestMapping(value = "/login")
-	public String login(HttpServletRequest request, Model model) {
-		String uri = request.getHeader("Referer");
-	    model.addAttribute("prevPage", uri);
+	public String login() {
 		
 		return"/login";
 	}
@@ -68,28 +66,18 @@ public class RentcarController {
 	public String loginOk(HttpServletRequest request, HttpSession session, Model model) {
 		String rid = request.getParameter("rid");
 		String rpw = request.getParameter("rpw");
-		String url = request.getParameter("url");
-		String[] surl = url.split("/");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		int loginCheck  = dao.loginOkDao(rid, rpw);
-		System.out.println(surl.length);
 		if(loginCheck == 1) {
 			session.setAttribute("sessionId", rid);
 			model.addAttribute("loginCheck", loginCheck);
-			if(surl.length <= 3) {
-				return"index";
-			}else {
-				return "redirect:"+surl[3];
-			}
-			
 		}else {
-			model.addAttribute("loginCheck", loginCheck);
-			return "loginOk";
+			model.addAttribute("message", "가입하지 않은 정보입니다. 다시 입력해주세요.");
+			return "login";
 		}
-		
-		
+		return "index";
 	}
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
@@ -107,7 +95,7 @@ public class RentcarController {
 		
 		model.addAttribute("dto", dto);
 		
-		return"modify";
+		return "modify";
 	}
 	@RequestMapping(value = "/modifyOk")
 	public String modifyOk(HttpServletRequest request, Model model) {
@@ -125,5 +113,32 @@ public class RentcarController {
 		model.addAttribute("modifyCheck", modifyCheck);
 		
 		return"modifyOk";
+	}
+	
+	@RequestMapping(value = "/memberdelete")
+	public String memberdelete(HttpSession session, Model model) {		
+		
+		String sessionId = (String)session.getAttribute("sessionId");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.MemberDeleteDao(sessionId);
+		model.addAttribute("sessionId", sessionId);
+		session.invalidate();
+		
+		return "memberdeleteOk";
+	}
+	
+	@RequestMapping(value = "/delete_form")
+	public String delete_form(HttpServletRequest request, Model model, HttpSession session) {
+		
+		String sessionId = (String)session.getAttribute("sessionId");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+
+		MemberDto dto = dao.showInfoDao(sessionId);
+		
+		model.addAttribute("dto", dto);
+		
+		return "memberdelete";
 	}
 }

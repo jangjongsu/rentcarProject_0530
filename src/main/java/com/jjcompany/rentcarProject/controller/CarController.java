@@ -104,11 +104,22 @@ public class CarController {
 	}
 	@RequestMapping(value = "/carReservationCheck")
 	public String carReservationCheck(HttpSession session, Model model) {
+		
+		if((String)session.getAttribute("sessionId") == null) {
+			return "carReservationCheck";
+		}
+		IDao dao = sqlSession.getMapper(IDao.class);
 		String rid = (String)session.getAttribute("sessionId");
 		
-		IDao dao = sqlSession.getMapper(IDao.class);
+		int found = dao.OneMemberRentDateDao(rid);
+		if(found == 0) {
+			model.addAttribute("found", 0);
+			model.addAttribute("message", "예약한 이력이 없습니다.");
+			return "carReservationCheck";
+		}		
 		
 		List<ReservationDto> dtos =  dao.carRentViewDao(rid);
+		
 		
 		model.addAttribute("dtos", dtos);
 		

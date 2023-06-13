@@ -13,25 +13,29 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
 </head>
 <body>
-			<%
-				String sessionId1 = (String) session.getAttribute("sessionId");
-				if(sessionId1 == null){
-			%>
-			<script type="text/javascript">
-			alert("로그인 이후에 이용해주세요");
-			history.go(-1);
-			</script>
-			<% 
-			}
-			%>
+	<%
+		String sessionId1 = (String) session.getAttribute("sessionId");
+		if(sessionId1 == null){
+	%>
+	<script type="text/javascript">
+	alert("로그인 이후에 이용해주세요");
+	history.go(-1);
+	</script>
+	<% 
+	}
+	%>
+<c:if test="${found == 0}">
+	<script>
+		alert("${message}")
+		history.go(-1);
+	</script>
+</c:if>
 <%@ include file="include/header.jsp" %>
-	
 	<div class="l-ct">
 		<div id="app">
-			<h1 class="goodsSectionTitle l-ct" style="text-align: left;">${sessionId} &nbsp;님의 예약 정보입니다.</h1>
+			<h1 class="goodsSectionTitle l-ct" style="text-align: center;"><span style="color: blue;">${sessionId}</span>&nbsp;고객님의 예약 이력입니다.</h1>
 			<br>
 			<c:forEach items="${dtos }" var="dtos">
 			<section class="vehicleSection l-ct">

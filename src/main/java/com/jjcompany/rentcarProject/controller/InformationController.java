@@ -29,7 +29,7 @@ public class InformationController {
 		return "insurance";
 	}
 	
-	@RequestMapping(value = "/carList_form")
+	@RequestMapping(value = "/carList2_form")
 	public String carList(Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);

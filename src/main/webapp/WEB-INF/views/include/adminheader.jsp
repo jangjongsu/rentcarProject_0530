@@ -12,7 +12,7 @@
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 		<tr class ="headerline">
 			<td >&nbsp;</td>
-			<td class ="img"><a href="index"><img src="/resources/img/car.png" width="100"></a></td>
+			<td class ="img"><a href="index"><img src="/resources/img/car.jpg" width="300" height="80"></a></td>
 			<td class="margin02">&nbsp;</td>
 			<%
 			
@@ -34,9 +34,9 @@
 			<td class="margin02">&nbsp;</td>
 			<td class ="headertext"><a href="/situation_form">예약관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="freeBoardList">공지관리</a></td>
+			<td class ="headertext"><a href="freeBoardList">자유게시판</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="userBoardList">문의답변</a></td>
+			<td class ="headertext"><a href="userBoardList">문의게시판</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td >&nbsp;</td>
 		</tr>

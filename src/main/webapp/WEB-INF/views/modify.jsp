@@ -11,7 +11,7 @@
 <body>
 <%@ include file="include/header.jsp" %>
 	<center>
-		<table border="0" cellspacing="0" cellpadding="10" width="80%">
+		<table border="0" cellspacing="0" cellpadding="10" width="80%" height="750px">
 			<tr>
 				<td class="contentbox">
 					<center>
@@ -43,10 +43,12 @@
 									<td><input class="inputbox01" type="text" name="remail" value="${dto.remail}"></td>
 								</tr>
 								<tr>
-									<td colspan="2" align="center"><input class="contentbtn01"
-										type="button" value="정보수정" onclick="modifyCheck()">&nbsp;
-										<input class="contentbtn01" type="button" value="메인화면으로"
-										onclick="script:window.location.href='index'"></td>
+									<td colspan="2" align="center"><input class="contentbtn02"
+										type="button" value="정보수정" onclick="modifyCheck()">
+										<input class="contentbtn02" type="button" value="취소"
+										onclick="script:window.location.href='index'">
+										<input class="contentbtn03" type="button" value="회원탈퇴"
+										onclick="script:window.location.href='delete_form'"></td>
 								</tr>
 							</form>
 						</table>

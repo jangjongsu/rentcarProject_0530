@@ -92,7 +92,7 @@ $(function() {
 										<option value="승합">승합</option>
 									</select>
 								</div>		
-									<input type="image" src="/resources/img/search.png">
+									<input class="searchimg" type="image" src="/resources/img/search.png">
 									<input type="submit" id="submitButton" style="display: none;">
 							</div>
 						</div>

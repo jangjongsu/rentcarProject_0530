@@ -21,6 +21,7 @@ public interface IDao {
 	public int loginOkDao(String rid, String rpw);
 	public MemberDto showInfoDao(String rid);
 	public int modifyOkDao(String rid, String rpw, String rname, String rmobile, String remail);
+	public void MemberDeleteDao(String rid);
 
 	
 	//문의게시판관리
@@ -82,6 +83,7 @@ public interface IDao {
 	public CarDto carinfoDao(String cindex);
 	public int carRentDao(String rid, String cindex, String rtdate, String returndate, String rpdate, int rtPrice);
 	public List<ReservationDto> carRentViewDao(String rid);
+	public int OneMemberRentDateDao(String rid);
 	
 	//차량관리
 	public int countCarListDao();

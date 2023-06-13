@@ -113,7 +113,7 @@ select {
 	background-color: #ec2a1c;
 	border-radius: 5px;
 	border-color: #ec2a1c;
-	margin-top: 30px;
+	margin-top: 10px;
 	float: right;
 	color: #ffffff;
 	font-size: 14px;
@@ -131,7 +131,7 @@ textarea {
 
 .topimg img {
 	display: block;
-    width: 1200px;
+    width: 100%;
     margin: 0 auto;
     height: 300px;
 }
