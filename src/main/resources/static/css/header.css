@@ -2,22 +2,28 @@
  body{
 	margin: 0;
 	padding: 0;
-	width: 100;
+	width: 100%;
 	background-color: white;
 }
 
  tr.headerline{
- 	height: 100px;
- 	background-color: #4a4a4a;
+ 	height: 80px;
+ 	background: #4a4a4a
+ }
+ 
+ #headerline {
+ 	height: 80px;
+ 	background: linear-gradient(to right, #ffffff 20%, red);
  }
  
  td.headertext{
  	font-size: 20px;
  	font-family: Arial;
  	text-align: center;
- 	color: white;
+ 	color: rgb(255, 255, 255);
  	width: 6%;
  	font-weight: bold;
+ 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
  }
  td.margin01{
  	width: 65%;
@@ -45,7 +51,7 @@ a:visited{
 }
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 	
 }
 td.img{

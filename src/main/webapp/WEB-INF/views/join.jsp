@@ -11,7 +11,7 @@
 <body>
 <%@ include file="include/header.jsp" %>
 	<center>
-		<table border="0" cellspacing="0" cellpadding="10" width="80%">
+		<table border="0" cellspacing="0" cellpadding="10" width="80%" height="750">
 			<tr>
 				<td class="contentbox">
 					<center>

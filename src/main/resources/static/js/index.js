@@ -43,4 +43,8 @@
 	 paramInput.value = paragraphText;
 	 
 	 submitButton.click();
+ } 
+ 
+ function goBack() {
+    history.back();
  }

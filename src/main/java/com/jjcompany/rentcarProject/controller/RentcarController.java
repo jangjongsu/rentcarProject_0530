@@ -68,7 +68,6 @@ public class RentcarController {
 	public String loginOk(HttpServletRequest request, HttpSession session, Model model) {
 		String rid = request.getParameter("rid");
 		String rpw = request.getParameter("rpw");
-		String url = request.getParameter("url");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
@@ -78,11 +77,11 @@ public class RentcarController {
 			session.setAttribute("sessionId", rid);
 			model.addAttribute("loginCheck", loginCheck);
 		}else {
-			model.addAttribute("loginCheck", loginCheck);
+			model.addAttribute("message", "가입하지 않은 정보입니다. 다시 입력해주세요.");
+			return "login";
 		}
-		String[] surl = url.split("/");
 		
-		return "redirect:"+surl[3];
+		return "index";
 	}
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
@@ -100,7 +99,7 @@ public class RentcarController {
 		
 		model.addAttribute("dto", dto);
 		
-		return"modify";
+		return "modify";
 	}
 	@RequestMapping(value = "/modifyOk")
 	public String modifyOk(HttpServletRequest request, Model model) {
@@ -118,5 +117,32 @@ public class RentcarController {
 		model.addAttribute("modifyCheck", modifyCheck);
 		
 		return"modifyOk";
+	}
+	
+	@RequestMapping(value = "/memberdelete")
+	public String memberdelete(HttpSession session, Model model) {		
+		
+		String sessionId = (String)session.getAttribute("sessionId");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.MemberDeleteDao(sessionId);
+		model.addAttribute("sessionId", sessionId);
+		session.invalidate();
+		
+		return "memberdeleteOk";
+	}
+	
+	@RequestMapping(value = "/delete_form")
+	public String delete_form(HttpServletRequest request, Model model, HttpSession session) {
+		
+		String sessionId = (String)session.getAttribute("sessionId");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+
+		MemberDto dto = dao.showInfoDao(sessionId);
+		
+		model.addAttribute("dto", dto);
+		
+		return "memberdelete";
 	}
 }

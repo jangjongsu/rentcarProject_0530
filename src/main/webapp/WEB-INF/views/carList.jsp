@@ -34,7 +34,7 @@ $(function() {
     });
 
     //input을 datepicker로 선언
-    $("#datepicker").datepicker();                    
+    $("#datepicker").datepicker();
     $("#datepicker2").datepicker();
     
     var fDate =  $('#datepicker').datepicker('getDate');
@@ -89,7 +89,7 @@ $(function() {
 										<option value="승합" ${searchOption == '승합' ? 'selected="selected"' : '' }>승합</option>
 									</select>
 								</div>		
-									<input type="image" src="/resources/img/search.png">
+									<input class="searchimg" type="image" src="/resources/img/search.png">
 							</div>
 						</div>
 					</form>

@@ -37,10 +37,12 @@
 					<center>
 					 	<table  border="0" cellspacing="0" cellpadding="10">
 							<tr>
-								<td class="main_text">
+								<td class="main_text" style="text-align: center;">
 									${rname}님 회원가입을 축하드립니다.<br> 가입하신 아이디는 ${rid }
 									입니다.<br> <input class="contentbtn01" type="button"
 									value="로그인 바로가기" onclick="script:window.location.href='login'">
+									<input class="contentbtn01" type="button"
+									value="홈으로 바로가기" onclick="script:window.location.href='index'">
 								</td>
 							</tr>
 						</table>

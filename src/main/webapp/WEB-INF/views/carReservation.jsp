@@ -81,9 +81,9 @@ $(function() {
 	<div class="topimg">
 		<img src="/resources/img/adminpage1.jpg">
 	</div>
-	<div class="l-ct">
+	<div class="l-ct" style="margin-bottom: 80px;">
 		<div id="app">
-			<h1 class="goodsSectionTitle l-ct">차량정보</h1>
+			<h1 class="goodsSectionTitle l-ct">선택하신 차량정보</h1>
 			<section class="vehicleSection l-ct">
 				<div class="vehicleTable">
 					<div class="vehicleThum vehicleCell">
@@ -126,7 +126,8 @@ $(function() {
 								<span class="vehicleSubjectContent">💥 차량색상은 이미지와 다를 수 있습니다</span>
 							</li>
 							<li>
-								<input type="submit" value="예약하기">
+								<input class="buttons" type="button" value="목록" style="margin-left: 5px" onclick="goBack()">
+								<input class="buttons" type="submit" value="예약하기">
 							</li>
 						</ul>
 					</div>

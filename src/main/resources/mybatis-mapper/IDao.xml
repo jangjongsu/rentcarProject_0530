@@ -20,6 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="modifyOkDao">
 		update rMember set rpw = #{param2}, rname = #{param3}, rmobile = #{param4}, remail = #{param5} where rid= #{param1}
 	</update>
+	<delete id="MemberDeleteDao">
+		delete from rMember where rid=#{param1}
+	</delete>	
 	
 <!-- 문의게시판 글 관련 SQL -->
 	<insert id="boardWriteDao">
@@ -260,6 +263,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				inner join CARTBL
 					on rReservation.CINDEX = CARTBL.cindex
 						where rid = #{param1}
+	</select>
+	
+	<select id="OneMemberRentDateDao" resultType="int">
+		select count(rid) from rreservation where rid=#{param1}
 	</select>
 	
 	<!-- 차량관리 -->
