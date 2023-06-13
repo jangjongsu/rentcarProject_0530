@@ -69,20 +69,27 @@ public class RentcarController {
 		String rid = request.getParameter("rid");
 		String rpw = request.getParameter("rpw");
 		String url = request.getParameter("url");
+		String[] surl = url.split("/");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		int loginCheck  = dao.loginOkDao(rid, rpw);
-		
+		System.out.println(surl.length);
 		if(loginCheck == 1) {
 			session.setAttribute("sessionId", rid);
 			model.addAttribute("loginCheck", loginCheck);
+			if(surl.length <= 3) {
+				return"index";
+			}else {
+				return "redirect:"+surl[3];
+			}
+			
 		}else {
 			model.addAttribute("loginCheck", loginCheck);
+			return "loginOk";
 		}
-		String[] surl = url.split("/");
 		
-		return "redirect:"+surl[3];
+		
 	}
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
