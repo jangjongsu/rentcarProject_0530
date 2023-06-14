@@ -82,8 +82,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="userBoardUpHit">
 		update rUserboard set rbhit = rbhit+1 where rbnum = #{param1}
 	</update>
-	
-	
 <!--문의게시판 댓글 관련 SQL -->	
 	<insert id="replyWriteDao">
 		insert into rUserreply (rrnum, rbnum, rid, rrcontent) 
@@ -204,7 +202,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 <!--예약관련 SQL -->
-		
 	<select id="carListTotalDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
 		select * 
    			 from cartbl 
