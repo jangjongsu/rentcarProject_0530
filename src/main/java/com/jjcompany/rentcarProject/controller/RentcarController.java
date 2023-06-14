@@ -29,6 +29,7 @@ public class RentcarController {
 	public String join() {
 		return"join";
 	}
+	
 	@RequestMapping(value = "/joinOk")
 	public String joinOk(HttpServletRequest request, Model model) {
 		String rid = request.getParameter("rid");
@@ -57,11 +58,12 @@ public class RentcarController {
 		}
 		return"joinOk";
 	}
+	
 	@RequestMapping(value = "/login")
-	public String login() {
-		
+	public String login() {		
 		return"/login";
 	}
+	
 	@RequestMapping(value = "/loginOk")
 	public String loginOk(HttpServletRequest request, HttpSession session, Model model) {
 		String rid = request.getParameter("rid");
@@ -78,12 +80,14 @@ public class RentcarController {
 			return "login";
 		}
 		return "index";
-	}
+	}	
+	
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();//세션 삭제
 		return "redirect:login";
 	}
+	
 	@RequestMapping(value = "/modify")
 	public String modify(HttpServletRequest request, Model model, HttpSession session) {
 		
@@ -97,6 +101,7 @@ public class RentcarController {
 		
 		return "modify";
 	}
+	
 	@RequestMapping(value = "/modifyOk")
 	public String modifyOk(HttpServletRequest request, Model model) {
 		
