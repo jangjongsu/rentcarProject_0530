@@ -213,7 +213,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         				 where rtdate is null or 
         				 	returndate is null or
           					 rtdate NOT BETWEEN #{param1} AND #{param2} and 
-          					 returndate NOT BETWEEN #{param1} AND #{param2}
+          					 returndate NOT BETWEEN #{param1} AND #{param2} and
+          					 rtdate > #{param1} and 
+                			 returndate &lt; #{param2}
 	</select>
 	<select id="carListClassDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
 		select * from
@@ -223,7 +225,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         				 where rtdate is null or 
         				 	returndate is null and
           					 rtdate NOT BETWEEN #{param1} AND #{param2} and 
-          					 returndate NOT BETWEEN #{param1} AND #{param2}) where cclass = #{param3}
+          					 returndate NOT BETWEEN #{param1} AND #{param2} and
+          					 rtdate > #{param1} and 
+                			 returndate &lt; #{param2}) where cclass = #{param3} 
                				 
 	</select>
 	<select id="carinfoDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
