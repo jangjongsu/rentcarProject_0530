@@ -39,19 +39,22 @@
 						
 						<!-- 댓글 -->
 						<hr>
-					<c:if test="${sessionId=='admin'}">
+					
 						<table border="0" cellpadding="0" cellspacing="0" width="100%">
 							<c:forEach items="${replyListDto}" var="replyDto">
 								<tr height="60px">
 									<td width="10%" align="center">${replyDto.rid }</td>
 									<td width="60%" >${replyDto.rrcontent }</td>
 									<td width="10%"> ${replyDto.rrbdate}</td>
+									<c:if test="${sessionId=='admin'}">
 									<td width="5%" align="center"><input type="button" value="수정" onclick="script:window.location.href='userReplyModify?rrnum=${replyDto.rrnum }'">
 									<input type="button" value="삭제 " onclick="script:window.location.href='replyDelete?rrnum=${replyDto.rrnum }&rbnum=${replyDto.rbnum }'">
 									</td>
+									</c:if>
 								</tr>
 							</c:forEach>
 						</table>
+						<c:if test="${sessionId=='admin'}">
 						<form action="replyOk">
 							<input type="hidden" name="rbnum" value="${dto.rbnum }">
 							<div id="comment_box">

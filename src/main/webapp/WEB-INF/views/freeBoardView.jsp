@@ -40,19 +40,22 @@
 						
 						<!-- 댓글 -->
 						<hr>
-					<c:if test="${sessionId==dto.rid || sessionId=='admin'}">
+					
 						<table border="0" cellpadding="0" cellspacing="0" width="100%">
 							<c:forEach items="${replyListDto}" var="replyDto">
 								<tr height="60px">
 									<td width="10%" align="center">${replyDto.rid }</td>
 									<td width="60%">${replyDto.rfrcontent }</td>
 									<td width="10%">${replyDto.rfrbdate}</td>
+									<c:if test="${sessionId==replyDto.rid || sessionId=='admin'}">
 									<td width="5%"align="center"><input type="button" value="수정" onclick="script:window.location.href='freeReplyModify?rfrnum=${replyDto.rfrnum }'">
 									<input type="button" value="삭제 " onclick="script:window.location.href='freeReplyDelete?rfrnum=${replyDto.rfrnum }&rfbnum=${replyDto.rfbnum }'">
 									</td>
+									</c:if>
 								</tr>
 							</c:forEach>
 						</table>
+						<c:if test="${sessionId==dto.rid || sessionId=='admin'}">
 						<form action="freeReplyOk">
 							<input type="hidden" name="rfbnum" value="${dto.rfbnum }">
 							<div id="comment_box">
