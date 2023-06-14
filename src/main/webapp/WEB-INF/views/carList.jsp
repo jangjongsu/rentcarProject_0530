@@ -96,7 +96,6 @@ $(function() {
 					</center>
 				</section>
 			</div>
-			
 			<section class="carSection" id="centerimg">
 			<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				<tr class="headerline">
@@ -117,6 +116,7 @@ $(function() {
 					<td class="margin02">&nbsp;</td>
 				</tr>
 			</table>
+			<p style="color:red; font-weight: bold;">아래의 리스트는 ${rtdate } ~ ${returndate } 날짜의 검색결과 입니다. 날짜변경시에는 검색버튼을 한번 더 눌러주세요!!</p>
 			<ul class="carList">
 					<c:forEach items="${dtos }" var="dtos">
 						<li class="carLabel">
