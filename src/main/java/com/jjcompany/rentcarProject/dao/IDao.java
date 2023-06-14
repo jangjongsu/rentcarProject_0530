@@ -87,11 +87,12 @@ public interface IDao {
 	
 	//차량관리
 	public int countCarListDao();
-	public Vector<CarListDto> AllCarListDao();
+	public Vector<CarListDto> AllCarListDao(int amount, int pageNum);
+	public int totalcountJSDao();
 	public int countCarTypeListDao(String cclass);
-	public Vector<CarListDto> CarListDao(String cclass);
+	public Vector<CarListDto> CarListDao(int amount, int pageNum, String cclass);
 	public int countCarBrendListDao(String cbrend);
-	public Vector<CarListDto> CarBrendListDao(String cbrend);
+	public Vector<CarListDto> CarBrendListDao(int amount, int pageNum, String cbrend);
 	public Vector<CarListDto> BrendListDao();
 	public CarListDto IndexCarDao(int cindex);
 	public void CarListUpdateDao(int cindex, String cbrend, String cclass ,String cname,
@@ -105,4 +106,5 @@ public interface IDao {
 	public int AdminReservationCountDao();
 	public Vector<ReservationDto> AdminReservationIndexDao(int rtnum, int cindex);
 	public Vector<ReservationDto> AdminIndexCarListDao(int cindex);
+	public int CountIndexReservationDao(int cindex);
 }

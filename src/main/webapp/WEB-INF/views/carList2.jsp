@@ -19,15 +19,15 @@
 	<div class="container">
 		<div class="listMenuTabs">
 			<input class="listtype" type="button" value="전체" onclick="script:window.location.href='carList2_form'">
-			<input class="listtype" type="button" value="경차" onclick="script:window.location.href='carList_type?cclass=경차'">
-			<input class="listtype" type="button" value="소형/준중형" onclick="script:window.location.href='carList_type?cclass=준중형'">
-			<input class="listtype" type="button" value="고급" onclick="script:window.location.href='carList_type?cclass=고급'">
-			<input class="listtype" type="button" value="RV" onclick="script:window.location.href='carList_type?cclass=RV'">
-			<input class="listtype" type="button" value="승합" onclick="script:window.location.href='carList_type?cclass=승합'">
-			<input class="listtype" type="button" value="수입차" onclick="script:window.location.href='carList_type?cclass=수입'">
+			<input class="listtype" type="button" value="경차" onclick="script:window.location.href='carList2_form?cclass=경차'">
+			<input class="listtype" type="button" value="소형/준중형" onclick="script:window.location.href='carList2_form?cclass=준중형'">
+			<input class="listtype" type="button" value="고급" onclick="script:window.location.href='carList2_form?cclass=고급'">
+			<input class="listtype" type="button" value="RV" onclick="script:window.location.href='carList2_form?cclass=RV'">
+			<input class="listtype" type="button" value="승합" onclick="script:window.location.href='carList2_form?cclass=승합'">
+			<input class="listtype" type="button" value="수입차" onclick="script:window.location.href='carList2_form?cclass=수입'">
 			<input class="listtype" id="caradd"  type="button" value="차량등록" onclick="script:window.location.href='carAdd_form'">
 		</div>
-		<p>&nbsp;&nbsp;<span class="count">${type}</span>등급 차량<span class="count">&nbsp;${count}</span>대가 검색되었습니다.</p>
+		<p>&nbsp;&nbsp;<span class="count">${type}</span>등급 차량<span class="count">&nbsp;${totalCount}</span>대가 검색되었습니다.</p>
 		<table class="carlist">
 			<tr class="carlistheadline">
 				<th width="7%">차량번호</th>
@@ -57,6 +57,33 @@
 			</c:forEach>
 		</table>
 	</div>
+	<hr width="1200">
+	<table class="pagetable">
+		<tr class="pagetr">
+			<td class="pagetd">
+				<c:if test="${pageMaker.prev}">
+					<a class="pagebutton" href="carList2_form?cclass=${type}&pageNum=${pageMaker.startPage-5}">◀</a>
+				</c:if>
+			</td>				
+			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">
+			<td class="pagetd">
+				<c:choose>
+					<c:when test="${currPage == num}">
+						<span class="lookpage">${num}</span>
+					</c:when>
+					<c:otherwise>
+						<a class="pagebutton" href="carList2_form?cclass=${type}&pageNum=${num}">${num}</a>
+					</c:otherwise>
+				</c:choose>
+			</td>
+			</c:forEach>
+			<td class="pagetd">
+				<c:if test="${pageMaker.next}">
+					<a class="pagebutton" href="carList2_form?cclass=${type}&pageNum=${pageMaker.startPage+5}">▶</a>
+				</c:if>
+			</td>
+		</tr>
+	</table>
 <%@ include file="include/footer.jsp" %>
 </div>
 </body>

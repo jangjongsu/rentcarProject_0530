@@ -125,9 +125,9 @@ $(function() {
 									<img alt="차량사진" src="${dtos.cimg }" id="carbox">
 								</div>
 								<div class="" id="cartext">
-									<p class="listTitle">&nbsp;&nbsp;&nbsp;${dtos.cname }</p>
-									<p class="listContent"> ${dtos.cclass } | ${dtos.ccolor } |  ${dtos.coil } </p>
-									<p class="listPrice"><fmt:formatNumber value="${dtos.price}" pattern="#,###"/>원&nbsp;&nbsp;&nbsp;</p>
+									<p class="listTitle" style="text-align: center;">${dtos.cname }</p>
+									<p class="listContent" style="text-align: center;"> ${dtos.cclass } | ${dtos.ccolor } |  ${dtos.coil } </p>
+									<p class="listPrice" style="text-align: center;"><fmt:formatNumber value="${dtos.price}" pattern="#,###"/>원&nbsp;&nbsp;&nbsp;</p>
 									<p class="listLink">예약하기</p>
 								</div>
 							</a>

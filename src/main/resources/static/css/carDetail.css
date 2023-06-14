@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-h1{
-	align:"left";
-}
-
 section {
     border: 1px solid #dee6ec;
     padding: 20px;
@@ -114,6 +110,17 @@ select {
 	border-radius: 5px;
 	border-color: #ec2a1c;
 	margin-top: 10px;
+	float: right;
+	color: #ffffff;
+	font-size: 14px;
+	padding: 8px 22px;
+}
+
+.buttons1 {
+	background-color: #ec2a1c;
+	border-radius: 5px;
+	border-color: #ec2a1c;
+	margin-top: 30px;
 	float: right;
 	color: #ffffff;
 	font-size: 14px;

@@ -11,9 +11,9 @@
 	<div class="fdiv">
 	<table class="footerline">
 		<tr>
-			<td class ="footertext"><a href="#">개인정보취급방침</a></td>
-			<td class ="footertext"><a href="#">이용약관</a></td>
-			<td class ="footertext"><a href="#">전자금융거래약관</a></td>
+			<td class ="footertext"><a href="#" style="color: white">개인정보취급방침</a></td>
+			<td class ="footertext"><a href="#" style="color: white">이용약관</a></td>
+			<td class ="footertext"><a href="#" style="color: white">전자금융거래약관</a></td>
 		</tr>
 	</table>
 	<hr>

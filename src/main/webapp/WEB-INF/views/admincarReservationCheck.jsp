@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>차리스트</title>
-<link rel="stylesheet" href="/resources/css/content.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/carDetail.css">
 <script type="text/javascript" src="/resources/js/index.js"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/carList.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -27,13 +25,26 @@
 			<% 
 			}
 			%>
+<c:if test="${not empty messeage}">
+	<script>
+		alert("${messeage}")
+		history.go(-1);
+	</script>
+</c:if>
 <%@ include file="include/adminheader.jsp" %>
 	<div class="topimg">
 		<img src="/resources/img/adminpage1.jpg">
 	</div>
 	<div class="l-ct">
-		<div id="app">		
-			<h1 class="goodsSectionTitle l-ct">예약번호 <span style="color: red;">${rtnum}</span>번의 예약내용입니다.</h1>			
+		<div id="app">
+			<c:choose>
+				<c:when test="${page == 2}">
+				<h1 class="goodsSectionTitle l-ct">해당 <span style="color: blue;">${cindex}</span>번차량의 예약이력입니다.</h1>	
+				</c:when>
+				<c:when test="${page == 1}">
+				<h1 class="goodsSectionTitle l-ct">예약번호 <span style="color: red;">${rtnum}</span>번의 예약내용입니다.</h1>
+				</c:when>
+			</c:choose>
 			<c:forEach items="${dtos}" var="dtos" varStatus="status">
 			<c:if test="${status.index == 1 && page == 1}">
 			<h1 class="goodsSectionTitle l-ct">해당 <span style="color: blue;">${cindex}</span>번차량 기타 이력입니다.</h1>	
@@ -56,7 +67,7 @@
 							</li>
 							<li>
 								<span class="vehicleSubject">예약자</span>
-								<span class="vehicleSubjectContent">${dtos.rid}</span>
+								<span class="vehicleSubjectContent"><span style="color: blue">${dtos.rid}</span></span>
 							</li>
 							<li>
 								<span class="vehicleSubject">예약일</span>

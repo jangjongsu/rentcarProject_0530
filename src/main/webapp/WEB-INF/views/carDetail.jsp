@@ -18,7 +18,7 @@
 		<div id="app">
 			<div clss="gotoreservation">
 			<h1 class="goodsSectionTitle l-ct">현재 차량정보</h1>
-			<input class="reservationbutton" type="button" value="예약이력" onclick="script:window.location.href='admincarReservationCheck2_form?cindex=0'">
+			<input class="reservationbutton" type="button" value="예약이력" onclick="script:window.location.href='admincarReservationCheck2_form?cindex=${cdto.cindex}'">
 			</div>
 			<section class="vehicleSection l-ct">
 				<div class="vehicleTable">
@@ -62,7 +62,7 @@
 					<div class="buttonformbox">
 						<form action="carListDelete" name="cardelete">
 							<input type="hidden" name="cindex" value="${cdto.cindex}">
-							<input type="button" value="삭제" class="buttons" id="delete" name="cardeleteok" onclick="deleteConfirmation()">
+							<input type="button" value="삭제" class="buttons1" id="delete" name="cardeleteok" onclick="deleteConfirmation()">
 						</form>
 					</div>
 				</div>
@@ -146,7 +146,7 @@
 						</div>
 						<div class="buttonformbox">
 							<input type="hidden" name="cindex" value="${cdto.cindex}">
-							<input type="button" value="수정" class="buttons" id="update" name="carupdateok" onclick="updateConfirmation()">
+							<input type="button" value="수정" class="buttons1" id="update" name="carupdateok" onclick="updateConfirmation()">
 						</div>
 					</div>
 				</section>				
