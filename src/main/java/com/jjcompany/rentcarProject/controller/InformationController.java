@@ -68,7 +68,7 @@ public class InformationController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.CarListUpdateDao(cindex, cbrend, cclass, cname, ccolor, coil, ctype, price, cimg, cnote);
 
-		return "redirect:carList_form";
+		return "redirect:carList2_form";
 	}
 	
 	@RequestMapping(value = "/carListDelete")
@@ -77,7 +77,7 @@ public class InformationController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.CarListDeleteDao(Integer.parseInt(request.getParameter("cindex")));
 		
-		return "redirect:carList_form";
+		return "redirect:carList2_form";
 	}
 	
 	@RequestMapping(value = "/carADD")
@@ -96,7 +96,7 @@ public class InformationController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.AddNewCarDao(cbrend, cclass, cname, ccolor, coil, ctype, price, cimg, cnote);
 
-		return "redirect:carList_form";
+		return "redirect:carList2_form";
 	}
 	
 	@RequestMapping(value = "/carList2_form")

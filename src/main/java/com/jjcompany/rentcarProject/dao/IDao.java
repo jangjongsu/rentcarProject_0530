@@ -102,7 +102,7 @@ public interface IDao {
 			String coil, String ctype, int price, String cimg, String cnote);
 	
 	//차량예약관리(관리자)
-	public Vector<ReservationDto> AdminReservationListDao();
+	public Vector<ReservationDto> AdminReservationListDao(int amount, int pageNum);
 	public int AdminReservationCountDao();
 	public Vector<ReservationDto> AdminReservationIndexDao(int rtnum, int cindex);
 	public Vector<ReservationDto> AdminIndexCarListDao(int cindex);

@@ -348,12 +348,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 차량예약관리(관리자) -->
 	<select id="AdminReservationListDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto" resultMap="reservationDto">
-		select r.rtnum, c.cindex, c.cbrend, c.cclass, c.cname, r.rvdate, r.rtdate, r.returndate, r.rtprice
-			from rreservation r inner join cartbl c on r.cindex = c.cindex order by r.rvdate desc
+		SELECT * FROM (SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
+				FROM (select r.rtnum, c.cindex, c.cbrend, c.cclass, c.cname, r.rvdate, r.rtdate, r.returndate, r.rtprice
+						from rreservation r inner join cartbl c on r.cindex = c.cindex order by r.rvdate desc)A)
+							WHERE PAGE=#{param2}
 	</select>
 	
 	<select id="AdminReservationCountDao" resultType="int">
-		select count(*) from rreservation
+		select count(*)
+			from rreservation r 
+				inner join cartbl c 
+					on r.cindex = c.cindex
 	</select>
 	
 	<select id="AdminReservationIndexDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto" resultMap="reservationDto">

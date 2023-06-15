@@ -17,7 +17,7 @@
 	</div>
 	<h1>차량대여 예약목록</h1>
 	<div class="container">
-		<p>&nbsp;&nbsp;<span class="count">${count}개</span>의 예약이 검색되었습니다.</p>
+		<p>&nbsp;&nbsp;<span class="count">${totalCount}개</span>의 예약이 검색되었습니다.</p>
 		<table class="carlist">
 			<tr class="carlistheadline">
 				<th width="10%">예약번호</th>
@@ -53,6 +53,33 @@
 			</c:forEach>
 		</table>
 	</div>
+	<hr width="1200">
+	<table class="pagetable">
+		<tr class="pagetr">
+			<td class="pagetd">
+				<c:if test="${pageMaker.prev}">
+					<a class="pagebutton" href="situation_form?&pageNum=${pageMaker.startPage-5}">◀</a>
+				</c:if>
+			</td>				
+			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">
+			<td class="pagetd">
+				<c:choose>
+					<c:when test="${currPage == num}">
+						<span class="lookpage">${num}</span>
+					</c:when>
+					<c:otherwise>
+						<a class="pagebutton" href="situation_form?&pageNum=${num}">${num}</a>
+					</c:otherwise>
+				</c:choose>
+			</td>
+			</c:forEach>
+			<td class="pagetd">
+				<c:if test="${pageMaker.next}">
+					<a class="pagebutton" href="situation_form&pageNum=${pageMaker.startPage+5}">▶</a>
+				</c:if>
+			</td>
+		</tr>
+	</table>
 <%@ include file="include/footer.jsp" %>
 </div>
 </body>
