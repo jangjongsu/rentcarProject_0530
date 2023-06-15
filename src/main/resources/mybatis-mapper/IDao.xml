@@ -264,6 +264,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				inner join CARTBL
 					on rReservation.CINDEX = CARTBL.cindex
 						where rid = #{param1}
+							order by rvdate desc
 	</select>
 	
 	<select id="OneMemberRentDateDao" resultType="int">
@@ -276,23 +277,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="AllCarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
-		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, c.price, NVL(r.pdate, 0) as pdate
-		    from cartbl c
-		        FULL OUTER JOIN (select cindex,sum(returndate - rtdate) as pdate from rreservation group by cindex) r
-		            on c.cindex = r.cindex order by pdate * c.price desc
+	SELECT * FROM (SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
+		FROM (select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, c.price, NVL(r.pdate, 0) as pdate
+		   	from cartbl c
+		      	FULL OUTER JOIN (select cindex,sum(returndate - rtdate) as pdate from rreservation group by cindex) r
+		        	on c.cindex = r.cindex order by pdate * c.price desc)A)
+ 						WHERE PAGE=#{param2}
 	</select>
+	<select id="totalcountJSDao" resultType="int">
+		SELECT count(*) 
+		   from cartbl c
+		        FULL OUTER JOIN (select cindex,sum(returndate - rtdate) as pdate from rreservation group by cindex) r
+		            on c.cindex = r.cindex order by pdate * c.price
+ 	</select>
+	
+
 	
 	<select id="countCarTypeListDao" resultType="int">
 		select count(*)	from cartbl where cclass = #{param1}
 	</select>
 	
 	<select id="CarListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
-		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, c.price, NVL(r.pdate, 0) as pdate
-		    from cartbl c
-		        FULL OUTER JOIN (select cindex,sum(returndate - rtdate) as pdate from rreservation group by cindex) r
-		            on c.cindex = r.cindex
-		            	where cclass = #{param1} 
-		            		order by pdate * c.price desc
+		SELECT * FROM (SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM FROM 
+			(select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, c.price, NVL(r.pdate, 0) as pdate
+				from cartbl c
+					FULL OUTER JOIN (select cindex,sum(returndate - rtdate) as pdate from rreservation group by cindex) r
+						on c.cindex = r.cindex where cclass = #{param3} 
+		            		order by pdate * c.price desc)A)
+ 								WHERE PAGE=#{param2}
 	</select>	
 	
 	<select id="countCarBrendListDao" resultType="int">
@@ -300,12 +312,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="CarBrendListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
-		select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, c.price, NVL(r.pdate, 0) as pdate
-		    from cartbl c
-		        FULL OUTER JOIN (select cindex,sum(returndate - rtdate) as pdate from rreservation group by cindex) r
-		            on c.cindex = r.cindex
-		            	where cbrend = #{param1} 
-		            		order by pdate * c.price desc
+		SELECT * FROM (SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM FROM 
+			(select c.cindex, c.cbrend, c.cclass, c.cname, c.ccolor, c.coil, c.ctype, c.price, NVL(r.pdate, 0) as pdate
+				from cartbl c
+					FULL OUTER JOIN (select cindex,sum(returndate - rtdate) as pdate from rreservation group by cindex) r
+						on c.cindex = r.cindex where cbrend = #{param3} 
+		            		order by pdate * c.price desc)A)
+ 								WHERE PAGE=#{param2}
 	</select>
 	
 	<select id="BrendListDao" resultType="com.jjcompany.rentcarProject.dto.CarListDto">
@@ -336,12 +349,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 차량예약관리(관리자) -->
 	<select id="AdminReservationListDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto" resultMap="reservationDto">
-		select r.rtnum, c.cindex, c.cbrend, c.cclass, c.cname, r.rvdate, r.rtdate, r.returndate, r.rtprice
-			from rreservation r inner join cartbl c on r.cindex = c.cindex order by r.rvdate desc
+		SELECT * FROM (SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
+				FROM (select r.rtnum, c.cindex, c.cbrend, c.cclass, c.cname, r.rvdate, r.rtdate, r.returndate, r.rtprice
+						from rreservation r inner join cartbl c on r.cindex = c.cindex order by r.rvdate desc)A)
+							WHERE PAGE=#{param2}
 	</select>
 	
 	<select id="AdminReservationCountDao" resultType="int">
-		select count(*) from rreservation
+		select count(*)
+			from rreservation r 
+				inner join cartbl c 
+					on r.cindex = c.cindex
 	</select>
 	
 	<select id="AdminReservationIndexDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto" resultMap="reservationDto">
@@ -355,8 +373,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="AdminIndexCarListDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto" resultMap="reservationDto">
 		select r.rtnum, c.cimg, c.cindex, c.cbrend, c.cclass, c.cname, r.rvdate, r.rtdate, r.returndate, r.rpdate, r.rtprice,
 			c.ccolor, c.ctype, c.coil, c.cclass, c.cnote, r.rid
-				from rreservation r inner join cartbl c on r.cindex = c.cindex
-					order by r.rtnum desc
+				from rreservation r inner join cartbl  c on r.cindex = c.cindex
+					where c.cindex = #{param1}
+						order by r.rtnum desc
+	</select>
+	
+	<select id="CountIndexReservationDao" resultType="int">
+		select count(cindex) from rreservation where cindex=#{param1}
 	</select>
  
 </mapper>

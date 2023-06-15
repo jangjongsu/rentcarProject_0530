@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jjcompany.rentcarProject.dao.IDao;
+import com.jjcompany.rentcarProject.dto.CarCriteria;
+import com.jjcompany.rentcarProject.dto.CarPageDto;
 import com.jjcompany.rentcarProject.dto.ReservationDto;
 
 @Controller
@@ -20,13 +22,24 @@ public class AdminController {
 	private SqlSession sqlsession;
 
 	@RequestMapping(value = "/situation_form")
-	public String situation(Model model) {
+	public String situation(Model model, HttpServletRequest request, CarCriteria carCriteria) {
+		
+		int pageNum;
+		if(request.getParameter("pageNum") == null) {
+			pageNum = 1;
+		}else {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+			carCriteria.setPageNum(pageNum);
+		}
 		
 		IDao dao = sqlsession.getMapper(IDao.class);
-		int count = dao.AdminReservationCountDao();
-		Vector<ReservationDto> dtos = dao.AdminReservationListDao();
+		int totalCount = dao.AdminReservationCountDao();
+		CarPageDto carPageDto = new CarPageDto(carCriteria, totalCount);
+		Vector<ReservationDto> dtos = dao.AdminReservationListDao(carCriteria.getAmount(), pageNum);
 		model.addAttribute("dtos", dtos);
-		model.addAttribute("count",count);
+		model.addAttribute("pageMaker", carPageDto);
+		model.addAttribute("currPage", pageNum);
+		model.addAttribute("totalCount",totalCount);
 		
 		return "situation";
 	}
@@ -52,7 +65,13 @@ public class AdminController {
 		int cindex = Integer.parseInt(request.getParameter("cindex"));
 		IDao dao = sqlsession.getMapper(IDao.class);
 		Vector<ReservationDto> dtos = dao.AdminIndexCarListDao(cindex);
+		int count = dao.CountIndexReservationDao(cindex);
+		if(count == 0) {			
+			model.addAttribute("messeage", "해당 차량의 예약이력이 없습니다");
+			return "admincarReservationCheck";
+		} 			
 		model.addAttribute("dtos",dtos);
+		model.addAttribute("cindex", cindex);
 		model.addAttribute("page", 2);
 		
 		return "admincarReservationCheck";

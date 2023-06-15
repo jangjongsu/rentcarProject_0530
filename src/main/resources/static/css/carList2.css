@@ -4,7 +4,7 @@
 	display: block;
     width: 1200px;
     margin: 0 auto;
-    padding-bottom: 200px;
+    padding-bottom: 100px;
 }
 
 a:hover {
@@ -92,4 +92,26 @@ footer {
     width: 100%;
     margin: 0 auto;
     height: 300px;
+}
+
+.pagetable {
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+
+.pagetd {
+	width: 14%;
+	font-size: 22px;
+	padding: 10px 20px;
+}
+
+.lookpage {
+	color: white;
+	background-color: #aebfd0;
+	padding: 0px 8px;
+}
+
+.pagebutton {
+	color: black;	
 }

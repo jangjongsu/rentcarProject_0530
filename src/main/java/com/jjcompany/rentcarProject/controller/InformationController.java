@@ -11,7 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jjcompany.rentcarProject.dao.IDao;
+import com.jjcompany.rentcarProject.dto.CarCriteria;
 import com.jjcompany.rentcarProject.dto.CarListDto;
+import com.jjcompany.rentcarProject.dto.CarPageDto;
+import com.jjcompany.rentcarProject.dto.Criteria;
+import com.jjcompany.rentcarProject.dto.PageDto;
 
 @Controller
 public class InformationController {
@@ -27,54 +31,7 @@ public class InformationController {
 	@RequestMapping(value = "/insurance_form")
 	public String insurance() {
 		return "insurance";
-	}
-	
-	@RequestMapping(value = "/carList2_form")
-	public String carList(Model model) {
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		int count = dao.countCarListDao();
-		Vector<CarListDto> dtos = dao.AllCarListDao();
-		model.addAttribute("count", count);
-		model.addAttribute("carListDto", dtos);
-		model.addAttribute("type","전체");
-		
-		return "carList2";
-	}
-	
-	@RequestMapping(value = "/carList_type")
-	public String carList_type(Model model, HttpServletRequest request) {
-		
-		String type = request.getParameter("cclass");
-		if(type.equals("수입")) {
-			IDao dao = sqlSession.getMapper(IDao.class);
-			int count = dao.countCarBrendListDao(type);
-			Vector<CarListDto> dtos = dao.CarBrendListDao(type);
-			model.addAttribute("count", count);
-			model.addAttribute("carListDto", dtos);
-			model.addAttribute("type",type);
-			
-			return "carList2";
-		} else if(type.equals("준중형")){
-			IDao dao = sqlSession.getMapper(IDao.class);
-			int count = dao.countCarTypeListDao(type);
-			Vector<CarListDto> dtos = dao.CarListDao(type);
-			model.addAttribute("count", count);
-			model.addAttribute("carListDto", dtos);
-			model.addAttribute("type","소형/준중형");
-			
-			return "carList2";
-		} else {
-			IDao dao = sqlSession.getMapper(IDao.class);
-			int count = dao.countCarTypeListDao(type);
-			Vector<CarListDto> dtos = dao.CarListDao(type);
-			model.addAttribute("count", count);
-			model.addAttribute("carListDto", dtos);
-			model.addAttribute("type",type);
-			
-			return "carList2";
-		}
-	}
+	}	
 	
 	@RequestMapping(value = "/carDetail_form")
 	public String carDetail(Model model, HttpServletRequest request) {
@@ -111,7 +68,7 @@ public class InformationController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.CarListUpdateDao(cindex, cbrend, cclass, cname, ccolor, coil, ctype, price, cimg, cnote);
 
-		return "redirect:carList_form";
+		return "redirect:carList2_form";
 	}
 	
 	@RequestMapping(value = "/carListDelete")
@@ -120,7 +77,7 @@ public class InformationController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.CarListDeleteDao(Integer.parseInt(request.getParameter("cindex")));
 		
-		return "redirect:carList_form";
+		return "redirect:carList2_form";
 	}
 	
 	@RequestMapping(value = "/carADD")
@@ -139,7 +96,77 @@ public class InformationController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.AddNewCarDao(cbrend, cclass, cname, ccolor, coil, ctype, price, cimg, cnote);
 
-		return "redirect:carList_form";
+		return "redirect:carList2_form";
+	}
+	
+	@RequestMapping(value = "/carList2_form")
+	public String carList2(Model model, HttpServletRequest request, CarCriteria carCriteria) {
+		
+		int pageNum;
+		if(request.getParameter("pageNum") == null) {
+			pageNum = 1;
+		}else {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+			carCriteria.setPageNum(pageNum);
+		}
+		
+		String type = request.getParameter("cclass");
+		if(type == null || type.equals("전체")) {
+			IDao dao = sqlSession.getMapper(IDao.class);
+			int totalCount = dao.totalcountJSDao();		
+			CarPageDto carPageDto = new CarPageDto(carCriteria, totalCount);	
+			Vector<CarListDto> dtos = dao.AllCarListDao(carCriteria.getAmount(), pageNum);
+			
+			model.addAttribute("totalCount", totalCount);
+			model.addAttribute("carListDto", dtos);
+			model.addAttribute("pageMaker", carPageDto);
+			model.addAttribute("currPage", pageNum);
+			model.addAttribute("type", "전체");
+			
+			return "carList2";
+			
+		} else if(type.equals("수입")) {
+			
+			IDao dao = sqlSession.getMapper(IDao.class);
+			int totalCount = dao.countCarBrendListDao(type);
+			CarPageDto carPageDto = new CarPageDto(carCriteria, totalCount);
+			Vector<CarListDto> dtos = dao.CarBrendListDao(carCriteria.getAmount(), pageNum, type);
+			model.addAttribute("totalCount", totalCount);
+			model.addAttribute("carListDto", dtos);
+			model.addAttribute("type",type);			
+			model.addAttribute("pageMaker", carPageDto);
+			model.addAttribute("currPage", pageNum);
+			
+			return "carList2";
+			
+		} else if(type.equals("준중형")){
+			
+			IDao dao = sqlSession.getMapper(IDao.class);
+			int totalCount = dao.countCarTypeListDao(type);
+			CarPageDto carPageDto = new CarPageDto(carCriteria, totalCount);
+			Vector<CarListDto> dtos = dao.CarListDao(carCriteria.getAmount(), pageNum, type);
+			model.addAttribute("totalCount", totalCount);
+			model.addAttribute("carListDto", dtos);
+			model.addAttribute("type","준중형");
+			model.addAttribute("pageMaker", carPageDto);
+			model.addAttribute("currPage", pageNum);
+			
+			return "carList2";
+			
+		} else {
+			
+			IDao dao = sqlSession.getMapper(IDao.class);
+			int totalCount = dao.countCarTypeListDao(type);
+			CarPageDto carPageDto = new CarPageDto(carCriteria, totalCount);
+			Vector<CarListDto> dtos = dao.CarListDao(carCriteria.getAmount(), pageNum, type);
+			model.addAttribute("totalCount", totalCount);
+			model.addAttribute("carListDto", dtos);
+			model.addAttribute("type",type);
+			model.addAttribute("pageMaker", carPageDto);
+			model.addAttribute("currPage", pageNum);
+			
+			return "carList2";
+		}
 	}
 	
 }

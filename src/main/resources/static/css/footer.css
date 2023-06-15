@@ -50,3 +50,6 @@ span.spantext2{
   width: 500px;
 }
 
+ a {
+ 	text-decoration: none;
+ }
