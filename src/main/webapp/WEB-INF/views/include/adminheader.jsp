@@ -30,13 +30,13 @@
 			
 			%>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="/carList2_form?">차량관리</a></td>
+			<td class ="headertext"><a href="/carList2_form?" style="color: white;">차량관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="/situation_form">예약관리</a></td>
+			<td class ="headertext"><a href="/situation_form" style="color: white;">예약관리</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="freeBoardList">자유게시판</a></td>
+			<td class ="headertext"><a href="freeBoardList" style="color: white;">자유게시판</a></td>
 			<td class="margin02">&nbsp;</td>
-			<td class ="headertext"><a href="userBoardList">문의게시판</a></td>
+			<td class ="headertext"><a href="userBoardList" style="color: white;">문의게시판</a></td>
 			<td class="margin02">&nbsp;</td>
 			<td >&nbsp;</td>
 		</tr>

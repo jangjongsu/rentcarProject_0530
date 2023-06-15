@@ -204,27 +204,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--예약관련 SQL -->
 	<select id="carListTotalDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
 		select * 
-   			 from cartbl 
-        		full outer join rReservation
-         			on cartbl.CINDEX = rreservation.cindex
-        				 where rtdate is null or 
-        				 	returndate is null or
-          					 rtdate NOT BETWEEN #{param1} AND #{param2} and 
-          					 returndate NOT BETWEEN #{param1} AND #{param2} and
-          					 rtdate > #{param1} and 
-                			 returndate &lt; #{param2}
+    		from cartbl 
+       		 left join (select * 
+    						from rReservation
+       								  where rtdate BETWEEN #{param1} AND #{param2} or
+          					 				returndate BETWEEN #{param1} AND #{param2})A
+             		on cartbl.cindex = A.cindex
+                		where A.cindex is null
 	</select>
 	<select id="carListClassDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
 		select * from
-			(select * from cartbl 
-        		full outer join rReservation
-         			on cartbl.CINDEX = rreservation.cindex
-        				 where rtdate is null or 
-        				 	returndate is null and
-          					 rtdate NOT BETWEEN #{param1} AND #{param2} and 
-          					 returndate NOT BETWEEN #{param1} AND #{param2} and
-          					 rtdate > #{param1} and 
-                			 returndate &lt; #{param2}) where cclass = #{param3} 
+			(select * 
+    			from cartbl 
+       		 		left join (select * 
+    							from rReservation
+       								  where rtdate BETWEEN #{param1} AND #{param2} or
+          					 				returndate BETWEEN #{param1} AND #{param2})A
+             			on cartbl.cindex = A.cindex
+                			where A.cindex is null) 
+            where cclass = #{param3} 
                				 
 	</select>
 	<select id="carinfoDao" resultType="com.jjcompany.rentcarProject.dto.CarDto">
