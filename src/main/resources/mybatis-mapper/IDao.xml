@@ -207,8 +207,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		from cartbl 
        		 left join (select * 
     						from rReservation
-       								  where rtdate BETWEEN #{param1} AND #{param2} or
-          					 				returndate BETWEEN #{param1} AND #{param2})A
+       								  where rtdate <![CDATA[<=]]> #{param1} and
+                							returndate <![CDATA[>=]]> #{param1} or
+                							rtdate <![CDATA[<=]]> #{param2} and
+               								returndate <![CDATA[>=]]> #{param2})A
              		on cartbl.cindex = A.cindex
                 		where A.cindex is null
 	</select>
@@ -218,8 +220,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     			from cartbl 
        		 		left join (select * 
     							from rReservation
-       								  where rtdate BETWEEN #{param1} AND #{param2} or
-          					 				returndate BETWEEN #{param1} AND #{param2})A
+       								  where rtdate <![CDATA[<=]]> #{param1} and
+                							returndate <![CDATA[>=]]> #{param1} or
+                							rtdate <![CDATA[<=]]> #{param2} and
+               								returndate <![CDATA[>=]]> #{param2})A
              			on cartbl.cindex = A.cindex
                 			where A.cindex is null) 
             where cclass = #{param3} 
