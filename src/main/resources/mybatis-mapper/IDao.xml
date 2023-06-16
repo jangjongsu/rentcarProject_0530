@@ -273,6 +273,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(rid) from rreservation where rid=#{param1}
 	</select>
 	
+	<delete id="reservationdeleteDao">
+		delete from rreservation where rtnum = #{param1}
+	</delete>
+	
+	<select id="carRentIndexViewDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto" resultMap="reservationDto">
+			select * 
+				from rReservation 
+					inner join CARTBL
+						on rReservation.CINDEX = CARTBL.cindex
+							where rtnum = #{param1}
+
+	</select>
+	
 	<!-- 차량관리 -->
 	<select id="countCarListDao" resultType="int">
 		select count(*)	from cartbl

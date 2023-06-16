@@ -84,6 +84,8 @@ public interface IDao {
 	public int carRentDao(String rid, String cindex, String rtdate, String returndate, String rpdate, int rtPrice);
 	public List<ReservationDto> carRentViewDao(String rid);
 	public int OneMemberRentDateDao(String rid);
+	public void reservationdeleteDao(String rtnum);
+	public ReservationDto carRentIndexViewDao(String rtnum);
 	
 	//차량관리
 	public int countCarListDao();

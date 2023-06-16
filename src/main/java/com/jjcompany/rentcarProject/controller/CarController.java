@@ -3,6 +3,7 @@ package com.jjcompany.rentcarProject.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Vector;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -98,15 +99,13 @@ public class CarController {
 		int totalPrice = rtPrice * (int)diffdays;
 		String rpdate = rtdate+"~"+returndate;
 		
-		IDao dao = sqlSession.getMapper(IDao.class);
+		IDao dao = sqlSession.getMapper(IDao.class);		
+		dao.carRentDao(rid, cindex, rtdate, returndate, rpdate, totalPrice);		
 		
-		dao.carRentDao(rid, cindex, rtdate, returndate, rpdate, totalPrice);
+		model.addAttribute("rid", rid);
+		model.addAttribute("totalPrice", totalPrice);
 		
-		List<ReservationDto> dtos =  dao.carRentViewDao(rid);
-		model.addAttribute("dtos", dtos);
-		
-		
-		return"carReservationCheck";
+		return "carReservationBefore";
 	}
 	@RequestMapping(value = "/carReservationCheck")
 	public String carReservationCheck(HttpSession session, Model model) {
@@ -132,4 +131,21 @@ public class CarController {
 		return "carReservationCheck";
 	}
 
+	@RequestMapping(value = "/carReservationBefore")
+	public String carReservationBefore(HttpServletRequest request, Model model) {
+	
+		return "carReservationCheck";
+	}
+	
+	@RequestMapping(value = "/reservationdelete")
+	public String reservationdelete(HttpServletRequest request, Model model, HttpSession session) {
+		
+		String rtnum = request.getParameter("rtnum");
+		IDao dao = sqlSession.getMapper(IDao.class);
+		ReservationDto dtos = dao.carRentIndexViewDao(rtnum);
+		model.addAttribute("dtos", dtos);		
+		dao.reservationdeleteDao(rtnum);
+
+		return "carReservationDeleteOk";
+	}
 }
