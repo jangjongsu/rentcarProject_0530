@@ -52,8 +52,12 @@ $(function() {
     $('#datepicker').datepicker("option", "maxDate");
     $('#datepicker').datepicker("option", "onClose", function ( selectedDate ) {
     	$('#datepicker2').datepicker( "option", "minDate", selectedDate );
-    	
+    	document.carListSearch.submit();
     });
+    
+    $('#datepicker2').change(function() {
+    	document.carListSearch.submit();
+	});
     
 });
 </script>
@@ -64,17 +68,17 @@ $(function() {
 			<div class="mainvisual">
 				<section class="searchSection">
 				<center>
-					<form action="carListSearch">
+					<form action="carListSearch" name="carListSearch">
 						<div class="search" id="l-search">
 							<div class="calenderLabel">
 								<label class="DateBind">
 									<div class="searchLabel current">
-										<img src="/resources/img/start.png" class="icon"> <input
-											type="text" id="datepicker" name="rtdate" value="${rtdate }" >
+										<img src="/resources/img/start.png" class="icon"> 
+										<input type="text" id="datepicker" name="rtdate" value="${rtdate }" >
 									</div>
 									<div class="searchLabel searchPartition">
-										<img src="/resources/img/end.png" class="icon"> <input
-											type="text" id="datepicker2" name="returndate" value="${returndate }">
+										<img src="/resources/img/end.png" class="icon"> 
+										<input type="text" id="datepicker2" name="returndate" value="${returndate }">
 									</div>
 
 								</label>
@@ -116,24 +120,30 @@ $(function() {
 					<td class="margin02">&nbsp;</td>
 				</tr>
 			</table>
-			<p style="color:red; font-weight: bold;">아래의 리스트는 ${rtdate } ~ ${returndate } 날짜의 검색결과 입니다. 날짜변경시에는 검색버튼을 한번 더 눌러주세요!!</p>
-			<ul class="carList">
-					<c:forEach items="${dtos }" var="dtos">
-						<li class="carLabel">
-							<a href="carReservation?cindex=${dtos.cindex }&rtdate=${rtdate } &returndate=${returndate }">
-								<div>
-									<img alt="차량사진" src="${dtos.cimg }" id="carbox">
-								</div>
-								<div class="" id="cartext">
-									<p class="listTitle" style="text-align: center;">${dtos.cname }</p>
-									<p class="listContent" style="text-align: center;"> ${dtos.cclass } | ${dtos.ccolor } |  ${dtos.coil } </p>
-									<p class="listPrice" style="text-align: center;"><fmt:formatNumber value="${dtos.price}" pattern="#,###"/>원&nbsp;&nbsp;&nbsp;</p>
-									<p class="listLink">예약하기</p>
-								</div>
-							</a>
-						</li> 
-					</c:forEach>
-				</ul>
+			<c:choose>
+				<c:when test="${count != 0}">
+					<ul class="carList">
+						<c:forEach items="${dtos }" var="dtos">
+							<li class="carLabel">
+								<a href="carReservation?cindex=${dtos.cindex }&rtdate=${rtdate } &returndate=${returndate }">
+									<div>
+										<img alt="차량사진" src="${dtos.cimg }" id="carbox">
+									</div>
+									<div class="" id="cartext">
+										<p class="listTitle" style="text-align: center;">${dtos.cname }</p>
+										<p class="listContent" style="text-align: center;"> ${dtos.cclass } | ${dtos.ccolor } |  ${dtos.coil } </p>
+										<p class="listPrice" style="text-align: center;"><fmt:formatNumber value="${dtos.price}" pattern="#,###"/>원&nbsp;&nbsp;&nbsp;</p>
+										<p class="listLink">예약하기</p>
+									</div>
+								</a>
+							</li> 
+						</c:forEach>
+					</ul>
+					</c:when>
+					<c:otherwise>
+						<p style="color:red; font-weight: bold; font-size: 20px">검색하신 ${rtdate } ~ ${returndate } 날짜에는 예약가능한 차량이 없습니다.</p>
+					</c:otherwise>
+				</c:choose>
 			</section>			
 		</div>
 	</div>

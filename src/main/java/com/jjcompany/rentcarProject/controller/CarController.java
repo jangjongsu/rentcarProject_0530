@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.style.DefaultToStringStyler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,11 +48,16 @@ public class CarController {
 		
 		if(searchOption.equals("allcar")) {
 			List<CarDto> dtos = dao.carListTotalDao(rtdate, returndate);
+			int count = dao.carListTotalDao(rtdate, returndate).size();
 			model.addAttribute("dtos", dtos);
+			model.addAttribute("count", count);
+			System.out.println(count);
 		}else {
 			List<CarDto> dtos = dao.carListClassDao(rtdate, returndate, searchOption);
+			int count = dao.carListClassDao(rtdate, returndate, searchOption).size();
 			model.addAttribute("dtos", dtos);
-			System.out.println("차종"+searchOption);
+			model.addAttribute("count", count);
+			System.out.println(count);
 		}
 			model.addAttribute("returndate", returndate);
 			model.addAttribute("rtdate", rtdate);
