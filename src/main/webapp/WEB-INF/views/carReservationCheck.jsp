@@ -78,6 +78,8 @@
 							<li>
 								<span class="vehicleSubject"></span>
 								<span class="vehicleSubjectContent">💥 차량색상은 이미지와 다를 수 있습니다</span>
+								<input class="reservationback" type="button" value="예약취소"
+										onclick="confirmCancellation(${dtos.rtnum})">
 							</li>
 						</ul>
 					</div>

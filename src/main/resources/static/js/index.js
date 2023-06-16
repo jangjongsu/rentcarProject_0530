@@ -48,3 +48,12 @@
  function goBack() {
     history.back();
  }
+
+ function confirmCancellation(rtnum) {
+  var confirmation = confirm("예약을 취소하시겠습니까?");
+
+  if (confirmation) {    
+    window.location.href = "reservationdelete?rtnum=" + rtnum;
+  }
+  
+ } 

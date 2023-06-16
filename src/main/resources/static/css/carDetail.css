@@ -181,3 +181,14 @@ label {
 	margin-top: -45px;
 	margin-right: 970px;
 }
+
+.reservationback {
+	background-color: #ec2a1c;
+	border-radius: 5px;
+	border-color: #ec2a1c;
+	float: right;
+	color: #ffffff;
+	font-size: 14px;
+	margin-top: 10px;
+	line-height: 20px;
+}
