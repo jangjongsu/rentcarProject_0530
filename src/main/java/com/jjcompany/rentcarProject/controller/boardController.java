@@ -60,7 +60,6 @@ public class boardController {
 		
 		List<UserBoardDto> dtos = dao.userBoardListDao(criteria.getAmount(), pageNum);
 		
-		
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("dtos", dtos);
 		model.addAttribute("pageMaker", pageDto);
@@ -248,7 +247,5 @@ public class boardController {
 		
 		return"userBoardView";
 	}
-
-	
 	
 }

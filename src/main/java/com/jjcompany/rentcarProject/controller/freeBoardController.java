@@ -40,7 +40,6 @@ public class freeBoardController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		
-		
 		dao.freeBoardWriteDao(rid, rfbtitle, rfbcontent);
 		
 		if(rid.equals("admin")) {
@@ -230,7 +229,6 @@ public class freeBoardController {
 		
 		model.addAttribute("dto", dto);
 		
-		
 		return"freeReplyModify";
 	}
 	@RequestMapping(value = "/freeReplyModifyOk")
@@ -249,8 +247,6 @@ public class freeBoardController {
 		
 		List<FreereplyDto> replyListDto = dao.freeReplyListDao(rfbnum);
 		model.addAttribute("replyListDto", replyListDto);
-	
-	
 		
 		return"freeBoardView";
 	}

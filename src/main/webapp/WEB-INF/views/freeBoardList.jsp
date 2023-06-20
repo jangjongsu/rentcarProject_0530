@@ -29,7 +29,7 @@
 			<tr>
 				<td class="contentbox">
 					<center>
-							<h2 id="board_title">문의 게시판</h2>
+							<h2 id="board_title">자유 게시판</h2>
 							<div id="total_search">
 								<div id="total">▷ 총 ${totalCount}개의 게시물이 있습니다.</div>
 								<form action="searchList">

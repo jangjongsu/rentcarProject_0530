@@ -283,7 +283,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					inner join CARTBL
 						on rReservation.CINDEX = CARTBL.cindex
 							where rtnum = #{param1}
-
 	</select>
 	
 	<!-- 차량관리 -->
@@ -305,8 +304,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		        FULL OUTER JOIN (select cindex,sum(returndate - rtdate) as pdate from rreservation group by cindex) r
 		            on c.cindex = r.cindex order by pdate * c.price
  	</select>
-	
-
 	
 	<select id="countCarTypeListDao" resultType="int">
 		select count(*)	from cartbl where cclass = #{param1}
@@ -360,8 +357,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{param5}, #{param6}, #{param7}, #{param8}, #{param9})
 	</insert>
 	
-	
-	
 	<!-- 차량예약관리(관리자) -->
 	<select id="AdminReservationListDao" resultType="com.jjcompany.rentcarProject.dto.ReservationDto" resultMap="reservationDto">
 		SELECT * FROM (SELECT A.*, FLOOR((ROWNUM-1)/#{param1}+1)PAGE, ROWNUM 
@@ -396,5 +391,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="CountIndexReservationDao" resultType="int">
 		select count(cindex) from rreservation where cindex=#{param1}
 	</select>
- 
 </mapper>

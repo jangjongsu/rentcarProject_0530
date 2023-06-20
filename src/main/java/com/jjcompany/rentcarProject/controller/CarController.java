@@ -33,7 +33,6 @@ public class CarController {
 		String returndate = request.getParameter("returndate");
 		String param = request.getParameter("param");
 		
-		
 		if(param == null) {
 			param = "";
 		}
@@ -51,18 +50,15 @@ public class CarController {
 			int count = dao.carListTotalDao(rtdate, returndate).size();
 			model.addAttribute("dtos", dtos);
 			model.addAttribute("count", count);
-			System.out.println(count);
 		}else {
 			List<CarDto> dtos = dao.carListClassDao(rtdate, returndate, searchOption);
 			int count = dao.carListClassDao(rtdate, returndate, searchOption).size();
 			model.addAttribute("dtos", dtos);
 			model.addAttribute("count", count);
-			System.out.println(count);
 		}
 			model.addAttribute("returndate", returndate);
 			model.addAttribute("rtdate", rtdate);
 			model.addAttribute("searchOption", searchOption);
-			
 		
 		return"carList";
 	}
@@ -124,7 +120,6 @@ public class CarController {
 		}		
 		
 		List<ReservationDto> dtos =  dao.carRentViewDao(rid);
-		
 		
 		model.addAttribute("dtos", dtos);
 		

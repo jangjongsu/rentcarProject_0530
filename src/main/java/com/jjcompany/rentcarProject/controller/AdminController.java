@@ -69,7 +69,8 @@ public class AdminController {
 		if(count == 0) {			
 			model.addAttribute("messeage", "해당 차량의 예약이력이 없습니다");
 			return "admincarReservationCheck";
-		} 			
+		}
+		
 		model.addAttribute("dtos",dtos);
 		model.addAttribute("cindex", cindex);
 		model.addAttribute("page", 2);
