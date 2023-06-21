@@ -39,7 +39,6 @@
 						
 						<!-- 댓글 -->
 						<hr>
-					
 						<table border="0" cellpadding="0" cellspacing="0" width="100%">
 							<c:forEach items="${replyListDto}" var="replyDto">
 								<tr height="60px">
@@ -74,7 +73,6 @@
 					</c:if>
 							<a href="userBoardList"><img src="/resources/img/list.png"></a>
 						</div>
-						
 					</center>
 				</td>
 			</tr>

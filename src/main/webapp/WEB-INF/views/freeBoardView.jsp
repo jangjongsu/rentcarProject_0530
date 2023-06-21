@@ -29,7 +29,7 @@
 			<tr>
 				<td class="contentbox">
 					<center>
-						<h2 id="board_title">문의 게시판</h2>
+						<h2 id="board_title">자유 게시판</h2>
 						<div id="view_title_box">
 							<span id="boardTitle">${dto.rfbtitle }</span> 
 							<span id="info">${dto.rid }
@@ -55,7 +55,6 @@
 								</tr>
 							</c:forEach>
 						</table>
-						<c:if test="${sessionId==dto.rid || sessionId=='admin'}">
 						<form action="freeReplyOk">
 							<input type="hidden" name="rfbnum" value="${dto.rfbnum }">
 							<div id="comment_box">
@@ -64,7 +63,6 @@
 								<input type="image" id="ok_ripple" src="/resources/img/ok_ripple.gif">
 							</div>
 						</form>
-				      </c:if>
 						<!-- 댓글끝 -->
 						<div id="buttons">
 					<c:if test="${sessionId==dto.rid || sessionId=='admin'}">

@@ -80,7 +80,6 @@ $(function() {
 										<img src="/resources/img/end.png" class="icon"> 
 										<input type="text" id="datepicker2" name="returndate" value="${returndate }">
 									</div>
-
 								</label>
 								<div class="searchLabel searchPartition searchCategory">
 									<select name="searchOption" id="searchOption" >
@@ -93,7 +92,7 @@ $(function() {
 										<option value="승합" ${searchOption == '승합' ? 'selected="selected"' : '' }>승합</option>
 									</select>
 								</div>		
-									<input class="searchimg" type="image" src="/resources/img/search.png">
+								<input class="searchimg" type="image" src="/resources/img/search.png">
 							</div>
 						</div>
 					</form>
